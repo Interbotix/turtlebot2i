@@ -1,0 +1,5 @@
+pincher_arm:
+  kinematics_solver: phantomx_pincher_arm_kinematics/IKFastKinematicsPlugin
+  kinematics_solver_search_resolution: 0.005
+  kinematics_solver_timeout: 0.005
+  kinematics_solver_attempts: 3

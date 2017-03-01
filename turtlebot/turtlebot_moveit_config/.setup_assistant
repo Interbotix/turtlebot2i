@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: turtlebot_description
+    relative_path: robots/kobuki_interbotix_astra.urdf.xacro
+  SRDF:
+    relative_path: config/turtlebot.srdf
+  CONFIG:
+    author_name: Renee Love
+    author_email: renee@interbotix.com
+    generated_timestamp: 1487379720

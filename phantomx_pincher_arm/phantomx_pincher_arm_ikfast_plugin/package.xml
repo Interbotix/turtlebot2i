@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='ASCII'?>
+<package>
+  <name>phantomx_pincher_arm_ikfast_plugin</name>
+  <version>0.1.0</version>
+  <description>The phantomx_pincher_arm_ikfast_plugin package</description>
+  <maintainer email="renee@interbotix.com">Renee Love</maintainer>
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>pluginlib</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf_conversions</build_depend>
+
+  <run_depend>cmake_modules</run_depend>
+  <run_depend>moveit_core</run_depend>
+  <run_depend>pluginlib</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>tf_conversions</run_depend>
+
+  <export>
+    <moveit_core plugin="${prefix}/phantomx_pincher_arm_moveit_ikfast_plugin_description.xml"/>
+  </export>
+</package>

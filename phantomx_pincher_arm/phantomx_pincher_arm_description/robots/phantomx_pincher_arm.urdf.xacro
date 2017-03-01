@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="phantomx_pincher_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!-- Import URDF xacro model -->
+	<xacro:include filename="$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_arm.urdf.xacro" />
+
+	<link name="base_footprint">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+	</link>
+	<xacro:phantomx_pincher_arm prefix="arm_" parent="base_footprint">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:phantomx_pincher_arm>
+	
+</robot>

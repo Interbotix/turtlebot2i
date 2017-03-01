@@ -1,0 +1,97 @@
+//Gazebo Simulation ( http://gazebosim.org/tutorials/?tut=ros_control )
+{
+	*Gazebo, arm joint controllers, empty turtlebot2i world:
+	roslaunch turtlebot2i_gazebo turtlebot_world.launch
+
+	*Gazebo world
+	roslaunch turtlebot_gazebo turtlebot_world.launch
+
+	*Arm Joint Controllers
+	roslaunch turtlebot_control turtlebot_control.launch
+
+	*Manually Command Arm
+	rostopic pub -1 /turtlebot/arm_shoulder_pan_position_controller/command std_msgs/Float64 "data: 0.4"
+	rostopic pub -1 /turtlebot/arm_elbow_flex_position_controller/command std_msgs/Float64 "data: 1.4"
+}
+
+//Interbotix Demos 1 & 2 (WIP)
+{ 
+	*To resume mapping:
+	roslaunch turtlebot_bringup interbotix_demo1.launch
+
+	*To start a new map:
+	roslaunch turtlebot_bringup interbotix_demo1.launch new_rtabmap:=true
+
+	*To use existing map for localization purposes only:
+	roslaunch turtlebot_bringup interbotix_demo1.launch localization:=true
+
+	*Drive around then when the markers have been identified you can publish a zone destination request:
+	rostopic pub /zone_destination_request std_msgs/String "charging_zone"
+	rostopic pub /zone_destination_request std_msgs/String "pickup_zone"
+	rostopic pub /zone_destination_request std_msgs/String "sorting_zone"
+
+	*To start auto docking near a base station run this launch file:
+	roslaunch kobuki_auto_docking activate.launch
+
+	*Robot monitoring and operations management:
+	rqt
+	menu [Perspectives] / [Import...] and import /rqt_perspectives/NewTest.perspective
+
+	*To start the block sorting demo at a docking station:
+	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch at_dock:=true
+
+	*To start the block sorting demo (green on the right, others on the left) (sorting into bins expected to be about 77mm in height):
+	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch
+}
+
+//Custom arm_pose_director (action server) with CLI example
+//This simple action server moves the arm to a named pose typically found in the SRDF
+{
+	roslaunch turtlebot_arm_pose_director demo.launch
+
+	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_navigation_alternate"}}'
+	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_manipluation"}}'
+	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_navigation"}}'
+	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_docking"}}'
+}
+
+Temp fix (if this happens to you) for: python cannot import structs error
+see https://github.com/ros-planning/moveit/issues/86
+{ 
+	I still have this issue, with ros-kinetic-moveit installed and fully updated Ubuntu 16.04 system.
+	It is fixed by doing the following:
+
+	pip install --user pyassimp
+
+	It requires pyassimp 3.3, installed by default is 3.2.
+}
+
+//Pincher Arm MoveIt! Demo
+{
+	*On robot
+	roslaunch turtlebot_bringup astra_sr300_pincher.launch
+	roslaunch turtlebot_moveit_config turtlebot_moveit.launch sim:=false
+
+	*Off robot
+	roslaunch phantomx_pincher_arm_bringup arm.launch
+	roslaunch phantomx_pincher_arm_moveit_config phantomx_pincher_arm_moveit.launch sim:=false
+}
+
+//Block sorting and interactive manipulation demos (contain commonly named components with differen code)
+{
+
+	*WIP: bringup short range sensor and block stuff for sorting at a station.. (might try to automaticlly detect and sort) 
+	*Does not launch rviz
+	*Does not brinup robot base
+		roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch
+
+	*Active: this demo can do autonomous sorting.. ('d' in terminal to detect blocks, 'm' in terminal to sort )
+		roslaunch turtlebot_arm_block_manipulation block_manipulation_demo.launch
+		roslaunch turtlebot_arm_block_manipulation block_manipulation_moveit.launch
+
+	*Not active: this demo is for interactive manipulation only
+	*Move CATKIN_IGNORE to turtlebot_arm_block_manipulation if you want to switch
+	*This was my original implementation. the active demo is my most recent developments
+		roslaunch turtlebot_block_manipulation block_manipulation_demo.launch
+		roslaunch turtlebot_block_manipulation block_manipulation_moveit.launch
+}

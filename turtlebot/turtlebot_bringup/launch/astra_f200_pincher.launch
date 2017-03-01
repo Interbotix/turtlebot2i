@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <include file="$(find turtlebot_bringup)/launch/minimal.launch"/>
+
+  <include file="$(find turtlebot_bringup)/launch/includes/arms/phantomx_pincher_arm.launch"/>
+  
+  <include file="$(find turtlebot_bringup)/launch/includes/3dsensor/astra.launch.xml"/>
+
+  <include file="$(find turtlebot_bringup)/launch/includes/3dsensor/f200.launch.xml"/>
+  <!--include file="$(find turtlebot_bringup)/launch/includes/3dsensor/TODO/f200_intel.launch"/-->
+
+</launch>

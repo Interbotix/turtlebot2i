@@ -1,0 +1,27 @@
+<package>
+  <name>phantomx_pincher_arm_moveit_config</name>
+  <version>0.1.0</version>
+  <description>
+     An automatically generated package with all the configuration and launch files for using the phantomx_pincher_arm with the MoveIt Motion Planning Framework
+  </description>
+  <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
+  <maintainer email="assistant@moveit.ros.org">MoveIt Setup Assistant</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://moveit.ros.org/</url>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+ 
+  <build_depend>phantomx_pincher_arm_description</build_depend>
+
+  <run_depend>xacro</run_depend>
+  <run_depend>moveit_ros_move_group</run_depend>
+  <run_depend>moveit_planners_ompl</run_depend>
+  <run_depend>moveit_ros_visualization</run_depend>
+  <run_depend>moveit_simple_controller_manager</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>phantomx_pincher_arm_description</run_depend>
+</package>

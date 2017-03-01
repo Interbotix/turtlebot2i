@@ -1,0 +1,23 @@
+<launch>
+  <include file="$(find turtlebot_bringup)/launch/astra_sr300_pincher.launch" />
+
+  <include file="$(find turtlebot_arm_block_manipulation)/launch/block_manipulation.launch" />
+
+  <node name="block_manipulation_demo" pkg="turtlebot_arm_block_manipulation" type="block_manipulation_demo" output="screen" >
+    <param name="arm_link" value="/arm_base_link" />
+    <param name="gripper_open" value="0.031" />
+    <param name="block_size" value="0.02" />
+    <param name="gripper_tighten" value="0.004" />
+    <!--param name="gripper_closed" value="0.016" /-->
+    <param name="z_up" value="0.06" />
+    <param name="target_bin_height" value="0.06" />
+    <param name="table_height" value="0.0" />
+    
+  </node>
+
+  <include file="$(find turtlebot_arm_pose_director)/launch/named_pose_director.launch" >
+    <arg name="load_moveit" value="true"/>
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_arm_block_manipulation)/demo/block_manipulation_demo.rviz" />
+</launch>

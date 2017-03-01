@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+
+<robot name="sensor_f200" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_gazebo.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_properties.urdf.xacro"/>
+
+
+  
+  <!-- Intel F200 parameters -->
+  <xacro:property name="f200_cam_offset_px" value="0.138" />
+  <xacro:property name="f200_cam_offset_py" value="0.0" />
+  <xacro:property name="f200_cam_offset_pz" value="0.402" />
+
+  <!--
+  <xacro:property name="f200_cam_rgb_px" value="0.005"/>
+  <xacro:property name="f200_cam_rgb_py" value="0.018"/>
+  <xacro:property name="f200_cam_rgb_pz" value="0.013"/>
+  <xacro:property name="f200_cam_depth_offset" value="0.01"/>
+  -->
+
+  <xacro:property name="f200_cam_rgb_px" value="0.005"/>
+  <xacro:property name="f200_cam_rgb_py" value="0.0"/>
+  <xacro:property name="f200_cam_rgb_pz" value="0.0"/>
+  <xacro:property name="f200_cam_depth_offset" value="-0.024"/>
+
+  <xacro:macro name="sensor_f200" params="parent">
+
+    <!--
+    ==  Intel F200 body joints & links ==
+    -->
+    
+    <!-- camera_f200 body -->
+    <joint name="camera_f200_joint" type="fixed">
+      <origin xyz="${f200_cam_offset_px} ${f200_cam_offset_py} ${f200_cam_offset_pz}" rpy="0 1.19 0"/>
+      <parent link="${parent}"/>
+      <child link="camera_f200" />
+    </joint>
+    <link name="camera_f200">
+      <visual>
+       <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+        <geometry>
+         <mesh filename="package://turtlebot_description/meshes/sensors/f200.stl" />
+        </geometry>
+        <xacro:insert_block name="material_black"/>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+        <geometry>
+          <mesh filename="package://turtlebot_description/meshes/sensors/f200.stl" scale="2.0 2.0 2.0" />
+        </geometry>
+      </collision>
+ 
+      <!-- This inertial field needs doesn't contain reliable data!! -->
+     <inertial>
+        <mass value="0.564" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.003881243" ixy="0.0" ixz="0.0"
+                 iyy="0.000498940" iyz="0.0"
+                 izz="0.003879257" />
+      </inertial>
+    </link>
+    
+    
+    <!--
+    ==  RGB joints & links ==
+    -->
+
+    <joint name="camera_f200_rgb_joint" type="fixed">
+      <origin xyz="${f200_cam_rgb_px} ${f200_cam_rgb_py} ${f200_cam_rgb_pz}" rpy="0 0 0"/>
+      <parent link="camera_f200"/>
+      <child link="camera_f200_rgb_frame" />
+    </joint>
+    <link name="camera_f200_rgb_frame"/>
+
+    <joint name="camera_f200_rgb_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="camera_f200_rgb_frame" />
+      <child link="camera_f200_rgb_optical_frame" />
+    </joint>
+    <link name="camera_f200_rgb_optical_frame"/>
+  
+
+    <!--
+    ==  Depth joints & links ==
+    -->
+
+    <joint name="camera_f200_depth_joint" type="fixed">
+        <origin xyz="0 ${f200_cam_depth_offset} 0" rpy="0 0 0" />
+        <parent link="camera_f200_rgb_frame" />
+        <child link="camera_f200_depth_frame" />
+    </joint>
+    <link name="camera_f200_depth_frame"/>
+
+    <joint name="camera_f200_depth_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+        <parent link="camera_f200_depth_frame" />
+        <child link="camera_f200_depth_optical_frame" />
+    </joint>
+    <link name="camera_f200_depth_optical_frame"/>
+  	
+  	<!-- Simulation sensor -->
+    <turtlebot_sim_3dsensor/>
+  </xacro:macro>
+</robot>

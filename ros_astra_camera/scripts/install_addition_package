@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -z $ROS_DISTRO ]; then
+    echo please install ROS first!
+    exit
+fi
+
+sudo apt-get install ros-$ROS_DISTRO-camera-info-manager ros-$ROS_DISTRO-sensor-msgs ros-$ROS_DISTRO-rgbd-launch ros-$ROS_DISTRO-image-view

@@ -1,0 +1,264 @@
+#!/usr/bin/env python
+
+"""
+  gripper_controller - action based controller for grippers.
+  Copyright (c) 2011-2014 Vanadium Labs LLC.  All right reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+      * Neither the name of Vanadium Labs LLC nor the names of its 
+        contributors may be used to endorse or promote products derived 
+        from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL VANADIUM LABS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+"""
+
+import rospy, actionlib
+import thread
+
+from control_msgs.msg import GripperCommandAction
+from sensor_msgs.msg import JointState
+from std_msgs.msg import Float64
+from math import asin, sin
+from multiprocessing import Lock
+from arbotix_python.parallel_convert import *
+
+
+class GripperModel:
+    """ Base Gripper Model """
+    def __init__(self):
+        self.pad_width = rospy.get_param('~pad_width', 0.01)
+        self.finger_length = rospy.get_param('~finger_length', 0.02)
+        self.min_opening = rospy.get_param('~min_opening', 0.0)
+        self.max_opening = rospy.get_param('~max_opening', 0.09)
+        self.center = rospy.get_param('~center', 0.0)
+        self.invert = rospy.get_param('~invert', False)
+        self.joint = rospy.get_param('~joint', 'gripper_joint')
+
+        # publisher
+        self.pub = rospy.Publisher(self.joint+'/command', Float64, queue_size=5)
+
+    def setCommand(self, command):
+        """ Take an input command of width (m) to open gripper and publish angle to Servo. """   
+        # check limits
+        if command.position > self.max_opening or command.position < self.min_opening:                 
+            rospy.logerr("Command (%.5f) exceeds max limit ( %.5f) or min limit ( %.5f)", command.position, self.max_opening, self.max_opening)
+            return False       
+        # compute angle
+        angle = self.widthToAngle(command.position)
+        # publish desired angle
+        if self.invert:
+            res = -angle + self.center
+        else:
+            res = angle + self.center       
+        self.pub.publish(res)
+        rospy.loginfo("Gripper publish servo goal: %.4f rad", res )
+        return True
+
+    def getEffort(self, joint_states):
+        # TODO
+        return 1.0
+         
+    # Convert opening width in meters into Servo radians
+    def widthToAngle(self, w):
+        return asin((w - self.pad_width)/(2*self.finger_length))
+    
+    # Convert gripper position in radians to gap opening in meters
+    def angToWidth(self, ang):
+        if self.invert:
+            return (sin(self.center-ang) * 2 * self.finger_length) + self.pad_width
+        else:
+            return (sin(ang - self.center) * 2 * self.finger_length) + self.pad_width
+            
+    # Convert current joint status position (radians) to meters        
+    def jstToWidth(self, ang): 
+        return self.angToWidth(ang)   
+
+
+class TrapezoidGripperModel(GripperModel):
+    """ A simple gripper with two opposing servos to open/close non-parallel jaws. """
+
+    def __init__(self):
+        # trapezoid model: base width connecting each gripper's rotation point
+            #              + length of gripper fingers to computation point
+            #              = compute angles based on a desired width at comp. point
+        self.pad_width = rospy.get_param('~pad_width', 0.01)
+        self.finger_length = rospy.get_param('~finger_length', 0.02)
+        self.min_opening = rospy.get_param('~min_opening', 0.0)
+        self.max_opening = rospy.get_param('~max_opening', 0.09)
+        self.center_l = rospy.get_param('~center_left', 0.0)
+        self.center_r = rospy.get_param('~center_right', 0.0)
+        self.invert_l = rospy.get_param('~invert_left', False)
+        self.invert_r = rospy.get_param('~invert_right', False)
+
+        self.left_joint = rospy.get_param('~joint_left', 'l_gripper_joint')
+        self.right_joint = rospy.get_param('~joint_right', 'r_gripper_joint')
+
+        # publishers
+        self.l_pub = rospy.Publisher(self.left_joint+'/command', Float64, queue_size=5)
+        self.r_pub = rospy.Publisher(self.right_joint+'/command', Float64, queue_size=5)
+
+    def setCommand(self, command):
+        # check limits
+        if command.position > self.max_opening or command.position < self.min_opening:
+            rospy.logerr("Command (%f) exceeds opening limits (%f, %f)",
+                          command.position, self.max_opening, self.min_opening)
+            return False
+        # compute angles
+        angle = asin((command.position - self.pad_width)/(2*self.finger_length))
+        if self.invert_l:
+            l = -angle + self.center_l
+        else:
+            l = angle + self.center_l
+        if self.invert_r:
+            r = angle + self.center_r
+        else:
+            r = -angle + self.center_r
+        # publish msgs
+        lmsg = Float64(l)
+        rmsg = Float64(r)
+        self.l_pub.publish(lmsg)
+        self.r_pub.publish(rmsg)
+        return True
+
+    def getPosition(self, js):
+        left = right = 0
+        for i in range(len(js.name)):
+            if js.name[i] == self.left_joint:
+                left = js.position[i]
+            elif js.name[i] == self.right_joint:
+                right = js.position[i]
+        # TODO
+
+        return 0.0
+
+    def getEffort(self, joint_states):
+        return 1.0
+       
+class ParallelGripperModel(GripperModel):
+	# One servo to open/close parallel jaws, typically via linkage. 
+	# TODO - currently we only show one finger, and report twice the distance.  Opening 
+	# reports correct width but center is not correct
+    def __init__(self):
+        GripperModel.__init__(self)
+        self.convertor = ParallelConvert(self.joint)
+
+    def widthToAngle(self, width):
+        return self.convertor.widthToAngle(width)
+
+    def angleToWidth(self, ang):
+        return self.convertor.angleToWidth(ang)
+            
+    def jstToWidth(self, pos):
+        # For parallel gripper, joint status is already in width (m)  
+        return pos
+     
+        
+class OneSideGripperModel(GripperModel):
+    """ Simplest of grippers, one servo opens or closes to achieve a particular size opening. """
+    # Use base classes for all      
+
+
+class GripperActionController:
+    """ The actual action callbacks. """
+    def __init__(self):
+        rospy.init_node('gripper_controller')
+        self.mutex = Lock()
+        self.tolerance = rospy.get_param('~tolerance', .001) # tolerance for meeting goals (radians)
+
+        # setup model
+        try:
+            model = rospy.get_param('~model')
+            self.type = model
+            rospy.loginfo("Started %s Gripper Controller.", model)
+        except:
+            rospy.logerr('no model specified, exiting')
+            exit()
+        if model == 'dualservo':
+            self.model = TrapezoidGripperModel()
+        elif model == 'parallel':
+            self.model = ParallelGripperModel()
+        elif model == 'singlesided':
+            self.model = OneSideGripperModel()
+        else:
+            rospy.logerr('unknown model specified, exiting')
+            exit()
+
+        # subscribe to joint_states
+        rospy.Subscriber('joint_states', JointState, self.stateCb)
+        
+        # get joint name so we can track our joint status
+        self.joint = rospy.get_param('~joint', 'gripper_joint')
+        self.state = JointState()
+        # TODO handle joint names and joint status for Trapezoidal
+        
+        # wait for first joint status update, needed for getPosition
+        for i in range(0, 20):
+            if self.getPosition(errlog=False) != -1:
+                break
+            rospy.sleep(0.1)
+
+        # subscribe to command and then spin
+        self.server = actionlib.SimpleActionServer('~gripper_action', GripperCommandAction, execute_cb=self.actionCb, auto_start=False)
+        self.server.start()
+        rospy.spin()
+
+    def actionCb(self, goal):
+        """ Take an input command of width to open gripper. """
+        rospy.loginfo('Gripper controller action goal recieved:%f m' % goal.command.position)
+        # send command to gripper
+        if self.model.setCommand(goal.command) == False:
+            self.server.set_aborted(text="Command exceeds range")
+            return
+        # publish feedback
+        while True:
+            if self.type == 'trapezodal':            # TODO handle trapezoidal
+                break   
+            if self.server.is_preempt_requested():
+                self.server.set_preempted()
+                rospy.logwarn('Gripper Controller: Preempted.')
+                return
+            # get joint position, break when we have reached goal
+            if  abs(self.getPosition() - goal.command.position) < self.tolerance:
+                rospy.loginfo("Done. Pos=%.5f Goal=%.5f Tol=%.5f", self.getPosition(), goal.command.position, self.tolerance)
+                break
+            rospy.sleep(0.01)
+        self.server.set_succeeded()
+        rospy.loginfo('Gripper Controller: Succeeded.')
+
+    def stateCb(self, msg):
+        with self.mutex:
+            if self.joint in msg.name:  
+                self.state = msg
+    
+    def getPosition(self, errlog=True):
+        """ Return current gripper position from Joint status in meters """
+        with self.mutex:  # make copy of joint state and extract gripper position
+            st = self.state         
+        for name, position in zip(st.name, st.position):
+             if name == self.joint:
+                return self.model.jstToWidth(position)                     
+        if errlog == True:        
+            rospy.logerr("No position update for " + self.joint )       
+        return -1
+
+if __name__=='__main__':
+    try:
+        GripperActionController()
+    except rospy.ROSInterruptException:
+        rospy.loginfo('Hasta la Vista...')
+

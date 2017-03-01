@@ -1,0 +1,15 @@
+catkin_interbotix dependencies:
+
+ros-kinetic-moveit
+ros-kinetic-octomap-ros
+ros-kinetic-turtlebot*
+libudev-dev
+ros-kinetic-find-object-2d
+ros-kinetic-rtabmap-ros
+
+gazebo and ros control dependencies:
+sudo apt install ros-kinetic-ros-control
+sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control
+
+.bashrc configuration:
+See file BASHRC CONFIG

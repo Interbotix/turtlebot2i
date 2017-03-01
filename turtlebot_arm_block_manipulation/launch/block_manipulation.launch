@@ -1,0 +1,16 @@
+<launch>
+	<arg name="at_dock" default="false"/>
+
+<!-- Launch block manipulation demo -->
+  <node name="block_detection_action_server" pkg="turtlebot_arm_block_manipulation" type="block_detection_action_server" output="screen">
+    <rosparam param="table_pose">[0.0, 0.0, -0.125]</rosparam> <!--from arm position-->
+    <rosparam if="$(arg at_dock)" param="dock_pose">[0.042, 0.0, -0.125]</rosparam> <!--from arm position-->
+  </node>
+
+  <node name="pick_and_place_action_server" pkg="turtlebot_arm_block_manipulation" type="pick_and_place_action_server" output="screen">
+  </node>
+  
+  <node name="interactive_manipulation_action_server" pkg="turtlebot_arm_block_manipulation" type="interactive_manipulation_action_server" output="screen">
+  </node>
+
+</launch>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- By default, we do not start a database (it can be large) -->
+  <arg name="db" default="false" />
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <!-- Load arm description, state and controllers in simulation mode -->
+  <include file="$(find phantomx_pincher_arm_bringup)/launch/arm.launch">
+    <arg name="simulation" value="true"/>
+  </include>
+
+  <!-- Run the main MoveIt executable -->
+  <include file="$(find phantomx_pincher_arm_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>  
+    <arg name="fake_execution" value="false"/>  <!-- trajectories are executed by simulated controllers -->
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find phantomx_pincher_arm_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- If database loading was enabled, start mongodb as well -->
+  <include file="$(find phantomx_pincher_arm_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)"/>
+
+</launch>

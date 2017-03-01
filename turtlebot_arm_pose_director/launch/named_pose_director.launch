@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="load_moveit" default="false" doc="load MoveIt! with pose director"/>
+
+	<!--  ************* Moveit config stuff *************  -->
+	<!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+	<include unless="$(eval arg('load_moveit') == 'false')" file="$(find turtlebot_moveit_config)/launch/planning_context.launch">
+		<arg name="load_robot_description" value="true"/>
+	</include>
+	<!-- Run the main MoveIt executable to provide move groups -->
+	<include unless="$(eval arg('load_moveit') == 'false')" file="$(find turtlebot_moveit_config)/launch/move_group.launch">
+		<arg name="allow_trajectory_execution" value="true"/>  
+		<arg name="fake_execution" value="false"/>
+		<arg name="info" value="true"/>
+	</include>
+
+	<node name="named_pose_director" pkg="turtlebot_arm_pose_director" type="named_pose_director" output="screen">
+		<rosparam param="startup_pose">pose_navigation_alternate</rosparam>
+		<rosparam param="floor_pose">[0.078, 0.0, -0.012]</rosparam>
+	</node>
+	
+</launch>
