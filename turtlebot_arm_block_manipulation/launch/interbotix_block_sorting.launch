@@ -11,12 +11,11 @@
     <param name="gripper_open" value="0.031" />
     <param name="block_size" value="0.02" />
     <param name="gripper_tighten" value="0.004" />
-    <!--param name="gripper_closed" value="0.016" /-->
     <param name="z_up" value="0.06" />
     <param name="target_bin_height" value="0.06" />
     <param name="table_height" value="0.0" />
   
-    <!--param name="auto_sort" value="true" /-->
+    <param name="auto_sort" value="true">
 
   </node>
 </launch>

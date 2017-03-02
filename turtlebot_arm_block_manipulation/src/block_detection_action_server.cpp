@@ -139,16 +139,13 @@ public:
 
     result_.blocks.header.frame_id = arm_link_;
 
-    // Add the table as a collision object, so it gets filtered out from MoveIt! octomap
-    // I let it optional, as I don't know if this will work in most cases, honesty speaking
+    //Add the table as an optional collision object
     if (table_pose_.size() > 0)
     {
-      //if (std::abs(table_height_ - table_pose_[2]) > 0.05)
-      //  ROS_WARN("The table height (%f) passed with goal and table_pose[2] parameter (%f) " \
-      //           "should be very similar", table_height_, table_pose_[2]);
       addTable();
     }
 
+    //Add the docking station as an optional collision object
     if (dock_pose_.size() > 0)
     {
       addDockingStation();
@@ -267,7 +264,7 @@ public:
       float ymin = 0; float ymax = 0;
       float zmin = 0; float zmax = 0;
       
-      unsigned long redSum=0, greenSum=0, blueSum=0, redCount = 0, greenCount = 0, blueCount = 0; //pixelCount=0
+      unsigned long redSum=0, greenSum=0, blueSum=0, redCount = 0, greenCount = 0, blueCount = 0;
 
       for (size_t i = 0; i < cluster_indices[c].indices.size(); i++)
       {
@@ -277,28 +274,25 @@ public:
           float z = cloud_filtered->points[j].z;
           unsigned long rgb = cloud_filtered->points[j].rgba;
                  
-          // Calculate avg color of cluster
+          //Calculate average color of cluster
           //TODO: This may be BGR not RGB
-          //pixelCount++;
           if ( rgb & 0xff > 128 )
           {
             redSum += rgb & 0xff;
             ++redCount;
           }
-          //redSum += rgb & 0xff;
           if ( (rgb >> 8) & 0xff > 128)
           {
             greenSum += (rgb >> 8) & 0xff;
             ++greenCount;
           }
-          //greenSum += (rgb >> 8) & 0xff;
           if ( (rgb >> 16) & 0xff > 128 )
           {
             blueSum += (rgb >> 16) & 0xff;
             ++blueCount;
           }
-          //blueSum += (rgb >> 16) & 0xff;
           
+          //Determine the min and max x,y,z for cluster
           if (i == 0)
           {
             xmin = xmax = x;
@@ -410,8 +404,6 @@ private:
   void addTable()
   {
     // Add the table as a collision object into the world, so it gets excluded from the collision map
-    // As the blocks are small, they should also be excluded (assuming that padding_offset parameter on
-    // octomap sensor configuration is equal or bigger than block size)
     double table_size_x = 0.3;
     double table_size_y = 0.5;
     double table_size_z = 0.05;
@@ -435,16 +427,14 @@ private:
     co.primitive_poses[0].position.y = table_pose_[1];
     co.primitive_poses[0].position.z = table_pose_[2] - table_size_z/2.0;
 
-    ROS_INFO("Add the table as a collision object into the world");
+    ROS_DEBUG("Adding a table as a collision object into the world");
     std::vector<moveit_msgs::CollisionObject> collision_objects(1, co);
     planning_scene_interface_.addCollisionObjects(collision_objects);
   }
 
   void addDockingStation()
   {
-    // Add the table as a collision object into the world, so it gets excluded from the collision map
-    // As the blocks are small, they should also be excluded (assuming that padding_offset parameter on
-    // octomap sensor configuration is equal or bigger than block size)
+    // Add the docking station as a collision object into the world, so it gets excluded from the collision map
     double dock_size_x = 0.065;
     double dock_size_y = 0.21;
     double dock_size_z = 0.105;
@@ -468,7 +458,7 @@ private:
     co.primitive_poses[0].position.y = dock_pose_[1];
     co.primitive_poses[0].position.z = dock_pose_[2] + dock_size_z/2.0;
 
-    ROS_WARN("Add the docking station as a collision object into the world");
+    ROS_DEBUG("Adding a docking station as a collision object into the world");
     std::vector<moveit_msgs::CollisionObject> collision_objects(1, co);
     planning_scene_interface_.addCollisionObjects(collision_objects);
   }

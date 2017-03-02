@@ -84,7 +84,7 @@ public:
     }
     catch (tf::TransformException &ex)
     {
-      //ROS_ERROR("%s",ex.what());
+      //ROS_ERROR_THROTTLE( 0.5, "%s",ex.what());
     }
     try
     {
@@ -105,7 +105,7 @@ public:
     }
     catch (tf::TransformException &ex)
     {
-      //ROS_ERROR("%s",ex.what());
+      //ROS_ERROR_THROTTLE( 0.5, "%s",ex.what());;
     }
 
     vis_pub_.publish( destination_rviz_markers_ );
@@ -121,6 +121,8 @@ public:
         ROS_ERROR( "Unable to navigate to charging_zone. Zone not identified." );
         return;
       }
+
+      hideRvizMakers();
       if ( goToDest( destination_position_[0], destination_rotation_[0]) )
       {
         ROS_INFO( "Arrived at charging zone" );
@@ -129,6 +131,7 @@ public:
       {
         ROS_ERROR( "Unable to reach charging zone" );
       }
+      restoreRvizMarkers();
     }
 
     if ( msg->data.compare( "pickup_zone" ) == 0 )
@@ -138,6 +141,8 @@ public:
         ROS_ERROR( "Unable to navigate to pickup_zone. Zone not identified." );
         return;
       }
+
+      hideRvizMakers();
       if ( goToDest( destination_position_[1], destination_rotation_[1]) )
       {
         ROS_INFO( "Arrived at pickup zone" );
@@ -152,6 +157,7 @@ public:
       {
         ROS_ERROR( "Unable to reach pickup zone" );
       }
+      restoreRvizMarkers();
     }
 
     if ( msg->data.compare( "sorting_zone" ) == 0 )
@@ -161,6 +167,8 @@ public:
         ROS_ERROR( "Unable to navigate to sorting_zone. Zone not identified." );
         return;
       }
+
+      hideRvizMakers();
       if ( goToDest( destination_position_[2], destination_rotation_[2]) )
       {
         ROS_INFO( "Arrived at sorting zone" );
@@ -169,6 +177,7 @@ public:
       {
         ROS_ERROR( "Unable to reach sorting zone" );
       }
+      restoreRvizMarkers();
     }
   }
 
@@ -198,6 +207,22 @@ private:
     marker.color.g = green;
     marker.color.b = blue;
     p_array->markers.push_back( marker );
+  }
+
+  void hideRvizMakers()
+  {
+    destination_rviz_markers_.markers[0].color.a = 0.0;
+    destination_rviz_markers_.markers[1].color.a = 0.0;
+    destination_rviz_markers_.markers[2].color.a = 0.0;
+    vis_pub_.publish( destination_rviz_markers_ );
+  }
+
+  void restoreRvizMarkers()
+  {
+    if ( zone_identified_[0] ) destination_rviz_markers_.markers[0].color.a = 1.0;
+    if ( zone_identified_[1] ) destination_rviz_markers_.markers[1].color.a = 1.0;
+    if ( zone_identified_[2] ) destination_rviz_markers_.markers[2].color.a = 1.0;
+    vis_pub_.publish( destination_rviz_markers_ );
   }
 };
 

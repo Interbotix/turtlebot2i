@@ -27,6 +27,8 @@ private:
 
   tf::Transform zone_transforms_[3];
 
+  double zone_offset_x_;
+
 public:
   ZoneDetector()
   {
@@ -39,6 +41,9 @@ public:
     destination_position_[2].setZ( 0.0 );
 
     vis_pub_ = node_.advertise<visualization_msgs::MarkerArray>( "zone_visualization_marker", 0 );
+
+    //Load parameters
+    node_.param<double>("zone_offset_x", zone_offset_x_, 0.5);
   }
 
   void lookupZones()
@@ -47,8 +52,7 @@ public:
     tf::StampedTransform displace_transform;
 
     tf::Vector3 offset_vector;
-    //TODO: parameterize offset distance. 0.5 meters likely minimum
-    offset_vector.setX( 1.0 ); //Offset destination in front of detected object
+    offset_vector.setX( zone_offset_x_ ); //Offset destination in front of detected object
 
     displace_transform.setOrigin( offset_vector );
     

@@ -6,7 +6,6 @@
   <include file="$(find turtlebot_bringup)/launch/includes/arms/phantomx_pincher_arm.launch"/>
 
   <include file="$(find turtlebot_bringup)/launch/includes/3dsensor/f200.launch.xml"/>
-  <!--include file="$(find turtlebot_bringup)/launch/includes/3dsensor/TODO/f200_nodelet_rgbd.launch"/-->
 
   <include file="$(find turtlebot_arm_pose_director)/launch/named_pose_director.launch">
     <arg name="load_moveit" value="true"/>

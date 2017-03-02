@@ -70,8 +70,6 @@ public:
   PickAndPlaceServer(const std::string name) :
     nh_("~"), as_(name, false), action_name_(name), arm_("pincher_arm"), gripper_("pincher_gripper")
   {
-    //TODO: arm_.setPlannerId("KPIECEkConfigDefault");
-
     // Register the goal and feedback callbacks
     as_.registerGoalCallback(boost::bind(&PickAndPlaceServer::goalCB, this));
     as_.registerPreemptCallback(boost::bind(&PickAndPlaceServer::preemptCB, this));
@@ -100,9 +98,13 @@ public:
     arm_.allowReplanning(true);
 
     if (goal_->topic.length() < 1)
+    {
       pickAndPlace(goal_->pickup_pose, goal_->place_pose);
+    }
     else
+    {
       pick_and_place_sub_ = nh_.subscribe(goal_->topic, 1, &PickAndPlaceServer::sendGoalFromTopic, this);
+    }
   }
 
   void sendGoalFromTopic(const geometry_msgs::PoseArrayConstPtr& msg)

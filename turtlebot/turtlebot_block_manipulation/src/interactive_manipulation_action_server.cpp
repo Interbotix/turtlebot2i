@@ -163,7 +163,6 @@ public:
     // Return pickup and place poses as the result of the action
     geometry_msgs::Pose start_pose_bumped, end_pose_bumped;
     start_pose_bumped = start_pose;
-    //  start_pose_bumped.position.y -= bump_size;  TODO/WARN: this was in the original version, but destroys piss off indigo/moveit operation!
     start_pose_bumped.position.z -= block_size/2.0 - bump_size;
 
     result_.pickup_pose = start_pose_bumped;
