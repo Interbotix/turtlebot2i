@@ -44,6 +44,28 @@
 	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch
 }
 
+//Arm Tool Detection and Marker Handling (WIP)
+//Expects Expo dry erase marker in 3D printed holder to be in view
+//Works well on dry erase board with low friction
+{
+	*Bring up robot with arm and moveit:
+	roslaunch turtlebot_bringup interbotix_demo1.launch new_rtabmap:=true
+
+	*Start tool detection and pick and draw action servers:
+	roslaunch turtlebot_arm_marker_manipulation interbotix_marker_demo.launch
+}
+
+//Arm Block/2cm Object Sorting & Interactive Manipulation
+//Blocks found in center view can be sorted by color (green/not-green)
+//Blocks can be clicked and moved in RViz and will be repositioned by the robot
+{
+	*Bring up robot with arm and moveit:
+	roslaunch turtlebot_bringup interbotix_demo1.launch new_rtabmap:=true
+
+	*Start block detection, interactive manipulation and pickandplace action servers:
+	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch at_dock:=true/false auto_sort:=false/true
+}
+
 //Custom arm_pose_director (action server) with CLI example
 //This simple action server moves the arm to a named pose typically found in the SRDF
 {
