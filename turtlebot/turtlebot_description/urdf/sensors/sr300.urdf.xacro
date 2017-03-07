@@ -7,7 +7,7 @@
 
   
   <!-- Intel SR300 parameters -->
-  <xacro:property name="sr300_cam_offset_px" value="0.140" />
+  <xacro:property name="sr300_cam_offset_px" value="0.142" />
   <xacro:property name="sr300_cam_offset_py" value="0.0" />
   <xacro:property name="sr300_cam_offset_pz" value="0.39" />
 
@@ -38,14 +38,14 @@
     </joint>
     <link name="camera_sr300">
       <visual>
-       <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
          <mesh filename="package://turtlebot_description/meshes/sensors/sr300.stl" />
         </geometry>
         <xacro:insert_block name="material_black"/>
       </visual>
       <collision>
-        <origin xyz="0.0 0.0 0.0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://turtlebot_description/meshes/sensors/sr300.stl" scale="2.0 2.0 2.0" />
         </geometry>

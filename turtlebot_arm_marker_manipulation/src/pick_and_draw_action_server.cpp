@@ -72,6 +72,7 @@ private:
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
 
   moveit_msgs::CollisionObject tool_collision_object_;
+
 public:
   PickAndPlaceServer(const std::string name) :
     nh_("~"), as_(name, false), action_name_(name), arm_("pincher_arm"), gripper_("pincher_gripper")
@@ -127,25 +128,25 @@ public:
     as_.setPreempted();
   }
 
-  bool TODO_grasp_tool(  )
+  bool graspTool(  )
   {
-    ROS_WARN( "GRASPING TOOL" );
+    ROS_DEBUG( "[pick_and_draw] Grasping Tool" );
     /* close gripper */
     if (setGripper( 0.0185 - 0.006 ) == false) //TODO: NOTE: Was closing 4.. 6 has better grip
     {
-      ROS_ERROR( "SET GRIPPER FAILED" );
+      ROS_ERROR( "[pick_and_draw] Failed to set gripper opening. Reset and try again." );
       return false;
     }
     ros::Duration(0.8).sleep();
     return true;
   }
 
-  geometry_msgs::Pose TODO_draw_arc( geometry_msgs::Pose target, double radius, double arc_start_rad, int arc_degrees )
+  geometry_msgs::Pose drawArc( geometry_msgs::Pose target, double radius, double arc_start_rad, int arc_degrees )
   {
     //TODO: repeated use of arm_height_prepare_draw
     double arm_height_prepare_draw = -0.015; //holding tool and preparing to lay ink
 
-    ROS_ERROR( "DRAWING TEST CIRCLE" );
+    ROS_DEBUG( "[pick_and_draw] Executing Arc" );
 
     double angle_resolution = 10.0; //Compute waypoint every 10 degrees
     
@@ -183,7 +184,7 @@ public:
     }
 
 
-
+    /*
     //TODO: Allow operator to specify shape and parameters
     if (0)
     { //triangle 
@@ -223,29 +224,30 @@ public:
 
       while ( spiral_radius < radius )
       {
-        spiral_radius += d_angle / 1000.0; //TODO: NOTE: 10,000.0 will color in a sphere
+        spiral_radius += d_angle / 1000.0; //TODO: NOTE: 10,000.0 will color in a 2cm sphere
         angle += d_angle;
         ee_point_goal.position.x = x_center + spiral_radius*cos(angle);
         ee_point_goal.position.y = y_center + spiral_radius*sin(angle);
         waypoints.push_back(ee_point_goal);
       }
     }
+    */
     
-    ROS_INFO( "There are %d number of waypoints", waypoints.size() );
+    ROS_DEBUG( "[pick_and_draw] There are %d number of waypoints", waypoints.size() );
 
     //Move over first point in trajectory
     ee_point_goal = waypoints[0];
     ee_point_goal.position.z = arm_height_prepare_draw;
-    if (TODO_moveArmTo(ee_point_goal) == false)
+    if (moveArmTo(ee_point_goal) == false)
     {
-      ROS_ERROR( "Uable to move arm over start pose for trajectory" );
+      ROS_ERROR( "[pick_and_draw] Uable to move arm over start pose for trajectory" );
       return target;
     }
     //Move to first point in trajectory
     ee_point_goal = waypoints[0];
-    if (TODO_moveArmTo(ee_point_goal) == false)
+    if (moveArmTo(ee_point_goal) == false)
     {
-      ROS_ERROR( "Uable to move arm into start pose for trajectory" );
+      ROS_ERROR( "[pick_and_draw] Uable to move arm into start pose for trajectory" );
       ee_point_goal.position.z = arm_height_prepare_draw;
       return ee_point_goal;
     }
@@ -256,22 +258,19 @@ public:
     moveit_msgs::RobotTrajectory trajectory;
 
     double fraction = arm_.computeCartesianPath(waypoints, eef_resolution, jump_threshold, trajectory);
-    ROS_INFO("Visualizing plan (cartesian path) (%.2f%% acheived)",  fraction * 100.0);
-    if ( fraction != 1.0 ) return ee_point_goal;
-    //TODO: attempting to compute the cartesian path repeatedly
-    // while ( fraction != 1.0 )
-    // {
-    //   fraction = arm_.computeCartesianPath(waypoints, eef_resolution, jump_threshold, trajectory);
-    //   ROS_INFO("Visualizing plan (cartesian path) (%.2f%% acheived)",  fraction * 100.0);
-    //   if ( fraction != 1.0 ) ros::Duration(3.0).sleep(); //Throttle retry to 3 seconds
-    // }
+    ROS_DEBUG("[pick_and_draw] Visualizing plan (cartesian path) (%.2f%% acheived)",  fraction * 100.0);
+    if ( fraction != 1.0 )
+    {
+      ROS_ERROR( "[pick_and_draw] Unable to compute full path. Trajectory cannot be executed." );
+      return ee_point_goal;
+    }
 
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
     my_plan.trajectory_ = trajectory;
     moveit::planning_interface::MoveItErrorCode result = arm_.execute(my_plan);
     if (bool(result) == false)
     {
-      ROS_ERROR("[TODO] UNABLE TO MOVE ARM IN CIRCLE (error %d)", result.val);
+      ROS_ERROR("[pick_and_draw] Planning interface execution failed (error %d)", result.val);
       return waypoints[0];
     }
 
@@ -283,7 +282,6 @@ public:
     ROS_INFO("[pick and place] Picking. Drawing. Also placing.");
 
     //TODO: parameters.. arguments.. oh my
-
     double arm_height_hover_tool = 0.01; //hovering over tool in holder
     double arm_height_grasp_tool = -0.03; //prepared to grasp tool
     double arm_height_detach_tool = 0.0; //detatch tool from holder
@@ -297,54 +295,43 @@ public:
     if (setGripper(gripper_open) == false)
       return;
     
-    TODO_addTool( start_pose ); //TODO: adding tool as collision object
-    ROS_WARN( "Hovering over tool" );
+    addTool( start_pose ); //Adding tool as collision object
+
+    ROS_DEBUG( "[pick_and_draw] Hovering over tool" );
 
     /* hover over detected cube (tool holder) */
     target_pose = start_pose;
     tf::Quaternion q = tf::createQuaternionFromRPY(0.0, M_PI_2, 0.0); //Wrist pointed straight down
     tf::quaternionTFToMsg(q, target_pose.orientation);
     target_pose.position.z = arm_height_hover_tool;
-    if (TODO_moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
+    if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
-    ROS_WARN( "Dropping down to pickup tool" );
+    ROS_DEBUG( "[pick_and_draw] Dropping down to pickup tool" );
 
     /* drop down */
     target_pose.position.z = arm_height_grasp_tool;
-    if (TODO_moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
+    if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
-    TODO_removeTool(); //TODO: removing tool as collsion object (would like to attach it to gripper/arm?)
+    removeTool(); //Remove tool before grasping to prevent collision
 
     /* grasp tool */
-    if ( TODO_grasp_tool() == false )
+    if ( graspTool() == false )
       return;
 
-/* TODO: This does not work yet.. i've tried fucking with it and ended with:
-Found a contact between 'tool' (type 'Object') and 'gripper_active_link' (type 'Robot link'), which constitutes a collision. Contact information is not stored.
+    /* add and attach tool */
+    addTool( start_pose );
+    attachTool();
 
-ROS_ERROR("Attaching collision object to arm?" );
-if ( arm_.attachObject(tool_collision_object_.id, "gripper_link") )
-{
-  ROS_WARN( "SUCCESS reported" );
-}
-else ROS_WARN( "RETURNED FALSE" );
-ROS_ERROR("DID I CRASH?");
-ros::Duration(10.0).sleep();
-
-ROS_ERROR("Detaching collision object from arm?" );
-arm_.detachObject(tool_collision_object_.id);
-*/
-
-
-    ROS_WARN( "Detaching tool from tool holder (cube)" );
+    ROS_DEBUG( "[pick_and_draw] Detaching tool from tool holder (cube)" );
     /* raise up */
     target_pose.position.z = arm_height_detach_tool;
-    if (TODO_moveArmTo(target_pose) == false) 
+    if (moveArmTo(target_pose) == false) 
       return;
 
-    ROS_WARN( "Moving to first target with tool" );
+    ROS_DEBUG( "[pick_and_draw] Moving to first target with tool" );
+
     /* hover over first target with grasped tool*/
     target_pose = start_pose;
     //tf::Quaternion q = tf::createQuaternionFromRPY(0.0, M_PI_2, 0.0); //Wrist pointed straight down
@@ -352,80 +339,82 @@ arm_.detachObject(tool_collision_object_.id);
     target_pose.position.x = 0.152; //Eyes
     target_pose.position.y = 0.025; //Left eye
     target_pose.position.z = arm_height_prepare_draw;
-    if (TODO_moveArmTo(target_pose) == false) 
+    if (moveArmTo(target_pose) == false) 
       return;
 
     /* draw first arc */
     target_pose.position.z = arm_height_draw_tool;
-    geometry_msgs::Pose last_draw_pose = TODO_draw_arc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
+    geometry_msgs::Pose last_draw_pose = drawArc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
 
     /* move up */
     target_pose = last_draw_pose;
     target_pose.position.z = arm_height_prepare_draw;
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
 
-    /*hover over other eye with same z position and 90 degree wrist angle */
+    /*hover over other eye with same z position */
     target_pose.position.x = 0.152; //Eyes
     target_pose.position.y = -0.025; //Right eye
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
 
     /* draw second arc */
     target_pose.position.z = arm_height_draw_tool;
-    last_draw_pose = TODO_draw_arc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
+    last_draw_pose = drawArc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
 
     /* move up */
     target_pose = last_draw_pose;
     target_pose.position.z = arm_height_prepare_draw;
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
 
-    /*hover over other mouth with same z position and 90 degree wrist angle */
+    /*hover over other mouth with same z position */
     target_pose.position.x = 0.115; //Mouth
     target_pose.position.y = 0.0;
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
 
     target_pose.position.z = arm_height_draw_tool;
-    last_draw_pose = TODO_draw_arc( target_pose, 0.02, 1.57, 180 ); //draw a half circle around the pose point (ccw from 90)
+    last_draw_pose = drawArc( target_pose, 0.02, 1.57, 180 ); //draw a half circle around the pose point (ccw from 90)
 
     /* raise up */
     target_pose = last_draw_pose;
     target_pose.position.z = arm_height_prepare_draw;
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
 
     /* move back to tool holder */
     target_pose.position.x = start_pose.position.x;
     target_pose.position.y = start_pose.position.y;
     target_pose.position.z = arm_height_detach_tool;
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
 
     /*drop down*/
     target_pose.position.z = arm_height_grasp_tool;
-    if (TODO_moveArmTo(target_pose) == false)
+    if (moveArmTo(target_pose) == false)
       return;
+
+    detachTool();
+    removeTool();
 
     /* open gripper */
     if (setGripper(gripper_open) == false)
       return;
     ros::Duration(0.6).sleep(); // ensure that gripper properly release the tool before lifting the arm
 
-
     /*raise up away from tool sitting in holder*/
     target_pose.position.z = arm_height_hover_tool;
-    if (TODO_moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
+    if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
-    TODO_addTool( start_pose );
+    addTool( start_pose );
 
     /* move out of camera's view */
     if (moveArmTo("pose_navigation_alternate") == false)
       return;
 
-    TODO_removeTool();
+    removeTool();
     
     as_.setSucceeded(result_);
 
@@ -460,84 +449,14 @@ private:
   }
 
   /**
-   * Move arm to a target pose. Only position coordinates are taken into account; the
-   * orientation is calculated according to the direction and distance to the target.
+   * Move arm to a target pose.
    * @param target Pose target to achieve
    * @return True of success, false otherwise
    */
   bool moveArmTo(const geometry_msgs::Pose& target)
   {
     int attempts = 0;
-    //TODO: ROS_DEBUG
-    ROS_WARN("[pick and place] Move arm to [%.2f, %.2f, %.2f, %.2f]",
-             target.position.x, target.position.y, target.position.z, tf::getYaw(target.orientation));
-    while (attempts < 5)
-    {
-      geometry_msgs::PoseStamped modiff_target;
-      modiff_target.header.frame_id = arm_link_;
-      modiff_target.pose = target;
-
-      double x = modiff_target.pose.position.x;
-      double y = modiff_target.pose.position.y;
-      double z = modiff_target.pose.position.z;
-      double d = sqrt(x*x + y*y);
-      if (d > 0.3)
-      {
-        // Maximum reachable distance by the arm is 30 cm
-        ROS_ERROR("Target pose out of reach [%f > %f]", d, 0.3);
-        as_.setAborted(result_);
-        return false;
-      }
-      // Pitch is 90 (vertical) at 10 cm from the arm base; the farther the target is, the closer to horizontal
-      // we point the gripper. Yaw is the direction to the target. We also try some random variations of both to
-      // increase the chances of successful planning.
-      double rp = M_PI_2 - std::asin((d - 0.1)/0.205); // 0.205 = arm's max reach - vertical pitch distance + ε
-      double ry = std::atan2(y, x);
-
-      tf::Quaternion q = tf::createQuaternionFromRPY(0.0,
-                                                     attempts*fRand(-0.05, +0.05) + rp,
-                                                     attempts*fRand(-0.05, +0.05) + ry);
-      tf::quaternionTFToMsg(q, modiff_target.pose.orientation);
-
-      // Slightly increase z proportionally to pitch to avoid hitting the table with the lower gripper corner
-      ROS_DEBUG("z increase:  %f  +  %f", modiff_target.pose.position.z, std::abs(std::cos(rp))/50.0);
-      modiff_target.pose.position.z += std::abs(std::cos(rp))/50.0;
-
-      ROS_DEBUG("Set pose target [%.2f, %.2f, %.2f] [d: %.2f, p: %.2f, y: %.2f]", x, y, z, d, rp, ry);
-      target_pose_pub_.publish(modiff_target);
-
-      if (arm_.setPoseTarget(modiff_target) == false)
-      {
-        ROS_ERROR("Set pose target [%.2f, %.2f, %.2f, %.2f] failed",
-                  modiff_target.pose.position.x, modiff_target.pose.position.y, modiff_target.pose.position.z,
-                  tf::getYaw(modiff_target.pose.orientation));
-        as_.setAborted(result_);
-        return false;
-      }
-
-      moveit::planning_interface::MoveItErrorCode result = arm_.move();
-      if (bool(result) == true)
-      {
-        return true;
-      }
-      else
-      {
-        ROS_ERROR("[pick and place] Move to target failed (error %d) at attempt %d",
-                  result.val, attempts + 1);
-      }
-      attempts++;
-    }
-
-    ROS_ERROR("[pick and place] Move to target failed after %d attempts", attempts);
-    as_.setAborted(result_);
-    return false;
-  }
-
-  bool TODO_moveArmTo(const geometry_msgs::Pose& target)
-  {
-    int attempts = 0;
-    //TODO: ROS_DEBUG
-    ROS_WARN("[TODO] Moving arm to [%.2f, %.2f, %.2f, %.2f]",
+    ROS_DEBUG("[pick_and_draw] Moving arm to [%.2f, %.2f, %.2f, %.2f]",
              target.position.x, target.position.y, target.position.z, tf::getYaw(target.orientation));
     while (attempts < 5)
     {
@@ -557,17 +476,11 @@ private:
         return false;
       }
 
-      /*
-      tf::Quaternion q = tf::createQuaternionFromRPY(0.0,
-                                                     0.0,
-                                                     0.0);
-      tf::quaternionTFToMsg(q, modify_target.pose.orientation);
-      */
       target_pose_pub_.publish(modify_target);
 
       if (arm_.setPoseTarget(modify_target) == false)
       {
-        ROS_ERROR("Set pose target [%.2f, %.2f, %.2f, %.2f] failed",
+        ROS_ERROR("[pick_and_draw] Set pose target [%.2f, %.2f, %.2f, %.2f] failed",
                   modify_target.pose.position.x, modify_target.pose.position.y, modify_target.pose.position.z,
                   tf::getYaw(modify_target.pose.orientation));
         as_.setAborted(result_);
@@ -581,18 +494,18 @@ private:
       }
       else
       {
-        ROS_ERROR("[pick and place] Move to target failed (error %d) at attempt %d",
+        ROS_ERROR("[pick_and_draw] Move to target failed (error %d) at attempt %d",
                   result.val, attempts + 1);
       }
       attempts++;
     }
 
-    ROS_ERROR("[pick and place] Move to target failed after %d attempts", attempts);
+    ROS_ERROR("[pick_and_draw] Move to target failed after %d attempts", attempts);
     as_.setAborted(result_);
     return false;
   }
 
-  void TODO_addTool( const geometry_msgs::Pose & tool_pose )
+  void addTool( const geometry_msgs::Pose & tool_pose )
   {
     // Add the dry erase marker "tool" as a collision object into the world, so it gets excluded from the collision map
     double tool_size_x = 0.018;
@@ -600,7 +513,7 @@ private:
     double tool_size_z = 0.115;
 
     tool_collision_object_.header.stamp = ros::Time::now();
-    tool_collision_object_.header.frame_id = arm_link_; //"pincher_gripper"; //TODO: gripper_link_
+    tool_collision_object_.header.frame_id = arm_link_;
 
     tool_collision_object_.id = "tool";
     planning_scene_interface_.removeCollisionObjects(std::vector<std::string>(1, tool_collision_object_.id));
@@ -613,21 +526,40 @@ private:
     tool_collision_object_.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = tool_size_y;
     tool_collision_object_.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = tool_size_z;
     tool_collision_object_.primitive_poses.resize(1);
-    tool_collision_object_.primitive_poses[0].position.x = tool_pose.position.x;// + tool_size_x/2.0;
+    tool_collision_object_.primitive_poses[0].position.x = tool_pose.position.x;
     tool_collision_object_.primitive_poses[0].position.y = tool_pose.position.y;
-    tool_collision_object_.primitive_poses[0].position.z = tool_pose.position.z + tool_size_z/2.0;
+    tool_collision_object_.primitive_poses[0].position.z = tool_pose.position.z + tool_size_z/2.0 + 0.001; //Lifted 1mm from floor collision object
 
-    ROS_WARN("Adding tool as a collision object into the world");
+    ROS_DEBUG("[pick_and_draw] Adding tool as a collision object into the world");
     std::vector<moveit_msgs::CollisionObject> collision_objects(1, tool_collision_object_);
     planning_scene_interface_.addCollisionObjects(collision_objects);
   }
-  void TODO_removeTool()
+  void removeTool()
   {
-    ROS_INFO("Remove the object from the world");
+    ROS_DEBUG("[pick_and_draw] Removing the tool collision object");
     std::vector<std::string> object_ids;
     object_ids.push_back(tool_collision_object_.id);
     planning_scene_interface_.removeCollisionObjects(object_ids);
   }
+  void attachTool()
+  {
+    ROS_WARN("Attaching collision object to arm?" );
+
+    if ( arm_.attachObject(tool_collision_object_.id, "gripper_active_link") )
+    {
+      ROS_WARN( "The tool should be attached to gripper_link now" );
+    }
+    else ROS_ERROR( "Failed to attachObject to arm_" );
+
+    ros::Duration(3.0).sleep();
+  }
+  void detachTool()
+  {
+    ROS_WARN( "Detaching collision object from arm?" );
+    arm_.detachObject(tool_collision_object_.id);
+    ros::Duration(3.0).sleep();
+  }
+
   /**
    * Set gripper opening.
    * @param opening Physical opening of the gripper, in meters
@@ -653,11 +585,6 @@ private:
       as_.setAborted(result_);
       return false;
     }
-  }
-
-  float fRand(float min, float max)
-  {
-    return ((float(rand()) / float(RAND_MAX)) * (max - min)) + min;
   }
 };
 

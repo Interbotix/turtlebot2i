@@ -86,7 +86,6 @@ private:
   double table_height_;
   
   ros::Publisher block_pub_;
-  ros::Publisher c_obj_pub_;
   
   // Parameters from node
   std::vector<double> table_pose_;
@@ -118,10 +117,10 @@ public:
     sub_ = nh_.subscribe("/camera_sr300/depth_registered/points", 1, &BlockDetectionServer::cloudCb, this);
 
     // Publish the filtered point cloud for debug purposes
-    pub_ = nh_.advertise< pcl::PointCloud<pcl::PointXYZRGB> >("block_output", 1);
+    pub_ = nh_.advertise< pcl::PointCloud<pcl::PointXYZRGB> >("filtered_point_cloud", 1);
 
     // Publish detected blocks poses
-    block_pub_ = nh_.advertise<geometry_msgs::PoseArray>("/turtlebot_blocks", 1, true);
+    block_pub_ = nh_.advertise<geometry_msgs::PoseArray>("/turtlebot_tool_holders", 1, true);
   }
 
   void goalCB()
@@ -199,18 +198,17 @@ public:
     pass.setInputCloud(cloud_transformed);
     pass.setFilterFieldName("z");
 
-    //pass.setFilterLimits(table_height_ - 0.05, table_height_ + block_size_ + 0.05);
-//pass.setFilterLimits(-0.2,-0.05); //
+    //TODO: Consider adding tool height and detecting tool + block holder
     pass.setFilterLimits(table_height_ + table_pose_[2] - 0.05, table_height_ + table_pose_[2] + block_size_ + 0.05);
 
     pass.filter(*cloud_filtered);
     if (cloud_filtered->points.size() == 0)
     {
-      ROS_ERROR("0 points left");
+      ROS_WARN("[tool_detection] Filtered point cloud has 0 points left");
       return;
     }
     else
-      ROS_INFO("Filtered, %d points left", (int ) cloud_filtered->points.size());
+      ROS_INFO("[tool_detection] Filtered cloud, %d points left", (int ) cloud_filtered->points.size());
 
     int nr_points = cloud_filtered->points.size ();
     while (cloud_filtered->points.size() > 0.3 * nr_points)
