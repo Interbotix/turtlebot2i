@@ -533,6 +533,8 @@ private:
     ROS_DEBUG("[pick_and_draw] Adding tool as a collision object into the world");
     std::vector<moveit_msgs::CollisionObject> collision_objects(1, tool_collision_object_);
     planning_scene_interface_.addCollisionObjects(collision_objects);
+
+    ros::Duration(3.0).sleep();
   }
   void removeTool()
   {
@@ -540,6 +542,8 @@ private:
     std::vector<std::string> object_ids;
     object_ids.push_back(tool_collision_object_.id);
     planning_scene_interface_.removeCollisionObjects(object_ids);
+
+    ros::Duration(3.0).sleep();
   }
   void attachTool()
   {
