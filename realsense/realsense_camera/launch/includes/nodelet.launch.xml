@@ -11,9 +11,6 @@
   <arg name="imu"          default="imu" />
   <arg name="serial_no"    default="" />
   <arg name="usb_port_id"  default="" />
-
-  <arg name="force_pointcloud" default="false" />
-
   <node pkg="nodelet" type="nodelet" name="driver"
     args="load realsense_camera/$(arg camera_type)Nodelet $(arg manager)">
     <param name="serial_no"                type="str"  value="$(arg serial_no)" />
@@ -32,13 +29,6 @@
     <param name="ir2_optical_frame_id"     type="str"  value="$(arg camera)_ir2_optical_frame" />
     <param name="fisheye_optical_frame_id" type="str"  value="$(arg camera)_fisheye_optical_frame" />
     <param name="imu_optical_frame_id"     type="str"  value="$(arg camera)_imu_optical_frame" />
-
-    <param name="enable_pointcloud" type="bool" value="$(arg force_pointcloud)" />
-    <param if="$(arg force_pointcloud)" name="enable_tf" type="bool" value="false" />
-    <param if="$(arg force_pointcloud)" name="enable_ir" type="bool" value="false" />
-    <param if="$(arg force_pointcloud)" name="enable_ir2" type="bool" value="false" />
-    <param if="$(arg force_pointcloud)" name="enable_fisheye" type="bool" value="true" />
-    
 
     <remap from="depth"    to="$(arg depth)" />
     <remap from="color"    to="$(arg rgb)" />

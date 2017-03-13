@@ -2,6 +2,9 @@
 <launch>
 	<!-- Example finding 3D poses of the objects detected -->
 	<!-- $roslaunch openni_launch openni.launch depth_registration:=true -->
+	<arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" />
+	<arg if="$(eval arg('3d_sensor') != 'zr300')" name="depth" value="depth_registered"/>
+	<arg if="$(eval arg('3d_sensor') == 'zr300')" name="depth" value="depth"/>
 	
 	<node name="find_object_3d" pkg="find_object_2d" type="find_object_2d" output="screen">
 		<param name="gui" value="false" type="bool"/>
@@ -11,10 +14,8 @@
 		<param name="object_prefix" value="object" type="str"/>
 		
 		<remap from="rgb/image_rect_color" to="camera/rgb/image_rect_color"/>
-		<!--remap from="depth_registered/image_raw" to="camera/depth_registered/image_raw"/>
-		<remap from="depth_registered/camera_info" to="camera/depth_registered/camera_info"/-->
-		<remap from="depth_registered/image_raw" to="camera/depth/image_raw"/>
-		<remap from="depth_registered/camera_info" to="camera/depth/camera_info"/>
+		<remap from="depth_registered/image_raw" to="camera/$(arg depth)/image_raw"/>
+		<remap from="depth_registered/camera_info" to="camera/$(arg depth)/camera_info"/>
 	</node>
 	
 	<!-- Example of tf synchronisation with the objectsStamped message -->

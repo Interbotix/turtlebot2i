@@ -1,11 +1,8 @@
 <!-- Sample launch file for using RealSense ZR300 camera with rgbd_launch -->
 <launch>
 
-
-
-  <arg name="depth_registration"              default="true"/>
-
-
+  <arg name="depth_registration"              default="true"/> <!--TODO: required to be included from 3dsensor.launch-->
+  <arg name="launch_camera"                   default="true"/> 
 
   <!-- "camera" should be a user friendly string to uniquely identify the device namespace.
        All topics are pushed down into the "camera" namespace, and it is prepended to tf frame ids. -->
@@ -58,7 +55,7 @@
   <arg name="sw_registered_processing"        default="true" />
 
   <!-- Disable respawn topics by default -->
-  <arg name="respawn" default="true" />
+  <arg name="respawn" default="false" />
 
   <!-- Worker threads for the nodelet manager -->
   <arg name="num_worker_threads" default="4" />
@@ -66,13 +63,12 @@
   <!-- Push down all topics/nodelets into "camera" namespace -->
   <group ns="$(arg camera)">
 
-
     <remap from="depth_registered/sw_registered/image_rect_raw"     to="/camera/depth_registered/image_raw"/>
 
     <!-- Start nodelet manager in provided namespace -->
     <arg name="manager" value="$(arg camera)_nodelet_manager" />
     <arg name="debug" default="false" /> <!-- Run manager in GDB? -->
-    <include file="$(find rgbd_launch)/launch/includes/manager.launch.xml">
+    <include if="$(arg launch_camera)" file="$(find rgbd_launch)/launch/includes/manager.launch.xml">
       <arg name="name"                value="$(arg manager)" />
       <arg name="debug"               value="$(arg debug)" />
       <arg name="num_worker_threads"  value="$(arg num_worker_threads)" />

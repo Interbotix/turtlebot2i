@@ -34,8 +34,12 @@
       can be increase from 5 to 10 Hz to avoid some TF warnings.
   -->
   
+  <!-- 3D Sensor(s) -->
+  <include file="$(find turtlebot_bringup)/launch/interbotix_3dsensor.launch"/>
+  <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" />
+  <arg name="3d_sensor2" default="$(env TURTLEBOT_3D_SENSOR2)" />
+
   <!-- Navigation stuff (move_base) -->
-  <include file="$(find turtlebot_bringup)/launch/3dsensor.launch"/>
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
     <arg name="custom_param_file" value="$(find turtlebot_bringup)/param/interbotix_dwa_planner.yaml"/>
   </include>
@@ -54,11 +58,12 @@
 	  <!-- inputs -->
 	  <remap from="scan"            to="/scan"/>
 	  <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
-  	  <remap from="depth/image"     to="/camera/depth_registered/image_raw"/>
-  	  <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
-  	  
-  	  <!-- output -->
-  	  <remap from="grid_map" to="/map"/>
+    <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera/depth_registered/image_raw"/>
+    <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera/depth/image_raw"/>
+    <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
+
+    <!-- output -->
+    <remap from="grid_map" to="/map"/>
 	
 	  <!-- RTAB-Map's parameters: do "rosrun rtabmap rtabmap (double-dash)params" to see the list of available parameters. -->
 	  <param name="RGBD/ProximityBySpace"        type="string" value="true"/>   <!-- Local loop closure detection (using estimated position) with locations in WM -->
@@ -89,7 +94,7 @@
       <param name="Vis/InlierDistance"          type="string" value="0.05"/>
       
       <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
-      <remap from="depth/image"     to="/camera/depth_registered/image_raw"/>
+      <remap from="depth/image"     to="/camera/depth/image_raw"/>
       <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
     </node>
     
@@ -101,7 +106,8 @@
       <param name="wait_for_transform_duration" type="double" value="$(arg wait_for_transform)"/>
     
       <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
-      <remap from="depth/image"     to="/camera/depth_registered/image_raw"/>
+      <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera/depth_registered/image_raw"/>
+      <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera/depth/image_raw"/>
       <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
       <remap from="scan"            to="/scan"/>
     </node>
