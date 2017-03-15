@@ -59,6 +59,7 @@ generate_dynamic_reconfigure_options(
 
 # ROS Lint the code
 roslint_cpp()
+roslint_python()
 roslint_add_test()
 
 #################################
@@ -82,13 +83,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(${PROJECT_NAME}_nodelet src/base_nodelet.cpp src/r200_nodelet.cpp src/f200_nodelet.cpp src/sr300_nodelet.cpp
+add_library(${PROJECT_NAME}_nodelet src/base_nodelet.cpp src/sync_nodelet.cpp src/r200_nodelet.cpp src/f200_nodelet.cpp src/sr300_nodelet.cpp
   src/zr300_nodelet.cpp)
 target_link_libraries(${PROJECT_NAME}_nodelet
   ${catkin_LIBRARIES}
 )
 add_dependencies(${PROJECT_NAME}_nodelet ${PROJECT_NAME}_generate_messages_cpp ${PROJECT_NAME}_gencfg)
 add_dependencies(${PROJECT_NAME}_nodelet ${catkin_EXPORTED_TARGETS})
+
+add_executable(get_debug_info src/get_debug_info.cpp)
+target_link_libraries(get_debug_info ${catkin_LIBRARIES})
 
 if (CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
@@ -111,7 +115,7 @@ if (CATKIN_ENABLE_TESTING)
 endif()
 
 # Install nodelet library
-install(TARGETS ${PROJECT_NAME}_nodelet
+install(TARGETS ${PROJECT_NAME}_nodelet get_debug_info
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

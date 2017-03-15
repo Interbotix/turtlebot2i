@@ -1,5 +1,5 @@
 /******************************************************************************
- Copyright (c) 2016, Intel Corporation
+ Copyright (c) 2017, Intel Corporation
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -66,7 +66,7 @@ namespace realsense_camera
 
     max_z_ = R200_MAX_Z;
 
-    BaseNodelet::onInit();
+    SyncNodelet::onInit();
   }
 
   /*
@@ -418,23 +418,6 @@ namespace realsense_camera
   }
 
   /*
-  * Set up the callbacks for the camera streams
-  */
-  void R200Nodelet::setFrameCallbacks()
-  {
-    // call base nodelet method
-    BaseNodelet::setFrameCallbacks();
-
-    ir2_frame_handler_ = [&](rs::frame  frame)  // NOLINT(build/c++11)
-    {
-      publishTopic(RS_STREAM_INFRARED2, frame);
-    };
-
-    rs_set_frame_callback_cpp(rs_device_, RS_STREAM_INFRARED2, new rs::frame_callback(ir2_frame_handler_), &rs_error_);
-    checkError();
-  }
-
-  /*
    * Get the camera extrinsics
    */
   void R200Nodelet::getCameraExtrinsics()
@@ -475,7 +458,7 @@ namespace realsense_camera
     static_tf_broadcaster_.sendTransform(b2i_msg);
 
     // Transform infrared2 frame to infrared2 optical frame
-    q_i2io.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q_i2io.setRPY(-M_PI/2, 0.0, -M_PI/2);
     i2io_msg.header.stamp = transform_ts_;
     i2io_msg.header.frame_id = frame_id_[RS_STREAM_INFRARED2];
     i2io_msg.child_frame_id = optical_frame_id_[RS_STREAM_INFRARED2];
@@ -510,7 +493,7 @@ namespace realsense_camera
 
     // Transform infrared2 frame to infrared2 optical frame
     tr.setOrigin(tf::Vector3(0, 0, 0));
-    q.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q.setRPY(-M_PI/2, 0.0, -M_PI/2);
     tr.setRotation(q);
     dynamic_tf_broadcaster_.sendTransform(tf::StampedTransform(tr, transform_ts_,
           frame_id_[RS_STREAM_INFRARED2], optical_frame_id_[RS_STREAM_INFRARED2]));
