@@ -2,7 +2,15 @@
 <launch>
   <arg name="depth_registration"  default=""/> <!--TODO: required to be included from 3dsensor.launch-->
   <arg name="camera"              default=""/> <!--TODO: required to be included from 3dsensor.launch-->
-  <arg name="scan_processing"     default="true"/>
+  <arg name="scan_processing"     default="true"/> <!-- Enable depthimage_to_laserscan -->
+  <!-- TODO: ZR300 does not produce point cloud by default! 
+       RGBD works for a while but registered pointcloud stops after a few seconds with 2 realsense sensors?
+       NOTE: depth/points and rgb continue to function and so will interbotix demos.
+       The driver can produce a registered pointcloud as well but with a performance hit.
+       NOTE: Some topics will no longer be published/available:
+       rgb/image_rect_raw image_rect_color etc.
+     -->
+  <arg name="zr300_registration"  default="true"/> <!-- Forces pointcloud from ZR300 driver -->
 
   <arg name="camera1"              default="camera" />
   <arg name="camera1_camera_type"  default="ZR300"    /> <!-- Type of camera -->
@@ -15,6 +23,26 @@
   
   <arg name="manager" value="camera_nodelet_manager" /> <!-- Single nodelet manager for all cameras -->
   <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen"/>
+
+  
+  <group if="$(arg zr300_registration)" ns="$(arg camera1)">
+
+    <param name="$(arg camera)/driver/color_fps"         type="int"  value="30" />
+    <param name="$(arg camera)/driver/color_width"         type="int"  value="640" />
+    <param name="$(arg camera)/driver/color_height"         type="int"  value="480" />
+
+    <include file="$(find turtlebot_bringup)/launch/realsense_nodelet.launch.xml">
+      <arg name="manager"      value="/$(arg manager)" />
+      <arg name="camera"       value="$(arg camera1)" />
+      <arg name="camera_type"  value="$(arg camera1_camera_type)" />
+      <arg name="serial_no"    value="$(arg camera1_serial_no)" />
+      <arg name="usb_port_id"  value="$(arg camera1_usb_port_id)" />
+
+      <arg name="force_pointcloud" value="true" />
+      <arg name="rgb" value="rgb" />
+    </include>
+  </group> 
+  
 
   <!-- Best know configuration for generating depth registered point cloud. -->
   <arg name="mode"            default="manual" />
@@ -64,7 +92,7 @@
   <arg name="num_worker_threads" default="4" />
 
   <!-- Push down all camera1 topics/nodelets into namespace -->
-  <group ns="$(arg camera1)">
+  <group unless="$(arg zr300_registration)" ns="$(arg camera1)">
 
     <!-- Load driver -->
     <include if="$(arg load_driver)"

@@ -57,7 +57,8 @@
 	
 	  <!-- inputs -->
 	  <remap from="scan"            to="/scan"/>
-	  <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
+	  <!-- TODO: zr300: remap from="rgb/image"       to="/camera/rgb/image_rect_color"/> -->
+    <remap from="rgb/image"       to="/camera/rgb/image_raw"/>
     <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera/depth_registered/image_raw"/>
     <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera/depth/image_raw"/>
     <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
