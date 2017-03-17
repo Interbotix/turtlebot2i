@@ -8,13 +8,13 @@
 
   <include file="$(find turtlebot_bringup)/launch/minimal.launch"/>
 
-  <include file="$(find turtlebot2i)/launch/arms/phantomx_pincher_arm.launch"/>
+  <include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/>
 
   <include file="$(find turtlebot_arm_pose_director)/launch/named_pose_director.launch">
     <arg name="load_moveit" value="true"/>
   </include>
 
-  <include file="$(find turtlebot2i)/launch/interbotix_rtabmap.launch">
+  <include file="$(find turtlebot2i_bringup)/launch/interbotix_rtabmap.launch">
     <arg if="$(arg new_rtabmap)" name="args" value="--delete_db_on_start"/>
     <arg name="localization" value="$(arg localization)"/>
     <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>

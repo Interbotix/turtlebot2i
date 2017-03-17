@@ -3,7 +3,7 @@
 
   <include file="$(find turtlebot_bringup)/launch/minimal.launch"/>
 
-  <include file="$(find turtlebot2i)/launch/arms/phantomx_pincher_arm.launch"/>
+  <include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/>
 
-  <include file="$(find turtlebot2i)/launch/interbotix_3dsensor.launch"/>
+  <include file="$(find turtlebot2i_bringup)/launch/interbotix_3dsensor.launch"/>
 </launch>
