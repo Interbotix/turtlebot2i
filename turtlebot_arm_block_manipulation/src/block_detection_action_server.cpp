@@ -370,7 +370,10 @@ public:
       ROS_INFO("[block detection] Succeeded!");
     }
     else
+    {
       ROS_INFO_STREAM("[block detection] Couldn't find any blocks this iteration! Checked " << cluster_indices.size() << " possible clusters.");
+      ros::Duration(2.0).sleep();
+    }
     //as_.setAborted(result_);
   }
 
