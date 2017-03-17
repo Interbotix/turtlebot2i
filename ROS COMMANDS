@@ -98,22 +98,3 @@ see https://github.com/ros-planning/moveit/issues/86
 	roslaunch phantomx_pincher_arm_bringup arm.launch
 	roslaunch phantomx_pincher_arm_moveit_config phantomx_pincher_arm_moveit.launch sim:=false
 }
-
-//Block sorting and interactive manipulation demos (contain commonly named components with differen code)
-{
-
-	*WIP: bringup short range sensor and block stuff for sorting at a station.. (might try to automaticlly detect and sort) 
-	*Does not launch rviz
-	*Does not brinup robot base
-		roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch
-
-	*Active: this demo can do autonomous sorting.. ('d' in terminal to detect blocks, 'm' in terminal to sort )
-		roslaunch turtlebot_arm_block_manipulation block_manipulation_demo.launch
-		roslaunch turtlebot_arm_block_manipulation block_manipulation_moveit.launch
-
-	*Not active: this demo is for interactive manipulation only
-	*Move CATKIN_IGNORE to turtlebot_arm_block_manipulation if you want to switch
-	*This was my original implementation. the active demo is my most recent developments
-		roslaunch turtlebot_block_manipulation block_manipulation_demo.launch
-		roslaunch turtlebot_block_manipulation block_manipulation_moveit.launch
-}
