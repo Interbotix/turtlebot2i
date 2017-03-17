@@ -2,7 +2,7 @@
 <launch>
 
 <!--  -->
-<param name="robot_description" command="$(find xacro)/xacro.py '$(find phantomx_pincher_arm_description)/robots/phantomx_pincher_arm.urdf.xacro'"/>
+<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find phantomx_pincher_arm_description)/robots/phantomx_pincher_arm.urdf.xacro'"/>
 
   <!-- send fake joint values -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">

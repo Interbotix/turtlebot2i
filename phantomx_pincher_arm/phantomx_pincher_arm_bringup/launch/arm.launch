@@ -2,7 +2,7 @@
 <launch>
   <arg name="simulation" default="false"/>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_arm.urdf.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_arm.urdf.xacro'"/>
 
   <node name="robot_state_pub" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="fake_joint_pub" pkg="phantomx_pincher_arm_bringup" type="fake_joint_pub.py"/>
