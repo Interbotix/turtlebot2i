@@ -1,5 +1,5 @@
 <launch>
-  <include file="$(find turtlebot_bringup)/launch/astra_sr300_pincher.launch" />
+  <include file="$(find turtlebot_bringup)/launch/interbotix.launch" />
 
   <include file="$(find turtlebot_arm_marker_manipulation)/launch/marker_manipulation.launch" />
 

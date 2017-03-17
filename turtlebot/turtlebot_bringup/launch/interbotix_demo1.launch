@@ -3,12 +3,12 @@
   
   <arg name="new_rtabmap" default="false"/>
   <arg name="localization" default="false"/>
+  <arg name="rviz" default="true"/>
+  <arg name="rtabmapviz" default="false"/>
 
   <include file="$(find turtlebot_bringup)/launch/minimal.launch"/>
 
   <include file="$(find turtlebot_bringup)/launch/includes/arms/phantomx_pincher_arm.launch"/>
-
-  <include file="$(find turtlebot_bringup)/launch/includes/3dsensor/sr300.launch.xml"/>
 
   <include file="$(find turtlebot_arm_pose_director)/launch/named_pose_director.launch">
     <arg name="load_moveit" value="true"/>
@@ -17,6 +17,7 @@
   <include file="$(find turtlebot_bringup)/launch/interbotix_rtabmap.launch">
     <arg if="$(arg new_rtabmap)" name="args" value="--delete_db_on_start"/>
     <arg name="localization" value="$(arg localization)"/>
+    <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
   </include>
 
   <include file="$(find turtlebot_zoning_demo)/launch/find_object_3d.launch" />
@@ -26,5 +27,5 @@
 
   <include file="$(find kobuki_auto_docking)/launch/standalone.launch" />
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_zoning_demo)/rviz/zoning_demo_config.rviz" />
+  <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_zoning_demo)/rviz/zoning_demo_config.rviz" />
 </launch>

@@ -1,5 +1,5 @@
 /******************************************************************************
- Copyright (c) 2016, Intel Corporation
+ Copyright (c) 2017, Intel Corporation
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <map>
 #include <realsense_camera/base_nodelet.h>
 
 using cv::Mat;
@@ -41,6 +42,8 @@ using std::vector;
 PLUGINLIB_EXPORT_CLASS(realsense_camera::BaseNodelet, nodelet::Nodelet)
 namespace realsense_camera
 {
+  const std::map<std::string, std::string> CAMERA_NAME_TO_VALIDATED_FIRMWARE
+        (MAP_START_VALUES, MAP_START_VALUES + MAP_START_VALUES_SIZE);
   /*
    * Nodelet Destructor.
    */
@@ -134,7 +137,7 @@ namespace realsense_camera
   }
   catch(...)
   {
-    ROS_ERROR_STREAM(nodelet_name_ << " - Caught unknown expection...shutting down!");
+    ROS_ERROR_STREAM(nodelet_name_ << " - Caught unknown exception...shutting down!");
     ros::shutdown();
   }
 
@@ -275,14 +278,24 @@ namespace realsense_camera
   {
     // print list of detected cameras
     std::vector<int> camera_type_index;
-    std::string detected_camera_msg = " - Detected the following cameras:";
+
     for (int i = 0; i < num_of_cameras; i++)
     {
+      std::string detected_camera_msg = " - Detected the following camera:";
+      std::string warning_msg = " - Detected unvalidated firmware:";
       // get device
       rs_device* rs_detected_device = rs_get_device(rs_context_, i, &rs_error_);
 
+      // get camera serial number
+      std::string camera_serial_number = rs_get_device_serial(rs_detected_device, &rs_error_);
+      checkError();
+
       // get camera name
       std::string camera_name = rs_get_device_name(rs_detected_device, &rs_error_);
+      checkError();
+
+      // get camera firmware
+      std::string camera_fw = rs_get_device_firmware_version(rs_detected_device, &rs_error_);
       checkError();
 
       if (camera_name.find(camera_type_) != std::string::npos)
@@ -291,11 +304,18 @@ namespace realsense_camera
       }
       // print camera details
       detected_camera_msg = detected_camera_msg +
-            "\n\t\t\t\t- Serial No: " + rs_get_device_serial(rs_detected_device, &rs_error_) +
-            ", USB Port ID: " + rs_get_device_usb_port_id(rs_detected_device, &rs_error_) +
+            "\n\t\t\t\t- Serial No: " + camera_serial_number + ", USB Port ID: " +
+            rs_get_device_usb_port_id(rs_detected_device, &rs_error_) +
             ", Name: " + camera_name +
-            ", Camera FW: " + rs_get_device_firmware_version(rs_detected_device, &rs_error_);
+            ", Camera FW: " + camera_fw;
       checkError();
+
+      std::string camera_warning_msg = checkFirmwareValidation("camera", camera_fw, camera_name, camera_serial_number);
+
+      if (!camera_warning_msg.empty())
+      {
+        warning_msg = warning_msg + "\n\t\t\t\t- " + camera_warning_msg;
+      }
 
       if (rs_supports(rs_detected_device, RS_CAPABILITIES_ADAPTER_BOARD, &rs_error_))
       {
@@ -303,6 +323,12 @@ namespace realsense_camera
             RS_CAMERA_INFO_ADAPTER_BOARD_FIRMWARE_VERSION, &rs_error_);
         checkError();
         detected_camera_msg = detected_camera_msg + ", Adapter FW: " + adapter_fw;
+        std::string adapter_warning_msg = checkFirmwareValidation("adapter", adapter_fw, camera_name,
+              camera_serial_number);
+        if (!adapter_warning_msg.empty())
+        {
+          warning_msg = warning_msg + "\n\t\t\t\t- " + adapter_warning_msg;
+        }
       }
 
       if (rs_supports(rs_detected_device, RS_CAPABILITIES_MOTION_EVENTS, &rs_error_))
@@ -311,10 +337,20 @@ namespace realsense_camera
             RS_CAMERA_INFO_MOTION_MODULE_FIRMWARE_VERSION, &rs_error_);
         checkError();
         detected_camera_msg = detected_camera_msg + ", Motion Module FW: " + motion_module_fw;
+        std::string motion_module_warning_msg = checkFirmwareValidation("motion_module", motion_module_fw, camera_name,
+              camera_serial_number);
+        if (!motion_module_warning_msg.empty())
+        {
+          warning_msg = warning_msg + "\n\t\t\t\t- " + motion_module_warning_msg;
+        }
+      }
+      ROS_INFO_STREAM(nodelet_name_ + detected_camera_msg);
+      if (warning_msg != " - Detected unvalidated firmware:")
+      {
+        ROS_WARN_STREAM(nodelet_name_ + warning_msg);
       }
     }
 
-    ROS_INFO_STREAM(nodelet_name_ + detected_camera_msg);
     return camera_type_index;
   }
 
@@ -420,7 +456,8 @@ namespace realsense_camera
 
     if (req.power_on == true)
     {
-      ROS_INFO_STREAM(nodelet_name_ << " - " << startCamera());
+      start_camera_ = true;
+      start_stop_srv_called_ = true;
     }
     else
     {
@@ -432,7 +469,8 @@ namespace realsense_camera
       {
         if (checkForSubscriber() == false)
         {
-          ROS_INFO_STREAM(nodelet_name_ << " - " << stopCamera());
+          start_camera_ = false;
+          start_stop_srv_called_ = true;
         }
         else
         {
@@ -442,8 +480,7 @@ namespace realsense_camera
       }
     }
     return res.success;
-  }
-
+}
 
   /*
    * Force Power Camera service
@@ -451,14 +488,8 @@ namespace realsense_camera
   bool BaseNodelet::forcePowerCameraService(realsense_camera::ForcePower::Request & req,
       realsense_camera::ForcePower::Response & res)
   {
-    if (req.power_on == true)
-    {
-      ROS_INFO_STREAM(nodelet_name_ << " - " << startCamera());
-    }
-    else
-    {
-      ROS_INFO_STREAM(nodelet_name_ << " - " << stopCamera());
-    }
+    start_camera_ = req.power_on;
+    start_stop_srv_called_ = true;
     return true;
   }
 
@@ -532,7 +563,7 @@ namespace realsense_camera
           {
             opt_val = val;
           }
-          ROS_DEBUG_STREAM(nodelet_name_ << " - " << opt_name << " = " << opt_val);
+          ROS_INFO_STREAM(nodelet_name_ << " - Setting camera option " << opt_name << " = " << opt_val);
           rs_set_device_option(rs_device_, o.opt, opt_val, &rs_error_);
           checkError();
         }
@@ -702,8 +733,7 @@ namespace realsense_camera
 
     for (int i = 0; i < 5; i++)
     {
-      /* Inverted for F200 sensor test */
-      camera_info->D.push_back(-intrinsic.coeffs[i]);
+      camera_info->D.push_back(intrinsic.coeffs[i]);
     }
   }
 
@@ -818,17 +848,10 @@ namespace realsense_camera
     {
       enable_[RS_STREAM_DEPTH] = true;
     }
-
-    if (enable_[RS_STREAM_DEPTH] != rs_is_stream_enabled(rs_device_, RS_STREAM_DEPTH, 0))
-    {
-      stopCamera();
-      setStreams();
-      startCamera();
-    }
   }
 
   /*
-   * Determine the timetamp for the publish topic.
+   * Determine the timestamp for the publish topic.
    */
   ros::Time BaseNodelet::getTimestamp(rs_stream stream_index, double frame_ts)
   {
@@ -880,7 +903,7 @@ namespace realsense_camera
   }
   catch(...)
   {
-    ROS_ERROR_STREAM(nodelet_name_ << " - Caught unknown expection...shutting down!");
+    ROS_ERROR_STREAM(nodelet_name_ << " - Caught unknown exception...shutting down!");
     ros::shutdown();
   }
 
@@ -1056,7 +1079,7 @@ namespace realsense_camera
     static_tf_broadcaster_.sendTransform(b2c_msg);
 
     // Transform color frame to color optical frame
-    q_c2co.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q_c2co.setRPY(-M_PI/2, 0.0, -M_PI/2);
     c2co_msg.header.stamp = transform_ts_;
     c2co_msg.header.frame_id = frame_id_[RS_STREAM_COLOR];
     c2co_msg.child_frame_id = optical_frame_id_[RS_STREAM_COLOR];
@@ -1083,7 +1106,7 @@ namespace realsense_camera
     static_tf_broadcaster_.sendTransform(b2d_msg);
 
     // Transform depth frame to depth optical frame
-    q_d2do.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q_d2do.setRPY(-M_PI/2, 0.0, -M_PI/2);
     d2do_msg.header.stamp = transform_ts_;
     d2do_msg.header.frame_id = frame_id_[RS_STREAM_DEPTH];
     d2do_msg.child_frame_id = optical_frame_id_[RS_STREAM_DEPTH];
@@ -1110,7 +1133,7 @@ namespace realsense_camera
     static_tf_broadcaster_.sendTransform(b2i_msg);
 
     // Transform infrared frame to infrared optical frame
-    q_i2io.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q_i2io.setRPY(-M_PI/2, 0.0, -M_PI/2);
     i2io_msg.header.stamp = transform_ts_;
     i2io_msg.header.frame_id = frame_id_[RS_STREAM_INFRARED];
     i2io_msg.child_frame_id = optical_frame_id_[RS_STREAM_INFRARED];
@@ -1141,7 +1164,7 @@ namespace realsense_camera
 
     // Transform color frame to color optical frame
     tr.setOrigin(tf::Vector3(0, 0, 0));
-    q.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q.setRPY(-M_PI/2, 0.0, -M_PI/2);
     tr.setRotation(q);
     dynamic_tf_broadcaster_.sendTransform(tf::StampedTransform(tr, transform_ts_,
           frame_id_[RS_STREAM_COLOR], optical_frame_id_[RS_STREAM_COLOR]));
@@ -1157,7 +1180,7 @@ namespace realsense_camera
 
     // Transform depth frame to depth optical frame
     tr.setOrigin(tf::Vector3(0, 0, 0));
-    q.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q.setRPY(-M_PI/2, 0.0, -M_PI/2);
     tr.setRotation(q);
     dynamic_tf_broadcaster_.sendTransform(tf::StampedTransform(tr, transform_ts_,
           frame_id_[RS_STREAM_DEPTH], optical_frame_id_[RS_STREAM_DEPTH]));
@@ -1173,7 +1196,7 @@ namespace realsense_camera
 
     // Transform infrared frame to infrared optical frame
     tr.setOrigin(tf::Vector3(0, 0, 0));
-    q.setEuler(M_PI/2, 0.0, -M_PI/2);
+    q.setRPY(-M_PI/2, 0.0, -M_PI/2);
     tr.setRotation(q);
     dynamic_tf_broadcaster_.sendTransform(tf::StampedTransform(tr, transform_ts_,
           frame_id_[RS_STREAM_INFRARED], optical_frame_id_[RS_STREAM_INFRARED]));
@@ -1263,4 +1286,18 @@ namespace realsense_camera
       // do not wait as this is the main thread
     }
   }
+
+  std::string BaseNodelet::checkFirmwareValidation(std::string fw_type, std::string current_fw, std::string camera_name,
+        std::string camera_serial_number)
+  {
+    std::string validated_firmware = CAMERA_NAME_TO_VALIDATED_FIRMWARE.find(camera_name + "_" + fw_type)->second;
+    std::string warning_msg = "";
+    if (current_fw != validated_firmware)
+    {
+      warning_msg = camera_serial_number + "'s current " + fw_type + " firmware is " + current_fw +
+            ", Validated " + fw_type + " firmware is " + validated_firmware;
+    }
+    return warning_msg;
+  }
+
 }  // namespace realsense_camera

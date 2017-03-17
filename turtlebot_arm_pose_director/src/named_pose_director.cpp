@@ -147,6 +147,8 @@ private:
     ROS_INFO("Add the floor as a collision object into the world");
     std::vector<moveit_msgs::CollisionObject> collision_objects(1, co);
     planning_scene_interface_.addCollisionObjects(collision_objects);
+
+    ros::Duration( 3.0 ).sleep();
   }
 };
 

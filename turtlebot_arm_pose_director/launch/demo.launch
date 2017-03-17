@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 	
-	<include file="$(find turtlebot_bringup)/launch/astra_sr300_pincher.launch" />
+	<include file="$(find turtlebot_bringup)/launch/interbotix.launch" />
 
 	<!--  ************* Moveit config stuff *************  -->
 
