@@ -15,7 +15,7 @@
     <param name="target_bin_height" value="0.06" />
     <param name="table_height" value="0.0" />
   
-    <param name="auto_sort" value="$(arg auto_sort)">
+    <param name="auto_sort" value="$(arg auto_sort)" />
 
   </node>
 </launch>
