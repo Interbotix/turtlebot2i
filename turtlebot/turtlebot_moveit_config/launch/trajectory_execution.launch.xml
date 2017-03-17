@@ -6,8 +6,12 @@
   <arg name="moveit_manage_controllers" default="true"/>
   <param name="moveit_manage_controllers" value="$(arg moveit_manage_controllers)"/>
 
+  <!--TODO: On the Joule with all nodes running we need to determine approxmiate duration_scaling for successful execution
+            or disable monitoring all together. This can be done with rqt with each run or at launch with the following: -->
+  <!--param name="trajectory_execution/execution_duration_monitoring" value="false"/-->
   <!-- When determining the expected duration of a trajectory, this multiplicative factor is applied to get the allowed duration of execution -->
-  <param name="trajectory_execution/allowed_execution_duration_scaling" value="3.0"/> <!-- default 1.2 -->
+  <param name="trajectory_execution/allowed_execution_duration_scaling" value="10.0"/> <!-- default 1.2 -->
+  
   <!-- Allow more than the expected execution time before triggering a trajectory cancel (applied after scaling) -->
   <param name="trajectory_execution/allowed_goal_duration_margin" value="0.5"/> <!-- default 0.5 -->
   <!-- Allowed joint-value tolerance for validation that trajectory's first point matches current robot state -->
