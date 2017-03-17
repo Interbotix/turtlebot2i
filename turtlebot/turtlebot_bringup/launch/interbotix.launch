@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-  <include file="$(find turtlebot_bringup)/launch/minimal.launch"/>
-
-  <include file="$(find turtlebot_bringup)/launch/includes/arms/phantomx_pincher_arm.launch"/>
-
-  <include file="$(find turtlebot_bringup)/launch/interbotix_3dsensor.launch"/>
-</launch>

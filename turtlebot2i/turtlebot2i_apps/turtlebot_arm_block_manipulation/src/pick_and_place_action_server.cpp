@@ -322,7 +322,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "pick_and_place_action_server");
 
-  turtlebot_block_manipulation::PickAndPlaceServer server("pick_and_place");
+  turtlebot_arm_block_manipulation::PickAndPlaceServer server("pick_and_place");
   
   ros::spin();
   

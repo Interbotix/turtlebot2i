@@ -8,7 +8,7 @@
 	
 	<node name="find_object_3d" pkg="find_object_2d" type="find_object_2d" output="screen">
 		<param name="gui" value="false" type="bool"/>
-		<param name="settings_path" value="~/.ros/find_object_2d.ini" type="str"/>
+		<param name="settings_path" value="$(find turtlebot_zoning_demo)/find_object_settings/find_object_2d.ini" type="str"/>
 		<param name="subscribe_depth" value="true" type="bool"/>
 		<param name="objects_path" value="$(find turtlebot_zoning_demo)/zone_identifiers" type="str"/>
 		<param name="object_prefix" value="object" type="str"/>
