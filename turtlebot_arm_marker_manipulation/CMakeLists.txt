@@ -28,18 +28,18 @@ add_compile_options("-std=c++11")
 # nodes
 add_executable(tool_detection_action_server src/tool_detection_action_server.cpp)
 target_link_libraries(tool_detection_action_server ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(tool_detection_action_server turtlebot_arm_marker_manipulation_gencpp)
+add_dependencies(tool_detection_action_server turtlebot_arm_marker_manipulation_generate_messages_cpp)
 
 add_executable(pick_and_draw_action_server src/pick_and_draw_action_server.cpp)
 target_link_libraries(pick_and_draw_action_server ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(pick_and_draw_action_server turtlebot_arm_marker_manipulation_gencpp)
+add_dependencies(pick_and_draw_action_server turtlebot_arm_marker_manipulation_generate_messages_cpp)
 
 
 # demo
 add_executable(marker_manipulation_demo demo/marker_manipulation_demo.cpp)
 target_link_libraries(marker_manipulation_demo ${catkin_LIBRARIES})
 
-add_dependencies(marker_manipulation_demo turtlebot_arm_marker_manipulation_gencpp arbotix_msgs_gencpp)
+add_dependencies(marker_manipulation_demo turtlebot_arm_marker_manipulation_generate_messages_cpp arbotix_msgs_generate_messages_cpp)
 
 
 # install

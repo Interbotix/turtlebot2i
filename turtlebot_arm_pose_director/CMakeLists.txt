@@ -43,7 +43,7 @@ add_executable(named_pose_director src/named_pose_director.cpp)
 target_link_libraries(named_pose_director ${catkin_LIBRARIES})
 
 add_dependencies(named_pose_director ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(named_pose_director turtlebot_arm_pose_director_gencpp)
+add_dependencies(named_pose_director turtlebot_arm_pose_director_generate_messages_cpp)
 
 add_compile_options(${MOVEIT_CXX_FLAGS})
 
