@@ -1,0 +1,3 @@
+<launch>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot2i_bringup)/rviz/remote_view.rviz" />
+</launch>

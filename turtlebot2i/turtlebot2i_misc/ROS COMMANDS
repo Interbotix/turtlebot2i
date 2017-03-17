@@ -92,17 +92,6 @@
 	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_docking"}}'
 }
 
-Temp fix (if this happens to you) for: python cannot import structs error
-see https://github.com/ros-planning/moveit/issues/86
-{ 
-	I still have this issue, with ros-kinetic-moveit installed and fully updated Ubuntu 16.04 system.
-	It is fixed by doing the following:
-
-	pip install --user pyassimp
-
-	It requires pyassimp 3.3, installed by default is 3.2.
-}
-
 //Pincher Arm MoveIt! Demo
 {
 	*On robot
@@ -112,4 +101,21 @@ see https://github.com/ros-planning/moveit/issues/86
 	*Off robot
 	roslaunch phantomx_pincher_arm_bringup arm.launch
 	roslaunch phantomx_pincher_arm_moveit_config phantomx_pincher_arm_moveit.launch sim:=false
+}
+
+//Remote view the robot
+{
+	export ROS_MASTER_URI=http://my.robot.address:11311
+	roslaunch turtlebot2i_bringup remote_view.launch
+}
+
+Temp fix (if this happens to you) for: python cannot import structs error
+see https://github.com/ros-planning/moveit/issues/86
+{ 
+	I still have this issue, with ros-kinetic-moveit installed and fully updated Ubuntu 16.04 system.
+	It is fixed by doing the following:
+
+	pip install --user pyassimp
+
+	It requires pyassimp 3.3, installed by default is 3.2.
 }
