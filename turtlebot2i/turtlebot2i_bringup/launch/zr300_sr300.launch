@@ -31,7 +31,7 @@
     <param name="$(arg camera)/driver/color_width"         type="int"  value="640" />
     <param name="$(arg camera)/driver/color_height"         type="int"  value="480" />
 
-    <include file="$(find turtlebot_bringup)/launch/realsense_nodelet.launch.xml">
+    <include file="$(find turtlebot2i_bringup)/launch/realsense_nodelet.launch.xml">
       <arg name="manager"      value="/$(arg manager)" />
       <arg name="camera"       value="$(arg camera1)" />
       <arg name="camera_type"  value="$(arg camera1_camera_type)" />

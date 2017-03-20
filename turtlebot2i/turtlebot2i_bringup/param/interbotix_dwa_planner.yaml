@@ -1,4 +1,4 @@
-#Lowered max_vel_x and max_rot_vel
+#Interbotix DWA params have lowered max_vel_x and max_rot_vel
 
 DWAPlannerROS:
 

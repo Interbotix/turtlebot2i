@@ -35,13 +35,13 @@
   -->
   
   <!-- 3D Sensor(s) -->
-  <include file="$(find turtlebot_bringup)/launch/interbotix_3dsensor.launch"/>
+  <include file="$(find turtlebot2i_bringup)/launch/interbotix_3dsensor.launch"/>
   <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" />
   <arg name="3d_sensor2" default="$(env TURTLEBOT_3D_SENSOR2)" />
 
   <!-- Navigation stuff (move_base) -->
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
-    <arg name="custom_param_file" value="$(find turtlebot_bringup)/param/interbotix_dwa_planner.yaml"/>
+    <arg name="custom_param_file" value="$(find turtlebot2i_bringup)/param/interbotix_dwa_planner.yaml"/>
   </include>
   
   <!-- Mapping -->

@@ -1,0 +1,13 @@
+#Use these commands:
+#	udevadm info -a -n /dev/ttyUSB0 | grep '{serial}' | head -n1
+#	udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
+#To determine serial number and fill in ******** for udev rules below:
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="kobuki_********", SYMLINK+="kobuki"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="********", SYMLINK+="arbotix"
+
+#Then:
+#	sudo cp ./99-interbotix-turtlebot.rules /etc/udev/rules.d/
+#Restart udev and replug devices or reboot:
+#	sudo service udev reload
+#	sudo service udev restart

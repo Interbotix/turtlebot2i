@@ -14,16 +14,31 @@
 	rostopic pub -1 /turtlebot/arm_elbow_flex_position_controller/command std_msgs/Float64 "data: 1.4"
 }
 
+//Bringup up the robot
+{
+	*To bring up the base, arm and sensors only:
+	roslaunch turtlebot2i_bringup interbotix.launch
+
+	*To bring up the full robot with mapping, arm pose manager, moveit and zone detection:
+	roslaunch turtlebot2i_bringup interbotix_demo1.launch
+		No parameters: Mapping will resume using last ~/.ros/rtabmap.db
+		Optional parameters:
+			new_rtabmap:=true 	*Delete rtabmap.db on start
+			localization:=true  *Use rtabmap for localization (existing map)
+			rviz:=false			*Supress loading RViz (terminal/Joule)
+			rtabmapviz:=true 	*Load RTAB-Map GUI with launch
+
+}
 //Interbotix Demos 1 & 2 (WIP)
 { 
 	*To resume mapping:
-	roslaunch turtlebot_bringup interbotix_demo1.launch
+	roslaunch turtlebot2i_bringup interbotix_demo1.launch
 
 	*To start a new map:
-	roslaunch turtlebot_bringup interbotix_demo1.launch new_rtabmap:=true
+	roslaunch turtlebot2i_bringup interbotix_demo1.launch new_rtabmap:=true
 
 	*To use existing map for localization purposes only:
-	roslaunch turtlebot_bringup interbotix_demo1.launch localization:=true
+	roslaunch turtlebot2i_bringup interbotix_demo1.launch localization:=true
 
 	*Drive around then when the markers have been identified you can publish a zone destination request:
 	rostopic pub /zone_destination_request std_msgs/String "charging_zone"
@@ -49,7 +64,7 @@
 //Works well on dry erase board with low friction
 {
 	*Bring up robot with arm and moveit:
-	roslaunch turtlebot_bringup interbotix_demo1.launch new_rtabmap:=true
+	roslaunch turtlebot2i_bringup interbotix_demo1.launch new_rtabmap:=true
 
 	*Start tool detection and pick and draw action servers:
 	roslaunch turtlebot_arm_marker_manipulation interbotix_marker_demo.launch
@@ -60,7 +75,7 @@
 //Blocks can be clicked and moved in RViz and will be repositioned by the robot
 {
 	*Bring up robot with arm and moveit:
-	roslaunch turtlebot_bringup interbotix_demo1.launch new_rtabmap:=true
+	roslaunch turtlebot2i_bringup interbotix_demo1.launch new_rtabmap:=true
 
 	*Start block detection, interactive manipulation and pickandplace action servers:
 	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch at_dock:=true/false auto_sort:=false/true
@@ -77,17 +92,6 @@
 	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_docking"}}'
 }
 
-Temp fix (if this happens to you) for: python cannot import structs error
-see https://github.com/ros-planning/moveit/issues/86
-{ 
-	I still have this issue, with ros-kinetic-moveit installed and fully updated Ubuntu 16.04 system.
-	It is fixed by doing the following:
-
-	pip install --user pyassimp
-
-	It requires pyassimp 3.3, installed by default is 3.2.
-}
-
 //Pincher Arm MoveIt! Demo
 {
 	*On robot
@@ -97,4 +101,21 @@ see https://github.com/ros-planning/moveit/issues/86
 	*Off robot
 	roslaunch phantomx_pincher_arm_bringup arm.launch
 	roslaunch phantomx_pincher_arm_moveit_config phantomx_pincher_arm_moveit.launch sim:=false
+}
+
+//Remote view the robot
+{
+	export ROS_MASTER_URI=http://my.robot.address:11311
+	roslaunch turtlebot2i_bringup remote_view.launch
+}
+
+Temp fix (if this happens to you) for: python cannot import structs error
+see https://github.com/ros-planning/moveit/issues/86
+{ 
+	I still have this issue, with ros-kinetic-moveit installed and fully updated Ubuntu 16.04 system.
+	It is fixed by doing the following:
+
+	pip install --user pyassimp
+
+	It requires pyassimp 3.3, installed by default is 3.2.
 }

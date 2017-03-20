@@ -322,9 +322,18 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "pick_and_place_action_server");
 
-  turtlebot_block_manipulation::PickAndPlaceServer server("pick_and_place");
+  turtlebot_arm_block_manipulation::PickAndPlaceServer server("pick_and_place");
   
-  ros::spin();
+  //TODO: Does not work with only: ros::spin();
+  ros::AsyncSpinner spinner(4);
+  spinner.start();
+  ros::Rate rate(1.0);
+  while( ros::ok() )
+  {
+    ros::spinOnce();
+    rate.sleep();
+  }
+  spinner.stop();
   
   return 0;
 }
