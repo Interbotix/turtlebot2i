@@ -4,53 +4,42 @@
   <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_properties.urdf.xacro"/>
 
   <!-- Xacro properties -->
-  <!--TODO-->
-  <xacro:property name="astra_cam_px" value="-0.050"/>
-  <xacro:property name="astra_cam_py" value="0.0"/>
-  <xacro:property name="astra_cam_pz" value="0.2635"/>
+  <xacro:property name="zr300_origin_x" value="-0.050"/>
+  <xacro:property name="zr300_origin_y" value="0.0"/>
+  <xacro:property name="zr300_origin_z" value="0.230"/>
 
-  <xacro:property name="astra_depth_rel_rgb_py" value="0.038" />
-  <xacro:property name="astra_cam_rel_rgb_py"   value="0.012" />
+  <xacro:property name="zr300_rgb_x" value="0.0"/>
+  <xacro:property name="zr300_rgb_y" value="-0.028"/>
+  <xacro:property name="zr300_rgb_z" value="0.028"/>
 
-  <xacro:property name="astra_dae_display_scale"   value="1.0" />
+  <xacro:property name="zr300_depth_y" value="0.058"/>
 
-  <!-- Parameterised in part by properties above -->
-  <xacro:macro name="sensor_astra" params="parent">
-    <joint name="camera_rgb_joint" type="fixed">
-      <origin xyz="${astra_cam_px} ${astra_cam_py} ${astra_cam_pz}"
+  <xacro:property name="zr300_fisheye_y" value="0.0875"/>
+
+  <xacro:macro name="sensor_zr300" params="parent">
+    
+    <!--Sensor body-->
+    <joint name="camera_joint" type="fixed">
+      <origin xyz="${zr300_origin_x} ${zr300_origin_y} ${zr300_origin_z}"
               rpy="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="camera_rgb_frame" />
-    </joint>
-    <link name="camera_rgb_frame"/>
-
-    <joint name="camera_rgb_optical_joint" type="fixed">
-      <origin xyz="0 ${astra_cam_rel_rgb_py} 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_rgb_frame" />
-      <child link="camera_rgb_optical_frame" />
-    </joint>
-    <link name="camera_rgb_optical_frame"/>
-
-    <joint name="camera_joint" type="fixed">
-      <origin xyz="0 0 0"
-              rpy="0 0 0"/>
-      <parent link="camera_rgb_frame"/>
       <child link="camera_link"/>
     </joint>
     <link name="camera_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://turtlebot_description/meshes/sensors/astra_new.stl" scale="${astra_dae_display_scale} ${astra_dae_display_scale} ${astra_dae_display_scale}"/>
+          <mesh filename="package://turtlebot_description/meshes/sensors/zr300.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <xacro:insert_block name="material_black"/>
       </visual>
       <collision>
-        <origin xyz="-0.017 0.0 0.0" rpy="0 0 0" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
         <geometry>
-        <box size="0.0440 0.1650 0.0300"/>
-      </geometry>
+          <mesh filename="package://turtlebot_description/meshes/sensors/zr300.stl" scale="1.0 1.0 1.0"/>
+        </geometry>
       </collision>
+      <!-- This inertial field needs doesn't contain reliable data!! -->
       <inertial>
         <mass value="0.3" />
         <origin xyz="0 0 0" />
@@ -65,8 +54,24 @@
       <gravity>true</gravity>
     </gazebo>
 
+    <!--RGB-->
+    <joint name="camera_rgb_joint" type="fixed">
+      <origin xyz="${zr300_rgb_x} ${zr300_rgb_y} ${zr300_rgb_z}" rpy="0 0 0"/>
+      <parent link="camera_link"/>
+      <child link="camera_rgb_frame" />
+    </joint>
+    <link name="camera_rgb_frame"/>
+
+    <joint name="camera_rgb_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="camera_rgb_frame" />
+      <child link="camera_rgb_optical_frame" />
+    </joint>
+    <link name="camera_rgb_optical_frame"/>
+
+    <!--Depth-->
     <joint name="camera_depth_joint" type="fixed">
-      <origin xyz="0 ${astra_depth_rel_rgb_py} 0" rpy="0 0 0" />
+      <origin xyz="0 ${zr300_depth_y} 0" rpy="0 0 0" />
       <parent link="camera_rgb_frame" />
       <child link="camera_depth_frame" />
     </joint>
@@ -78,6 +83,21 @@
       <child link="camera_depth_optical_frame" />
     </joint>
     <link name="camera_depth_optical_frame"/>
+
+    <!--FishEye-->
+    <joint name="camera_fisheye_joint" type="fixed">
+      <origin xyz="0 ${zr300_fisheye_y} 0" rpy="0 0 0" />
+      <parent link="camera_rgb_frame" />
+      <child link="camera_fisheye_frame" />
+    </joint>
+    <link name="camera_fisheye_frame"/>
+
+    <joint name="camera_fisheye_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="camera_fisheye_frame" />
+      <child link="camera_fisheye_optical_frame" />
+    </joint>
+    <link name="camera_fisheye_optical_frame"/>
 
     <!-- RGBD sensor for simulation, same as Kinect -->
     <turtlebot_sim_3dsensor/>
