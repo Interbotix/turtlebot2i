@@ -79,7 +79,7 @@ public:
   BlockManipulationAction() : nh_("~"),
     block_detection_action_("block_detection", true),
     //interactive_manipulation_action_("interactive_manipulation", true),
-    pick_and_place_action_("pick_and_place", true)
+    pick_and_place_action_("pick_and_draw", true)
   {
     // Load parameters
     nh_.param<std::string>("arm_link", arm_link, "/arm_link");
