@@ -71,7 +71,17 @@ private:
   // We use the planning_scene_interface::PlanningSceneInterface to manipulate the world
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
 
+  // Collision objects for the planning scene
   moveit_msgs::CollisionObject tool_collision_object_;
+  moveit_msgs::CollisionObject tool_holder_collision_object_;
+
+  // Arm heights
+  double arm_height_hover_tool;   //hovering over tool in holder
+  double arm_height_grasp_tool;   //prepared to grasp tool
+  double arm_height_detach_tool;  //detatch grasped tool from holder
+  double arm_height_prepare_draw; //holding tool and preparing to lay ink
+  double arm_height_draw_tool;    //height when drawing with tool grasped
+  double arm_height_surface;      //height offset for drawing surface
 
 public:
   PickAndPlaceServer(const std::string name) :
@@ -84,6 +94,15 @@ public:
     as_.start();
 
     target_pose_pub_ = nh_.advertise<geometry_msgs::PoseStamped>("/target_pose", 1, true);
+
+    //TODO: load these as parameters
+    arm_height_hover_tool = 0.01;
+    arm_height_grasp_tool = -0.03;
+    arm_height_detach_tool = 0.0;
+    arm_height_prepare_draw = -0.005;
+    arm_height_draw_tool = -0.030;
+    arm_height_surface = 0.0058;
+
   }
 
   void goalCB()
@@ -143,9 +162,6 @@ public:
 
   geometry_msgs::Pose drawArc( geometry_msgs::Pose target, double radius, double arc_start_rad, int arc_degrees )
   {
-    //TODO: repeated use of arm_height_prepare_draw
-    double arm_height_prepare_draw = -0.015; //holding tool and preparing to lay ink
-
     ROS_DEBUG( "[pick_and_draw] Executing Arc" );
 
     double angle_resolution = 10.0; //Compute waypoint every 10 degrees
@@ -237,7 +253,7 @@ public:
 
     //Move over first point in trajectory
     ee_point_goal = waypoints[0];
-    ee_point_goal.position.z = arm_height_prepare_draw;
+    ee_point_goal.position.z = arm_height_prepare_draw + arm_height_surface;
     if (moveArmTo(ee_point_goal) == false)
     {
       ROS_ERROR( "[pick_and_draw] Uable to move arm over start pose for trajectory" );
@@ -248,7 +264,7 @@ public:
     if (moveArmTo(ee_point_goal) == false)
     {
       ROS_ERROR( "[pick_and_draw] Uable to move arm into start pose for trajectory" );
-      ee_point_goal.position.z = arm_height_prepare_draw;
+      ee_point_goal.position.z = arm_height_prepare_draw + arm_height_surface;
       return ee_point_goal;
     }
 
@@ -281,14 +297,6 @@ public:
   {
     ROS_INFO("[pick and place] Picking. Drawing. Also placing.");
 
-    //TODO: parameters.. arguments.. oh my
-    double arm_height_hover_tool = 0.01; //hovering over tool in holder
-    double arm_height_grasp_tool = -0.03; //prepared to grasp tool
-    double arm_height_detach_tool = 0.0; //detatch tool from holder
-    double arm_height_prepare_draw = -0.005; //holding tool and preparing to lay ink
-
-    double arm_height_draw_tool = -0.030; //height when drawing with tool grasped
-
     geometry_msgs::Pose target_pose;
 
     /* open gripper */
@@ -303,14 +311,14 @@ public:
     target_pose = start_pose;
     tf::Quaternion q = tf::createQuaternionFromRPY(0.0, M_PI_2, 0.0); //Wrist pointed straight down
     tf::quaternionTFToMsg(q, target_pose.orientation);
-    target_pose.position.z = arm_height_hover_tool;
+    target_pose.position.z = arm_height_hover_tool + arm_height_surface;
     if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
     ROS_DEBUG( "[pick_and_draw] Dropping down to pickup tool" );
 
     /* drop down */
-    target_pose.position.z = arm_height_grasp_tool;
+    target_pose.position.z = arm_height_grasp_tool + arm_height_surface;
     if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
@@ -326,9 +334,12 @@ public:
 
     ROS_DEBUG( "[pick_and_draw] Detaching tool from tool holder (cube)" );
     /* raise up */
-    target_pose.position.z = arm_height_detach_tool;
+    target_pose.position.z = arm_height_detach_tool + arm_height_surface;
     if (moveArmTo(target_pose) == false) 
       return;
+
+    /* add toolholder to prevent collisions */
+    addToolHolder( start_pose );
 
     ROS_DEBUG( "[pick_and_draw] Moving to first target with tool" );
 
@@ -338,17 +349,17 @@ public:
     tf::quaternionTFToMsg(q, target_pose.orientation);
     target_pose.position.x = 0.152; //Eyes
     target_pose.position.y = 0.025; //Left eye
-    target_pose.position.z = arm_height_prepare_draw;
+    target_pose.position.z = arm_height_prepare_draw + arm_height_surface;
     if (moveArmTo(target_pose) == false) 
       return;
 
     /* draw first arc */
-    target_pose.position.z = arm_height_draw_tool;
+    target_pose.position.z = arm_height_draw_tool + arm_height_surface;
     geometry_msgs::Pose last_draw_pose = drawArc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
 
     /* move up */
     target_pose = last_draw_pose;
-    target_pose.position.z = arm_height_prepare_draw;
+    target_pose.position.z = arm_height_prepare_draw + arm_height_surface;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -359,12 +370,12 @@ public:
       return;
 
     /* draw second arc */
-    target_pose.position.z = arm_height_draw_tool;
+    target_pose.position.z = arm_height_draw_tool + arm_height_surface;
     last_draw_pose = drawArc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
 
     /* move up */
     target_pose = last_draw_pose;
-    target_pose.position.z = arm_height_prepare_draw;
+    target_pose.position.z = arm_height_prepare_draw + arm_height_surface;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -374,24 +385,27 @@ public:
     if (moveArmTo(target_pose) == false)
       return;
 
-    target_pose.position.z = arm_height_draw_tool;
+    target_pose.position.z = arm_height_draw_tool + arm_height_surface;
     last_draw_pose = drawArc( target_pose, 0.02, 1.57, 180 ); //draw a half circle around the pose point (ccw from 90)
 
     /* raise up */
     target_pose = last_draw_pose;
-    target_pose.position.z = arm_height_prepare_draw;
+    target_pose.position.z = arm_height_prepare_draw + arm_height_surface;
     if (moveArmTo(target_pose) == false)
       return;
 
     /* move back to tool holder */
     target_pose.position.x = start_pose.position.x;
     target_pose.position.y = start_pose.position.y;
-    target_pose.position.z = arm_height_detach_tool;
+    target_pose.position.z = arm_height_detach_tool + arm_height_surface;
     if (moveArmTo(target_pose) == false)
       return;
 
+    /* remove toolholder collision object */
+    removeToolHolder();
+
     /*drop down*/
-    target_pose.position.z = arm_height_grasp_tool;
+    target_pose.position.z = arm_height_grasp_tool + arm_height_surface;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -404,7 +418,7 @@ public:
     ros::Duration(0.6).sleep(); // ensure that gripper properly release the tool before lifting the arm
 
     /*raise up away from tool sitting in holder*/
-    target_pose.position.z = arm_height_hover_tool;
+    target_pose.position.z = arm_height_hover_tool + arm_height_surface;
     if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
@@ -507,7 +521,7 @@ private:
 
   void addTool( const geometry_msgs::Pose & tool_pose )
   {
-    // Add the dry erase marker "tool" as a collision object into the world, so it gets excluded from the collision map
+    // Add the dry erase marker "tool" as a collision object into the world
     double tool_size_x = 0.018;
     double tool_size_y = 0.018;
     double tool_size_z = 0.115;
@@ -528,7 +542,7 @@ private:
     tool_collision_object_.primitive_poses.resize(1);
     tool_collision_object_.primitive_poses[0].position.x = tool_pose.position.x;
     tool_collision_object_.primitive_poses[0].position.y = tool_pose.position.y;
-    tool_collision_object_.primitive_poses[0].position.z = tool_pose.position.z + tool_size_z/2.0 + 0.001; //Lifted 1mm from floor collision object
+    tool_collision_object_.primitive_poses[0].position.z = tool_pose.position.z + tool_size_z/2.0;
 
     ROS_DEBUG("[pick_and_draw] Adding tool as a collision object into the world");
     std::vector<moveit_msgs::CollisionObject> collision_objects(1, tool_collision_object_);
@@ -547,20 +561,61 @@ private:
   }
   void attachTool()
   {
-    ROS_WARN("Attaching collision object to arm?" );
+    ROS_WARN("Attaching collision object to arm." );
 
     if ( arm_.attachObject(tool_collision_object_.id, "gripper_active_link") )
     {
       ROS_WARN( "The tool should be attached to gripper_link now" );
     }
-    else ROS_ERROR( "Failed to attachObject to arm_" );
+    else ROS_ERROR( "Failed to attachTool to arm_" );
 
     ros::Duration(3.0).sleep();
   }
   void detachTool()
   {
-    ROS_WARN( "Detaching collision object from arm?" );
+    ROS_WARN( "Detaching collision object from arm." );
     arm_.detachObject(tool_collision_object_.id);
+    ros::Duration(3.0).sleep();
+  }
+
+  void addToolHolder( const geometry_msgs::Pose & tool_pose )
+  {
+    // Add the dry erase marker "tool" as a collision object into the world
+    double tool_size_x = 0.02;
+    double tool_size_y = 0.02;
+    double tool_size_z = 0.02;
+
+    tool_holder_collision_object_.header.stamp = ros::Time::now();
+    tool_holder_collision_object_.header.frame_id = arm_link_;
+
+    tool_holder_collision_object_.id = "toolholder";
+    planning_scene_interface_.removeCollisionObjects(std::vector<std::string>(1, tool_holder_collision_object_.id));
+
+    tool_holder_collision_object_.operation = moveit_msgs::CollisionObject::ADD;
+    tool_holder_collision_object_.primitives.resize(1);
+    tool_holder_collision_object_.primitives[0].type = shape_msgs::SolidPrimitive::BOX;
+    tool_holder_collision_object_.primitives[0].dimensions.resize(geometric_shapes::SolidPrimitiveDimCount<shape_msgs::SolidPrimitive::BOX>::value);
+    tool_holder_collision_object_.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_X] = tool_size_x;
+    tool_holder_collision_object_.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Y] = tool_size_y;
+    tool_holder_collision_object_.primitives[0].dimensions[shape_msgs::SolidPrimitive::BOX_Z] = tool_size_z;
+    tool_holder_collision_object_.primitive_poses.resize(1);
+    tool_holder_collision_object_.primitive_poses[0].position.x = tool_pose.position.x;
+    tool_holder_collision_object_.primitive_poses[0].position.y = tool_pose.position.y;
+    tool_holder_collision_object_.primitive_poses[0].position.z = tool_pose.position.z;;
+
+    ROS_DEBUG("[pick_and_draw] Adding toolholder as a collision object into the world");
+    std::vector<moveit_msgs::CollisionObject> collision_objects(1, tool_holder_collision_object_);
+    planning_scene_interface_.addCollisionObjects(collision_objects);
+
+    ros::Duration(3.0).sleep();
+  }
+  void removeToolHolder()
+  {
+    ROS_DEBUG("[pick_and_draw] Removing the toolholder collision object");
+    std::vector<std::string> object_ids;
+    object_ids.push_back(tool_holder_collision_object_.id);
+    planning_scene_interface_.removeCollisionObjects(object_ids);
+
     ros::Duration(3.0).sleep();
   }
 
