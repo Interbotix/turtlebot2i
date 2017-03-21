@@ -32,7 +32,7 @@
 #include <tf/tf.h>
 
 #include <actionlib/server/simple_action_server.h>
-#include <turtlebot_arm_marker_manipulation/PickAndPlaceAction.h>
+#include <turtlebot_arm_marker_manipulation/PickAndDrawAction.h>
 
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
@@ -43,20 +43,20 @@
 namespace turtlebot_arm_marker_manipulation
 {
 
-class PickAndPlaceServer
+class PickAndDrawServer
 {
 private:
 
   ros::NodeHandle nh_;
-  actionlib::SimpleActionServer<turtlebot_arm_marker_manipulation::PickAndPlaceAction> as_;
+  actionlib::SimpleActionServer<turtlebot_arm_marker_manipulation::PickAndDrawAction> as_;
   std::string action_name_;
 
-  turtlebot_arm_marker_manipulation::PickAndPlaceFeedback     feedback_;
-  turtlebot_arm_marker_manipulation::PickAndPlaceResult       result_;
-  turtlebot_arm_marker_manipulation::PickAndPlaceGoalConstPtr goal_;
+  turtlebot_arm_marker_manipulation::PickAndDrawFeedback     feedback_;
+  turtlebot_arm_marker_manipulation::PickAndDrawResult       result_;
+  turtlebot_arm_marker_manipulation::PickAndDrawGoalConstPtr goal_;
 
   ros::Publisher target_pose_pub_;
-  ros::Subscriber pick_and_place_sub_;
+  ros::Subscriber pick_and_draw_sub_;
 
   // Move groups to control arm and gripper with MoveIt!
   moveit::planning_interface::MoveGroupInterface arm_;
@@ -66,7 +66,6 @@ private:
   std::string arm_link_;
   double gripper_open;
   double gripper_closed;
-  double z_up;
 
   // We use the planning_scene_interface::PlanningSceneInterface to manipulate the world
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
@@ -84,12 +83,12 @@ private:
   double arm_height_surface;      //height offset for drawing surface
 
 public:
-  PickAndPlaceServer(const std::string name) :
+  PickAndDrawServer(const std::string name) :
     nh_("~"), as_(name, false), action_name_(name), arm_("pincher_arm"), gripper_("pincher_gripper")
   {
     // Register the goal and feedback callbacks
-    as_.registerGoalCallback(boost::bind(&PickAndPlaceServer::goalCB, this));
-    as_.registerPreemptCallback(boost::bind(&PickAndPlaceServer::preemptCB, this));
+    as_.registerGoalCallback(boost::bind(&PickAndDrawServer::goalCB, this));
+    as_.registerPreemptCallback(boost::bind(&PickAndDrawServer::preemptCB, this));
 
     as_.start();
 
@@ -102,7 +101,6 @@ public:
     arm_height_prepare_draw = -0.005;
     arm_height_draw_tool = -0.030;
     arm_height_surface = 0.0058;
-
   }
 
   void goalCB()
@@ -112,7 +110,6 @@ public:
     arm_link_ = goal_->frame;
     gripper_open = goal_->gripper_open;
     gripper_closed = goal_->gripper_closed;
-    z_up = goal_->z_up;
 
     arm_.setPoseReferenceFrame( arm_link_ );
 
@@ -125,19 +122,19 @@ public:
 
     if (goal_->topic.length() < 1)
     {
-      pickAndPlace(goal_->pickup_pose, goal_->place_pose);
+      pickAndDraw(goal_->pickup_pose, goal_->draw_pose);
     }
     else
     {
-      pick_and_place_sub_ = nh_.subscribe(goal_->topic, 1, &PickAndPlaceServer::sendGoalFromTopic, this);
+      pick_and_draw_sub_ = nh_.subscribe(goal_->topic, 1, &PickAndDrawServer::sendGoalFromTopic, this);
     }
   }
 
   void sendGoalFromTopic(const geometry_msgs::PoseArrayConstPtr& msg)
   {
     ROS_INFO("[pick and place] Got goal from topic! %s", goal_->topic.c_str());
-    pickAndPlace(msg->poses[0], msg->poses[1]);
-    pick_and_place_sub_.shutdown();
+    pickAndDraw(msg->poses[0], msg->poses[1]);
+    pick_and_draw_sub_.shutdown();
   }
 
   void preemptCB()
@@ -167,10 +164,9 @@ public:
     double angle_resolution = 10.0; //Compute waypoint every 10 degrees
     
     double x_center = target.position.x; //center point of arc
-    double y_center = target.position.y; //0.0;
-    //double radius = 0.02; //Size of arc
+    double y_center = target.position.y; 
 
-    //Create Cartesian Path
+    //Create cartesian path from waypoints
     std::vector<geometry_msgs::Pose> waypoints;
     geometry_msgs::Pose ee_point_goal; //end_effector_trajectory
 
@@ -196,12 +192,10 @@ public:
       ee_point_goal.position.x = x_center + radius*cos(angle);
       ee_point_goal.position.y = y_center + radius*sin(angle);
       waypoints.push_back(ee_point_goal);
-      //ROS_INFO("%d",i);
     }
 
-
     /*
-    //TODO: Allow operator to specify shape and parameters
+    //TODO: Consider other shapes/paths
     if (0)
     { //triangle 
       waypoints.clear();
@@ -226,7 +220,7 @@ public:
       waypoints.push_back( waypoints[0] );
     }
 
-    //TODO: Allow operator to specify shape and parameters
+    //TODO: Consider other shapes/paths
     if(0)
     { //spiral
       waypoints.clear();
@@ -240,7 +234,7 @@ public:
 
       while ( spiral_radius < radius )
       {
-        spiral_radius += d_angle / 1000.0; //TODO: NOTE: 10,000.0 will color in a 2cm sphere
+        spiral_radius += d_angle / 1000.0;
         angle += d_angle;
         ee_point_goal.position.x = x_center + spiral_radius*cos(angle);
         ee_point_goal.position.y = y_center + spiral_radius*sin(angle);
@@ -248,7 +242,7 @@ public:
       }
     }
     */
-    
+
     ROS_DEBUG( "[pick_and_draw] There are %d number of waypoints", waypoints.size() );
 
     //Move over first point in trajectory
@@ -259,6 +253,7 @@ public:
       ROS_ERROR( "[pick_and_draw] Uable to move arm over start pose for trajectory" );
       return target;
     }
+
     //Move to first point in trajectory
     ee_point_goal = waypoints[0];
     if (moveArmTo(ee_point_goal) == false)
@@ -293,8 +288,10 @@ public:
     return waypoints[ waypoints.size()-1 ];
   }
 
-  void pickAndPlace(const geometry_msgs::Pose& start_pose, const geometry_msgs::Pose& end_pose)
+  void pickAndDraw(const geometry_msgs::Pose& start_pose, const geometry_msgs::Pose& draw_pose)
   {
+    //TODO: Not using draw_pose for drawing location
+
     ROS_INFO("[pick and place] Picking. Drawing. Also placing.");
 
     geometry_msgs::Pose target_pose;
@@ -580,7 +577,7 @@ private:
 
   void addToolHolder( const geometry_msgs::Pose & tool_pose )
   {
-    // Add the dry erase marker "tool" as a collision object into the world
+    // Add the toolholder collision object into the world
     double tool_size_x = 0.02;
     double tool_size_y = 0.02;
     double tool_size_z = 0.02;
@@ -654,7 +651,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "pick_and_draw_action_server");
 
-  turtlebot_arm_marker_manipulation::PickAndPlaceServer server("pick_and_draw");
+  turtlebot_arm_marker_manipulation::PickAndDrawServer server("pick_and_draw");
 
   //TODO: Does not work with only: ros::spin();
   ros::AsyncSpinner spinner(4);

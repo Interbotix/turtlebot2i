@@ -16,8 +16,8 @@ include_directories(include
 add_message_files(FILES BlockPose.msg BlockPoseArray.msg)
 
 add_action_files(FILES
-                 BlockDetection.action
-                 PickAndPlace.action
+                 ToolDetection.action
+                 PickAndDraw.action
                  )
 
 generate_messages(DEPENDENCIES actionlib_msgs geometry_msgs)
