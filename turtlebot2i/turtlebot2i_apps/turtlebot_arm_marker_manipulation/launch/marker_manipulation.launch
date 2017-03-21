@@ -8,6 +8,7 @@
   </node>
 
   <node name="pick_and_draw_action_server" pkg="turtlebot_arm_marker_manipulation" type="pick_and_draw_action_server" output="screen">
+  	<param name="drawing_surface_height" value="0.0058"/> <!-- Dry erase board is 5.8mm thick -->
   </node>
 
 </launch>

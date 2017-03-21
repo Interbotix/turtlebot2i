@@ -65,12 +65,11 @@ private:
 
   // Parameters
   std::string arm_link;
-  double gripper_open, gripper_tighten, gripper_closed, z_down, block_size;
+  double gripper_open, gripper_tighten, gripper_closed, table_height, toolholder_size, tool_size;
 
   turtlebot_arm_marker_manipulation::BlockPoseArray block_list_; //list of the positions and colors of blocks we've found
   
-  int blockIndex;  // block we are working on
-  int blockCount;  // number of blocks found
+  int blockCount;  //number of blocks found
   
 public:
   
@@ -80,24 +79,24 @@ public:
   {
     // Load parameters
     nh_.param<std::string>("arm_link", arm_link, "/arm_link");
-    nh_.param<double>(gripper_param + "/max_opening", gripper_open, 0.042);
-    nh_.param<double>("grip_tighten", gripper_tighten, 0.004);
-    nh_.param<double>("table_height", z_down, 0.0);
-    nh_.param<double>("block_size", block_size, 0.02);  // block size to detect
-    
+    nh_.param<double>(gripper_param + "/max_opening", gripper_open, 0.031);
+    nh_.param<double>("gripper_tighten", gripper_tighten, 0.006); //How far do we tighten the gripper beyond the object size
+    nh_.param<double>("table_height", table_height, 0.0); //Position of the table/workarea in the world
+    nh_.param<double>("toolholder_size", toolholder_size, 0.02);  //Size of toolholder to detect
+    nh_.param<double>("tool_size", tool_size, 0.0185);  //Size of tool to grasp
     nh_.param<bool>("auto_draw", auto_draw_, false); //If we should detect toolholder and automatically execute drawing
 
     // Initialize goals
     tool_detection_goal_.frame = arm_link;
-    tool_detection_goal_.table_height = z_down;
-    tool_detection_goal_.block_size = block_size;
+    tool_detection_goal_.table_height = table_height;
+    tool_detection_goal_.toolholder_size = toolholder_size;
     
     pick_and_draw_goal_.frame = arm_link;
     pick_and_draw_goal_.gripper_open = gripper_open;
-    pick_and_draw_goal_.gripper_closed = block_size - gripper_tighten;
+    pick_and_draw_goal_.gripper_closed = tool_size - gripper_tighten;
     pick_and_draw_goal_.topic = pick_and_draw_topic;
         
-    ROS_INFO("Gripper settings: closed=%.4f block size=%.4f tighten=%.4f", (float)pick_and_draw_goal_.gripper_closed, (float)block_size, (float)gripper_tighten );
+    ROS_INFO("Gripper settings: closed=%.4f block size=%.4f tighten=%.4f", (float)pick_and_draw_goal_.gripper_closed, (float)toolholder_size, (float)gripper_tighten );
     
     ROS_INFO("Finished initializing, waiting for servers...");
     
@@ -125,7 +124,6 @@ public:
     }
     
     blockCount = result->colored_blocks.poses.size();
-    blockIndex = 0;
 
     // Save blocks for later use during sorting
     block_list_.poses.clear();
@@ -175,10 +173,10 @@ public:
     // Return pickup and place poses as the result of the action
     
     start_pose_bumped = start_pose;
-    start_pose_bumped.position.z -= block_size/2.0 - bump_size;
+    start_pose_bumped.position.z -= toolholder_size/2.0 - bump_size;
     
     draw_pose = drawing_pose;
-    draw_pose.position.z -= block_size/2.0 - bump_size;
+    draw_pose.position.z -= toolholder_size/2.0 - bump_size;
     
     // Publish pickup and place poses for visualizing on RViz
     poseMsg.header.frame_id = arm_link;
