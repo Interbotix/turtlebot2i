@@ -216,7 +216,7 @@ int main(int argc, char** argv)
 
   while (ros::ok())
   {
-    //Allow user restarting, in case block detection fails or scene changes
+    //Allow user restarting, in case tool detection fails or scene changes
     std::cout << "d - Detect, m - Move" << std::endl;
     
     std::string instr;

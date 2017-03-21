@@ -125,7 +125,7 @@ public:
 
   void goalCB()
   {
-    ROS_INFO("[block detection] Received goal!");
+    ROS_INFO("[tool detection] Received goal!");
     // accept the new goal
     result_.blocks.poses.clear();
     result_.colored_blocks.poses.clear();
@@ -367,10 +367,10 @@ public:
     {
       as_.setSucceeded(result_);
       block_pub_.publish(result_.blocks);
-      ROS_INFO("[block detection] Succeeded!");
+      ROS_INFO("[tool detection] Succeeded!");
     }
     else
-      ROS_INFO_STREAM("[block detection] Couldn't find any blocks this iteration! Checked " << cluster_indices.size() << " possible clusters.");
+      ROS_INFO_STREAM("[tool detection] Couldn't find any blocks this iteration! Checked " << cluster_indices.size() << " possible clusters.");
     //as_.setAborted(result_);
   }
 

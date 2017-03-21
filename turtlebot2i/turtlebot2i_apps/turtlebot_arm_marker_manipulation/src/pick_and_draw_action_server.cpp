@@ -105,7 +105,7 @@ public:
 
   void goalCB()
   {
-    ROS_INFO("[pick and place] Received goal!");
+    ROS_INFO("[pick and draw] Received goal!");
     goal_ = as_.acceptNewGoal();
     arm_link_ = goal_->frame;
     gripper_open = goal_->gripper_open;
@@ -132,7 +132,7 @@ public:
 
   void sendGoalFromTopic(const geometry_msgs::PoseArrayConstPtr& msg)
   {
-    ROS_INFO("[pick and place] Got goal from topic! %s", goal_->topic.c_str());
+    ROS_INFO("[pick and draw] Got goal from topic! %s", goal_->topic.c_str());
     pickAndDraw(msg->poses[0], msg->poses[1]);
     pick_and_draw_sub_.shutdown();
   }
@@ -148,7 +148,7 @@ public:
   {
     ROS_DEBUG( "[pick_and_draw] Grasping Tool" );
     /* close gripper */
-    if (setGripper( 0.0185 - 0.006 ) == false) //TODO: NOTE: Was closing 4.. 6 has better grip
+    if (setGripper( 0.0185 - 0.006 ) == false) //TODO: use gripper_closed
     {
       ROS_ERROR( "[pick_and_draw] Failed to set gripper opening. Reset and try again." );
       return false;
@@ -292,7 +292,7 @@ public:
   {
     //TODO: Not using draw_pose for drawing location
 
-    ROS_INFO("[pick and place] Picking. Drawing. Also placing.");
+    ROS_INFO("[pick and draw] Picking. Drawing. Also placing.");
 
     geometry_msgs::Pose target_pose;
 
@@ -439,10 +439,10 @@ private:
    */
   bool moveArmTo(const std::string& target)
   {
-    ROS_DEBUG("[pick and place] Move arm to '%s' position", target.c_str());
+    ROS_DEBUG("[pick and draw] Move arm to '%s' position", target.c_str());
     if (arm_.setNamedTarget(target) == false)
     {
-      ROS_ERROR("[pick and place] Set named target '%s' failed", target.c_str());
+      ROS_ERROR("[pick and draw] Set named target '%s' failed", target.c_str());
       return false;
     }
 
@@ -453,7 +453,7 @@ private:
     }
     else
     {
-      ROS_ERROR("[pick and place] Move to target failed (error %d)", result.val);
+      ROS_ERROR("[pick and draw] Move to target failed (error %d)", result.val);
       as_.setAborted(result_);
       return false;
     }
@@ -623,10 +623,10 @@ private:
    */
   bool setGripper(float opening)
   {
-    ROS_DEBUG("[pick and place] Set gripper opening to %f", opening);
+    ROS_DEBUG("[pick and draw] Set gripper opening to %f", opening);
     if (gripper_.setJointValueTarget("gripper_joint", opening) == false)
     {
-      ROS_ERROR("[pick and place] Set gripper opening to %f failed", opening);
+      ROS_ERROR("[pick and draw] Set gripper opening to %f failed", opening);
       return false;
     }
 
@@ -637,7 +637,7 @@ private:
     }
     else
     {
-      ROS_ERROR("[pick and place] Set gripper opening failed (error %d)", result.val);
+      ROS_ERROR("[pick and draw] Set gripper opening failed (error %d)", result.val);
       as_.setAborted(result_);
       return false;
     }
