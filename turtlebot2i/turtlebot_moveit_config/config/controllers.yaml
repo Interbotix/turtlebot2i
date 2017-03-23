@@ -5,8 +5,8 @@ controller_list:
     default: true
     joints:
       - arm_shoulder_pan_joint
-      - arm_shoulder_lift_joint
-      - arm_elbow_flex_joint
+      - arm_bicep_joint
+      - arm_forearm_joint
       - arm_wrist_flex_joint
       - gripper_link_joint
   - name: gripper_controller
