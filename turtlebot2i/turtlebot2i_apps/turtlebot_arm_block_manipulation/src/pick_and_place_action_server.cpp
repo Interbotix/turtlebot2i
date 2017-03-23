@@ -175,7 +175,7 @@ public:
 
     /* move out of camera's view */
     target.position.z = z_up;
-    if (moveArmTo("pose_navigation_alternate") == false)
+    if (moveArmTo("pose_parked") == false)
       return;
 
     as_.setSucceeded(result_);

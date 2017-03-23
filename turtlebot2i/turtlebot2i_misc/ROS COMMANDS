@@ -86,10 +86,8 @@
 {
 	roslaunch turtlebot_arm_pose_director demo.launch
 
-	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_navigation_alternate"}}'
-	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_manipluation"}}'
-	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_navigation"}}'
-	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_docking"}}'
+	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_parked"}}'
+	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_grasping"}}'
 }
 
 //Pincher Arm MoveIt! Demo

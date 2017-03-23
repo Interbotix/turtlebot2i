@@ -424,7 +424,7 @@ public:
     addTool( start_pose );
 
     /* move out of camera's view */
-    if (moveArmTo("pose_navigation_alternate") == false)
+    if (moveArmTo("pose_parked") == false)
       return;
 
     removeTool();
