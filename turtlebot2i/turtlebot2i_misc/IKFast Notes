@@ -1,0 +1,77 @@
+IKFast Notes!
+
+http://sdk.rethinkrobotics.com/wiki/Custom_IKFast_for_your_Baxter
+http://docs.ros.org/kinetic/api/moveit_tutorials/html/doc/ikfast_tutorial.html
+{
+	*Xacro to URDF:
+	rosrun xacro xacro.py -o test.urdf phantomx_pincher_arm.urdf.xacro
+	rosrun collada_urdf urdf_to_collada test.urdf test.dae
+
+	*Round collada numbers. Tutorial command:
+	rosrun moveit_ikfast round_collada_numbers.py
+	Changed to:
+	rosrun moveit_kinematics round_collada_numbers.py
+	rosrun moveit_kinematics round_collada_numbers.py test.dae test_rounded.dae 5
+	rosrun moveit_kinematics round_collada_numbers.py tbarm.dae tbarm_rounded.dae 5
+
+	*View the links of your robot
+	openrave-robot.py robotname.dae --info links
+
+	*View robot in openrave:
+	openrave robotname.dae
+
+	***Create IKFast cpp
+	PINCHER MK3
+	{
+		rosrun collada_urdf urdf_to_collada pincher_arm.urdf pincher_arm.dae
+		rosrun moveit_kinematics round_collada_numbers.py pincher_arm.dae pincher_arm.rounded.dae 5
+		openrave-robot.py pincher_arm.rounded.dae --info links
+		python `openrave-config --python-dir`/openravepy/_openravepy_/ikfast.py --robot=pincher_arm.rounded.dae --iktype=translationdirection5d --baselink=1 --eelink=6 --savefile=./ikfast_correct_tip.cpp -d 1
+	}
+
+	HELP
+	{
+		http://openrave-users-list.185357.n3.nabble.com/Failing-to-generate-IKfast-IK-solver-for-5DOF-arm-td4026859.html
+		openrave.py --database inversekinematics --robot=robot.xml --iktype=TranslationZAxisAngle4D --manipname=manipulator
+	}
+}
+
+https://scaron.info/teaching/installing-openrave-on-ubuntu-16.04.html
+{
+	install dependencies
+	install libs
+	install collada-dom
+	install openscenegraph
+	fcl already installed
+
+	sudo apt-get install cmake g++ git ipython minizip python-dev python-h5py python-numpy python-scipy python-sympy qt4-dev-tools
+
+	sudo apt-get install libassimp-dev libavcodec-dev libavformat-dev libavformat-dev libboost-all-dev libboost-date-time-dev libbullet-dev libfaac-dev libglew-dev libgsm1-dev liblapack-dev liblog4cxx-dev libmpfr-dev libode-dev libogg-dev libpcrecpp0v5 libpcre3-dev libqhull-dev libqt4-dev libsoqt-dev-common libsoqt4-dev libswscale-dev libswscale-dev libvorbis-dev libx264-dev libxml2-dev libxvidcore-dev
+
+	git clone https://github.com/rdiankov/collada-dom.git
+	cd collada-dom && mkdir build && cd build
+	cmake ..
+	make -j4
+	sudo make install
+
+	sudo apt-get install libcairo2-dev libjasper-dev libpoppler-glib-dev libsdl2-dev libtiff5-dev libxrandr-dev
+	git clone --branch OpenSceneGraph-3.4 https://github.com/openscenegraph/OpenSceneGraph.git
+	cd OpenSceneGraph && mkdir build && cd build
+	cmake .. -DDESIRED_QT_VERSION=4
+	make -j4
+	sudo make install
+
+	git clone --branch latest_stable https://github.com/rdiankov/openrave.git
+	cd openrave && mkdir build && cd build
+	cmake .. -DOSG_DIR=/usr/local/lib64/
+	make -j4
+	sudo make install
+
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(openrave-config --python-dir)/openravepy/_openravepy_
+	export PYTHONPATH=$PYTHONPATH:$(openrave-config --python-dir)
+
+	openrave.py --example graspplanning
+}
+
+git clone https://github.com/ros-planning/moveit.git
+sudo apt install ros-kinetic-moveit-resources
