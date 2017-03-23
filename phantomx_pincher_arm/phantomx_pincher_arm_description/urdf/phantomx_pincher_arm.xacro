@@ -5,10 +5,10 @@
 
   <!--joints_vlimit pan_llimit pan_ulimit-->
   <xacro:macro name="phantomx_pincher_arm" params="parent color gripper_color *origin">
-    
+
     <!-- arm base link -->
     <pincher_base parent="${parent}" name="arm_base">
-      <origin xyz="0 0 0.020" rpy="0 0 0"/>
+      <xacro:insert_block name="origin"/>
     </pincher_base>
     <bracket_F2_revolute parent="arm_base_link" name="arm_shoulder_pan" color="${color}"
                          vlimit="${joints_vlimit}" llimit="${pan_llimit}" ulimit="${pan_ulimit}">
