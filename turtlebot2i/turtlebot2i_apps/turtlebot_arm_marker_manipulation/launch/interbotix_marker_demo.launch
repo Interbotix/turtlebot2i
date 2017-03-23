@@ -9,12 +9,11 @@
   <node name="marker_manipulation_demo" pkg="turtlebot_arm_marker_manipulation" type="marker_manipulation_demo" output="screen" >
     <param name="arm_link" value="/arm_base_link" />
     <param name="gripper_open" value="0.031" />
-    <param name="block_size" value="0.02" />
-    <param name="gripper_tighten" value="0.004" />
-    <param name="z_up" value="0.06" />
-    <param name="target_bin_height" value="0.06" />
-    <param name="table_height" value="0.0" />
-  
+    <param name="gripper_tighten" value="0.006" /> <!-- Close the gripper 6mm to ensure tight grip -->
+    <param name="table_height" value="0.0" /> <!-- Relative to base_link -->
+    <param name="toolholder_size" value="0.02" /> <!-- Toolholder is a 2cm block -->
+    <param name="tool_size" value="0.0185"/> <!-- Expo marker is 18.5mm in diameter -->
+    <!--param name="tool_height" value="0.118"/-->
     <param name="auto_draw" value="$(arg auto_draw)" />
 
   </node>

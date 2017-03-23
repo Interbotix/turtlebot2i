@@ -30,9 +30,8 @@
 #include <ros/ros.h>
 
 #include <actionlib/client/simple_action_client.h>
-#include <turtlebot_arm_marker_manipulation/BlockDetectionAction.h>
-#include <turtlebot_arm_marker_manipulation/PickAndPlaceAction.h>
-//#include <turtlebot_arm_marker_manipulation/InteractiveBlockManipulationAction.h>
+#include <turtlebot_arm_marker_manipulation/ToolDetectionAction.h>
+#include <turtlebot_arm_marker_manipulation/PickAndDrawAction.h>
 #include <arbotix_msgs/Relax.h>
 
 #include <geometry_msgs/PoseArray.h>
@@ -41,188 +40,129 @@
 #include <sstream>
 
 const std::string gripper_param = "/gripper_controller";
-const std::string pick_and_place_topic = "/pick_and_place";
+const std::string pick_and_draw_topic = "/pick_and_draw";
 
 namespace turtlebot_arm_marker_manipulation
 {
 
-class BlockManipulationAction
+class MarkerManipulationAction
 {
+public:
+  bool auto_draw_;
+
 private:
   ros::NodeHandle nh_;
   
   geometry_msgs::PoseArray poseMsg;
-  geometry_msgs::Pose start_pose_bumped, end_pose_bumped;
+  geometry_msgs::Pose start_pose_bumped, draw_pose;
   
   // Actions and services
-  actionlib::SimpleActionClient<BlockDetectionAction> block_detection_action_;
-  //actionlib::SimpleActionClient<InteractiveBlockManipulationAction> interactive_manipulation_action_;
-  actionlib::SimpleActionClient<PickAndPlaceAction> pick_and_place_action_;
+  actionlib::SimpleActionClient<ToolDetectionAction> tool_detection_action_;
+  actionlib::SimpleActionClient<PickAndDrawAction> pick_and_draw_action_;
   
-  BlockDetectionGoal block_detection_goal_;
-  //InteractiveBlockManipulationGoal interactive_manipulation_goal_;
-  PickAndPlaceGoal pick_and_place_goal_;
+  ToolDetectionGoal tool_detection_goal_;
+  PickAndDrawGoal pick_and_draw_goal_;
 
   // Parameters
   std::string arm_link;
-  double gripper_open, gripper_tighten, gripper_closed, z_up, z_down, block_size;
+  double gripper_open, gripper_tighten, gripper_closed, table_height, toolholder_size, tool_size;
 
   turtlebot_arm_marker_manipulation::BlockPoseArray block_list_; //list of the positions and colors of blocks we've found
   
-  int blockIndex;  // block we are working on
-  int blockCount;  // number of blocks found
+  int blockCount;  //number of blocks found
   
 public:
-    std::string armMode;
-    bool auto_draw_;
-
-  BlockManipulationAction() : nh_("~"),
-    block_detection_action_("block_detection", true),
-    //interactive_manipulation_action_("interactive_manipulation", true),
-    pick_and_place_action_("pick_and_place", true)
+  
+  MarkerManipulationAction() : nh_("~"),
+    tool_detection_action_("block_detection", true),
+    pick_and_draw_action_("pick_and_draw", true)
   {
     // Load parameters
     nh_.param<std::string>("arm_link", arm_link, "/arm_link");
-    nh_.param<double>(gripper_param + "/max_opening", gripper_open, 0.042);
-    nh_.param<double>("grip_tighten", gripper_tighten, 0.004);
-    nh_.param<double>("z_up", z_up, 0.06);   // amount to lift during move
-    nh_.param<double>("table_height", z_down, 0.0);
-    nh_.param<double>("block_size", block_size, 0.02);  // block size to detect
-
-    nh_.param<bool>("auto_draw", auto_draw_, false); //If we should detect blocks and automatically sort them
+    nh_.param<double>(gripper_param + "/max_opening", gripper_open, 0.031);
+    nh_.param<double>("gripper_tighten", gripper_tighten, 0.006); //How far do we tighten the gripper beyond the object size
+    nh_.param<double>("table_height", table_height, 0.0); //Position of the table/workarea in the world
+    nh_.param<double>("toolholder_size", toolholder_size, 0.02);  //Size of toolholder to detect
+    nh_.param<double>("tool_size", tool_size, 0.0185);  //Size of tool to grasp
+    nh_.param<bool>("auto_draw", auto_draw_, false); //If we should detect toolholder and automatically execute drawing
 
     // Initialize goals
-    block_detection_goal_.frame = arm_link;
-    block_detection_goal_.table_height = z_down;
-    block_detection_goal_.block_size = block_size;
+    tool_detection_goal_.frame = arm_link;
+    tool_detection_goal_.table_height = table_height;
+    tool_detection_goal_.toolholder_size = toolholder_size;
     
-    pick_and_place_goal_.frame = arm_link;
-    pick_and_place_goal_.z_up = z_up;
-    pick_and_place_goal_.gripper_open = gripper_open;
-    pick_and_place_goal_.gripper_closed = block_size - gripper_tighten;
-    pick_and_place_goal_.topic = pick_and_place_topic;
+    pick_and_draw_goal_.frame = arm_link;
+    pick_and_draw_goal_.gripper_open = gripper_open;
+    pick_and_draw_goal_.gripper_closed = tool_size - gripper_tighten;
+    pick_and_draw_goal_.topic = pick_and_draw_topic;
         
-    ROS_INFO("Gripper settings: closed=%.4f block size=%.4f tighten=%.4f", (float)pick_and_place_goal_.gripper_closed, (float)block_size, (float)gripper_tighten );
-    
-    //interactive_manipulation_goal_.block_size = block_size;
-    //interactive_manipulation_goal_.frame = arm_link;
+    ROS_INFO("Gripper settings: closed=%.4f block size=%.4f tighten=%.4f", (float)pick_and_draw_goal_.gripper_closed, (float)toolholder_size, (float)gripper_tighten );
     
     ROS_INFO("Finished initializing, waiting for servers...");
     
-    block_detection_action_.waitForServer();
+    tool_detection_action_.waitForServer();
     ROS_INFO(" 1. Found block_detection server.");
-    
-    //interactive_manipulation_action_.waitForServer();
-    //ROS_INFO(" 2. Found interactive_manipulation server.");
-    
-    pick_and_place_action_.waitForServer();
-    ROS_INFO(" 3. Found pick_and_place server.");
-    
+
+    pick_and_draw_action_.waitForServer();
+    ROS_INFO(" 2. Found pick_and_draw server.");   
   }
   
-  void detectBlocks()
+  void detectTool()
   {
-  // Have Block Detection Server detect blocks and callback "addBlocks" when done
-    block_detection_action_.sendGoal(block_detection_goal_, boost::bind( &BlockManipulationAction::addBlocks, this, _1, _2));
+    // Detect tool location and callback "addTool" when done
+    tool_detection_action_.sendGoal(tool_detection_goal_, boost::bind( &MarkerManipulationAction::addTool, this, _1, _2));
   }
   
-  void addBlocks(const actionlib::SimpleClientGoalState& state, const BlockDetectionResultConstPtr& result)
+  void addTool(const actionlib::SimpleClientGoalState& state, const ToolDetectionResultConstPtr& result)
   {
-    //ROS_INFO(" Got block detection callback. Adding blocks.");
     turtlebot_arm_marker_manipulation::BlockPose block;
     
     if (state != actionlib::SimpleClientGoalState::SUCCEEDED)
     {
-      ROS_ERROR("  Failed! %s",  state.toString().c_str());
+      ROS_ERROR("addTool() Failed! %s",  state.toString().c_str());
       ros::shutdown();
     }
     
     blockCount = result->colored_blocks.poses.size();
-    blockIndex = 0;
 
     // Save blocks for later use during sorting
     block_list_.poses.clear();
     for (unsigned int i=0; i < blockCount; i++)
     {    
       block_list_.poses.push_back( result->colored_blocks.poses[i] );
-      //ROS_INFO("Added block %d x=%f", i, blockList[i].position.x);
     }
-
-    // Add blocks to Interactive Manipulation Server for RViz visualization
-    //interactive_manipulation_action_.sendGoal(interactive_manipulation_goal_, boost::bind( &BlockManipulationAction::pickAndPlace, this, _1, _2));
   }
   
-  void pickAndPlace(const actionlib::SimpleClientGoalState& state /*, const InteractiveBlockManipulationResultConstPtr& result*/)
-  {
-    if (state != actionlib::SimpleClientGoalState::SUCCEEDED)
-    {
-      ROS_ERROR("  Select Marker Failed! %s",  state.toString().c_str());
-      ros::shutdown();
-    }
-    
-    //ROS_INFO(" Got interactive marker callback.");
-    ROS_INFO("Picking and placing...");
-    
-    pick_and_place_action_.sendGoal(pick_and_place_goal_, boost::bind( &BlockManipulationAction::finish, this, _1, _2));
-  }
-  
-  void finish(const actionlib::SimpleClientGoalState& state, const PickAndPlaceResultConstPtr& result)
+  void finish(const actionlib::SimpleClientGoalState& state, const PickAndDrawResultConstPtr& result)
   {
     if (state == actionlib::SimpleClientGoalState::SUCCEEDED)
     {
-      ROS_INFO(" Pick and place - Succeeded!");
+      ROS_INFO(" Pick and draw - Succeeded!");
     }
     else
     {
-      ROS_INFO(" Pick and place - Failed! %s",  state.toString().c_str());
+      ROS_INFO(" Pick and draw - Failed! %s",  state.toString().c_str());
     }
             
-    if (blockIndex < blockCount && armMode == "m")
+    detectTool();
+  }
+  
+  void executeDrawing() 
+  {
+    geometry_msgs::Pose endPose;
+
+    // Verify we only have one detected tool/holder
+    if (blockCount == 1)
     {
-      organizeBlocks();
+      sendDrawGoal(block_list_.poses[0], endPose);
     }
     else
     {
-      detectBlocks();
-    }
-  }
-  
-  //Organize the blocks by color
-  void organizeBlocks() 
-  {
-    ROS_WARN_STREAM( "Organizing Blocks: Block # "<< blockIndex + 1 << ", RGB: " << block_list_.poses[blockIndex].color.r << ", " << block_list_.poses[blockIndex].color.g << ", " << block_list_.poses[blockIndex].color.b );
-    int targetCount;
-    
-    geometry_msgs::Pose endPose;
-    
-    // // This routine calculates the target position for block.
-    // // Blocks which match the target color go to one area, others go to second area
-    // //if (block_list_.poses[blockIndex].color.g > 128.0f )  // Does this block match target color?
-    // if ( block_list_.poses[blockIndex].color.g > block_list_.poses[blockIndex].color.r && block_list_.poses[blockIndex].color.g > block_list_.poses[blockIndex].color.b )
-    // {
-    //   ROS_DEBUG("Block matches target Color");
-    //   endPose.position.x = target_match_x;
-    //   endPose.position.y = target_match_y;
-    // }
-    // else  // Not target color, use alternate destination
-    // {
-    //   ROS_DEBUG("Block is not target Color");
-    //   endPose.position.x = target_discard_x;
-    //   endPose.position.y = target_discard_y;
-    // }
-    // endPose.position.z = target_bin_height;
-    
-    // ROS_DEBUG("Block End Pose x=%.4f y=%.4f z=%.4f", endPose.position.x, endPose.position.y, endPose.position.z);
-    
-    // Go through list of blocks and move them
-    if (blockIndex < blockCount)
-    {
-      moveBlock(block_list_.poses[blockIndex], endPose);
-      blockIndex++;
+      ROS_ERROR( "executeDrawing() failed due to too many detected tool locations" );
     }
   }
     
-  void moveBlock(const turtlebot_arm_marker_manipulation::BlockPose& start_block_pose, const geometry_msgs::Pose& end_pose)
+  void sendDrawGoal(const turtlebot_arm_marker_manipulation::BlockPose& start_block_pose, const geometry_msgs::Pose& drawing_pose)
   {
     geometry_msgs::Pose start_pose;
     start_pose.position = start_block_pose.position;
@@ -233,25 +173,24 @@ public:
     // Return pickup and place poses as the result of the action
     
     start_pose_bumped = start_pose;
-    start_pose_bumped.position.z -= block_size/2.0 - bump_size;
+    start_pose_bumped.position.z -= toolholder_size/2.0 - bump_size;
     
-    end_pose_bumped = end_pose;
-    end_pose_bumped.position.z -= block_size/2.0 - bump_size;
+    draw_pose = drawing_pose;
+    draw_pose.position.z -= toolholder_size/2.0 - bump_size;
     
     // Publish pickup and place poses for visualizing on RViz
     poseMsg.header.frame_id = arm_link;
     poseMsg.header.stamp = ros::Time::now();
     poseMsg.poses.push_back(start_pose_bumped);
-    poseMsg.poses.push_back(end_pose_bumped);
-    //ROS_INFO("Demo publishing to PickNPlace.  PoseX=%.4f", (float) poseMsg.poses[0].position.x);
+    poseMsg.poses.push_back(draw_pose);
     
-    pick_and_place_goal_.pickup_pose = start_pose_bumped;
-    pick_and_place_goal_.place_pose = end_pose_bumped;
-    pick_and_place_goal_.topic = "";
+    pick_and_draw_goal_.pickup_pose = start_pose_bumped;
+    pick_and_draw_goal_.draw_pose = draw_pose;
+    pick_and_draw_goal_.topic = "";
     
-    pick_and_place_action_.sendGoal(pick_and_place_goal_, boost::bind( &BlockManipulationAction::finish, this, _1, _2));
+    pick_and_draw_action_.sendGoal(pick_and_draw_goal_, boost::bind( &MarkerManipulationAction::finish, this, _1, _2));
     
-    pick_and_place_goal_.topic = pick_and_place_topic;  // restore topic
+    pick_and_draw_goal_.topic = pick_and_draw_topic;  // restore topic
    }
  };
 };
@@ -260,7 +199,7 @@ public:
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "marker_manipulation");
-  turtlebot_arm_marker_manipulation::BlockManipulationAction manip;
+  turtlebot_arm_marker_manipulation::MarkerManipulationAction manip;
 
   ros::AsyncSpinner spinner(2);
   spinner.start();
@@ -268,23 +207,21 @@ int main(int argc, char** argv)
   if ( manip.auto_draw_ )
   {
     ros::Duration(2.0).sleep();
-    manip.detectBlocks();
-    manip.armMode="d";
+    manip.detectTool();
     ros::Duration(5.0).sleep();
-    manip.organizeBlocks();
-    manip.armMode="m";
+    manip.executeDrawing();
   }
 
   while (ros::ok())
   {
-    //Allow user restarting, in case block detection fails or scene changes
+    //Allow user restarting, in case tool detection fails or scene changes
     std::cout << "d - Detect, m - Move" << std::endl;
     
     std::string instr;
-    getline (std::cin, instr );
+    getline( std::cin, instr );
      
-    if (instr == "d") {manip.detectBlocks(); manip.armMode="d";}
-    if (instr == "m") {manip.organizeBlocks();manip.armMode="m";}
+    if (instr == "d") { manip.detectTool(); }
+    if (instr == "m") { manip.executeDrawing(); }
   }
 
   spinner.stop();

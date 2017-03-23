@@ -33,7 +33,7 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <geometry_msgs/PoseArray.h>
 #include <actionlib/server/simple_action_server.h>
-#include <turtlebot_arm_marker_manipulation/BlockDetectionAction.h>
+#include <turtlebot_arm_marker_manipulation/ToolDetectionAction.h>
 
 #include <tf/transform_listener.h>
 
@@ -67,13 +67,13 @@ class BlockDetectionServer
 private:
     
   ros::NodeHandle nh_;
-  actionlib::SimpleActionServer<turtlebot_arm_marker_manipulation::BlockDetectionAction> as_;
+  actionlib::SimpleActionServer<turtlebot_arm_marker_manipulation::ToolDetectionAction> as_;
   std::string action_name_;
-  turtlebot_arm_marker_manipulation::BlockDetectionFeedback feedback_;
-  turtlebot_arm_marker_manipulation::BlockDetectionResult result_;
-  turtlebot_arm_marker_manipulation::BlockDetectionGoalConstPtr goal_;
+  turtlebot_arm_marker_manipulation::ToolDetectionFeedback      feedback_;
+  turtlebot_arm_marker_manipulation::ToolDetectionResult        result_;
+  turtlebot_arm_marker_manipulation::ToolDetectionGoalConstPtr  goal_;
   ros::Subscriber sub_;
-  ros::Publisher pub_;
+  ros::Publisher  pub_;
 
   // We use the planning_scene_interface::PlanningSceneInterface to manipulate the world
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
@@ -125,14 +125,14 @@ public:
 
   void goalCB()
   {
-    ROS_INFO("[block detection] Received goal!");
+    ROS_INFO("[tool detection] Received goal!");
     // accept the new goal
     result_.blocks.poses.clear();
     result_.colored_blocks.poses.clear();
 
     goal_ = as_.acceptNewGoal();
     
-    block_size_ = goal_->block_size;
+    block_size_ = goal_->toolholder_size;
     table_height_ = goal_->table_height;
     arm_link_ = goal_->frame;
 
@@ -247,7 +247,7 @@ public:
     std::vector<pcl::PointIndices> cluster_indices;
     pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
     ec.setClusterTolerance(0.005);
-    ec.setMinClusterSize(200); //TODO: this might make a nice parameter: ec.setMinClusterSize(125);
+    ec.setMinClusterSize(200);
     ec.setMaxClusterSize(5000);
     ec.setSearchMethod(tree);
     ec.setInputCloud(cloud_filtered);
@@ -367,10 +367,10 @@ public:
     {
       as_.setSucceeded(result_);
       block_pub_.publish(result_.blocks);
-      ROS_INFO("[block detection] Succeeded!");
+      ROS_INFO("[tool detection] Succeeded!");
     }
     else
-      ROS_INFO_STREAM("[block detection] Couldn't find any blocks this iteration! Checked " << cluster_indices.size() << " possible clusters.");
+      ROS_INFO_STREAM("[tool detection] Couldn't find any blocks this iteration! Checked " << cluster_indices.size() << " possible clusters.");
     //as_.setAborted(result_);
   }
 
