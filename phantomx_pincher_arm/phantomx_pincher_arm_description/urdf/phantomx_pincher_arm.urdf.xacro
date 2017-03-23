@@ -21,7 +21,7 @@
     <link name="base_link"/>
 
     <!-- phantomx_pincher_arm macro //joints_vlimit="${joints_vlimit}" pan_llimit="-2.617" pan_ulimit="2.617// -->
-    <phantomx_pincher_arm parent="base_link" color="Black" gripper_color="Black">
+    <phantomx_pincher_arm parent="base_link" color="White" gripper_color="White">
         <origin xyz="0.12 0.00 0.140"/>
     </phantomx_pincher_arm>
     
