@@ -200,7 +200,7 @@ class controllerGUI(wx.Frame):
 if __name__ == '__main__':
     # initialize GUI
     rospy.init_node('controllerGUI')
-    app = wx.PySimpleApp()
+    app = wx.App(False)
     frame = controllerGUI(None, True)
     app.MainLoop()
 

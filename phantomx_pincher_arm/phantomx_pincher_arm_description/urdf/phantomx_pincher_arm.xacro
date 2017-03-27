@@ -5,31 +5,15 @@
 
   <!--joints_vlimit pan_llimit pan_ulimit-->
   <xacro:macro name="phantomx_pincher_arm" params="parent color gripper_color *origin">
-    <link name="arm_base_link"/>
-    <joint name="arm_base_joint" type="fixed">
+
+    <!-- arm base link -->
+    <pincher_base parent="${parent}" name="arm_base">
       <xacro:insert_block name="origin"/>
-      <parent link="${parent}"/>
-      <child link="arm_base_link"/>
-    </joint>
-
-    <!-- gripper_link -->
-    <link name="gripper_link"/>
-    <joint name="gripper_link_joint" type="revolute">
-      <origin xyz="0 0 0.112" rpy="0 -1.57 0"/> <!--TODO: why does gripper_link have to be outside gripper tip for planning to work?-->
-      <parent link="arm_wrist_flex_link"/>
-      <child link="gripper_link"/>
-      <limit effort="6" velocity="1" lower="-3.14" upper="3.14"/>
-      <axis xyz="1 0 0"/>
-    </joint>
-
-    <!-- shoulder pan joint -->
-    <dynamixel_AX12_fixed parent="arm_base_link" name="arm_shoulder_pan_servo">
-      <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
-    </dynamixel_AX12_fixed>
-    <bioloid_F3_revolute parent="arm_shoulder_pan_servo_link" name="arm_shoulder_pan" color="${color}"
+    </pincher_base>
+    <bracket_F2_revolute parent="arm_base_link" name="arm_shoulder_pan" color="${color}"
                          vlimit="${joints_vlimit}" llimit="${pan_llimit}" ulimit="${pan_ulimit}">
-      <origin xyz="0 ${AX12_WIDTH/2} 0" rpy="${-M_PI/2} ${M_PI/2} ${M_PI}"/>
-    </bioloid_F3_revolute>
+      <origin xyz="0 0 0.020" rpy="0 0 0"/>
+    </bracket_F2_revolute>
     <transmission name="arm_shoulder_pan_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_shoulder_pan_joint">
@@ -42,75 +26,44 @@
     </transmission>
 
     <!-- shoulder lift joint -->
-    <dynamixel_AX12_fixed parent="arm_shoulder_pan_link" name="arm_shoulder_lift_servo">
-      <origin xyz="0 0 ${-AX12_HEIGHT-F10_HEIGHT+0.001}" rpy="0 ${M_PI} 0"/>
-    </dynamixel_AX12_fixed>
-    <bioloid_F4_revolute parent="arm_shoulder_lift_servo_link" name="arm_shoulder_lift" color="${color}"
+    <pincher_bicep parent="arm_shoulder_pan_link" name="arm_bicep" color="${color}"
                          vlimit="${joints_vlimit}" llimit="${shoulder_llimit}" ulimit="${shoulder_ulimit}">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </bioloid_F4_revolute>
-    <bioloid_F10_fixed parent="arm_shoulder_lift_link" name="arm_shoulder_F10_0" color="${color}">
-      <origin xyz="0 0 ${F4_HEIGHT+F10_HEIGHT/2}" rpy="0 0 0"/>
-    </bioloid_F10_fixed>
-    <bioloid_F10_fixed parent="arm_shoulder_F10_0_link" name="arm_shoulder_F10_1" color="${color}">
-      <origin xyz="0 0 ${F10_HEIGHT}" rpy="0 0 0"/>
-    </bioloid_F10_fixed>
-    <bioloid_F10_fixed parent="arm_shoulder_F10_1_link" name="arm_shoulder_F10_2" color="${color}">
-      <origin xyz="0 0 ${F10_HEIGHT}" rpy="0 0 0"/>
-    </bioloid_F10_fixed>
-    <bioloid_F3_fixed parent="arm_shoulder_F10_2_link" name="arm_shoulder_F3_0" color="${color}">
-      <origin xyz="0 0 ${F10_HEIGHT/2}" rpy="0 ${M_PI} 0"/>
-    </bioloid_F3_fixed>
-    <transmission name="arm_shoulder_lift_transmission">
+      <origin xyz="0 0 0.027" rpy="0 0 0"/>
+    </pincher_bicep>
+
+    <transmission name="arm_bicep_transmission">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="arm_shoulder_lift_joint">
+      <joint name="arm_bicep_joint">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
       </joint>
-      <actuator name="arm_shoulder_lift_actuator">
+      <actuator name="arm_bicep_actuator">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
 
     <!-- elbow joint -->
-    <dynamixel_AX12_fixed parent="arm_shoulder_F3_0_link" name="arm_elbow_flex_servo">
-      <origin xyz="0 0 ${-AX12_HEIGHT-F10_HEIGHT+0.001}" rpy="0 ${M_PI} 0"/>
-    </dynamixel_AX12_fixed>
-    <bioloid_F4_revolute parent="arm_elbow_flex_servo_link" name="arm_elbow_flex" color="${color}"
+    <pincher_forearm parent="arm_bicep_link" name="arm_forearm" color="${color}"
                          vlimit="${joints_vlimit}" llimit="${elbow_llimit}" ulimit="${elbow_ulimit}">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </bioloid_F4_revolute>
-    <bioloid_F10_fixed parent="arm_elbow_flex_link" name="arm_elbow_F10_0" color="${color}">
-      <origin xyz="0 0 ${F4_HEIGHT+F10_HEIGHT/2}" rpy="0 0 0"/>
-    </bioloid_F10_fixed>
-    <bioloid_F10_fixed parent="arm_elbow_F10_0_link" name="arm_elbow_F10_1" color="${color}">
-      <origin xyz="0 0 ${F10_HEIGHT}" rpy="0 0 0"/>
-    </bioloid_F10_fixed>
-    <bioloid_F10_fixed parent="arm_elbow_F10_1_link" name="arm_elbow_F10_2" color="${color}">
-      <origin xyz="0 0 ${F10_HEIGHT}" rpy="0 0 0"/>
-    </bioloid_F10_fixed>
-    <bioloid_F3_fixed parent="arm_elbow_F10_2_link" name="arm_elbow_F3_0" color="${color}">
-      <origin xyz="0 0 ${F10_HEIGHT/2}" rpy="0 ${M_PI} 0"/>
-    </bioloid_F3_fixed>
-    <transmission name="arm_elbow_flex_transmission">
+      <origin xyz="0.0325 0 0.104" rpy="0 0 0"/>
+    </pincher_forearm>
+   
+    <transmission name="arm_forearm_transmission">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="arm_elbow_flex_joint">
+      <joint name="arm_forearm_joint">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
       </joint>
-      <actuator name="arm_elbow_flex_actuator">
+      <actuator name="arm_forearm_actuator">
         <hardwareInterface>EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
 
     <!-- wrist joint -->
-    <dynamixel_AX12_fixed parent="arm_elbow_F3_0_link" name="arm_wrist_flex_servo">
-      <origin xyz="0 0 ${-AX12_HEIGHT-F10_HEIGHT+0.001}" rpy="0 ${M_PI} 0"/>
-    </dynamixel_AX12_fixed>
-    <bioloid_F2_revolute parent="arm_wrist_flex_servo_link" name="arm_wrist_flex" color="${color}"
+    <pincher_wrist parent="arm_forearm_link" name="arm_wrist_flex" color="${color}"
                          vlimit="${joints_vlimit}" llimit="${wrist_llimit}" ulimit="${wrist_ulimit}">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </bioloid_F2_revolute>
+      <origin xyz="0.104 0 0" rpy="0 0 0"/>
+    </pincher_wrist>
     <transmission name="arm_wrist_flex_transmission">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="arm_wrist_flex_joint">
@@ -125,6 +78,15 @@
   <!-- gripper -->
   <xacro:include filename="$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_gripper.xacro"/>
 
+<!-- gripper_link -->
+    <link name="gripper_link"/>
+    <joint name="gripper_link_joint" type="revolute">
+      <origin xyz="0.110 0 0" rpy="0 0 0"/>
+      <parent link="arm_wrist_flex_link"/>
+      <child link="gripper_link"/>
+      <limit effort="6" velocity="1" lower="-3.14" upper="3.14"/>
+      <axis xyz="1 0 0"/>
+    </joint>
   <!--gazebo>
       <gripper name="gripper">
         <grasp_check>

@@ -15,10 +15,10 @@
   
   <sensor_astra parent="base_link"/>
 
-  <sensor_sr300  parent="base_link"/>
+  <sensor_sr300 parent="base_link"/>
 
   <phantomx_pincher_arm parent="base_link" color="Red" gripper_color="Red">
-    <origin xyz="0.135 0.0 0.1125"/>
+    <origin xyz="0.145 0.0 0.112"/>
   </phantomx_pincher_arm>
 
 </robot>

@@ -2,16 +2,8 @@
 <!-- Basic URDF components for PhantomX Pincher Arm-->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="M_PI" value="3.14159"/>
-  <xacro:property name="M_SCALE" value="0.001"/>
-  <xacro:property name="F10_HEIGHT" value="0.004"/>
-  <xacro:property name="F4_HEIGHT" value="0.0525"/>
-  <xacro:property name="F3_HEIGHT" value="0.009"/>
-  <xacro:property name="AX12_HEIGHT" value="0.0385"/>
-  <xacro:property name="AX12_WIDTH" value="0.038"/>
-  <xacro:property name="AX12_LENGTH" value="0.050"/>
-  <xacro:property name="F2_HEIGHT" value="0.0265"/>
 
-  <xacro:macro name="arm_mount" params="parent name color *origin">
+  <xacro:macro name="pincher_base" params="parent name *origin">
     <joint name="${name}_joint" type="fixed">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
@@ -19,44 +11,7 @@
     </joint>
 
     <link name="${name}_link">
-      <inertial>
-        <mass value="0.018"/>
-        <origin xyz="0 0 0"/>
-        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
-                 iyy="0.000001" iyz="0.0"
-                 izz="0.000001"/>
-      </inertial>
-
-      <visual>
-        <origin xyz="-0.028 -0.0493 0.014" rpy="0.0 0.0 -${M_PI/2}"/>
-        <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/mount.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
-        </geometry>
-        <material name="${color}"/>
-      </visual>
-
-      <collision>
-        <origin xyz="-0.01 0.0 0.0165" rpy="0.0 0.0 0.0"/>
-        <geometry>
-          <box size="0.074 0.074 0.004"/>
-        </geometry>
-      </collision>
-    </link>
-    
-    <gazebo reference="${name}_link">
-      <material>Gazebo/${color}</material>
-      <gravity>true</gravity>
-    </gazebo>
-  </xacro:macro>
-
-  <xacro:macro name="dynamixel_AX12_fixed" params="parent name *origin">
-    <joint name="${name}_joint" type="fixed">
-      <xacro:insert_block name="origin"/>
-      <parent link="${parent}"/>
-      <child link="${name}_link"/>
-    </joint>
-
-    <link name="${name}_link">
+      <!-- TODO: This inertial field needs doesn't contain reliable data!! -->
       <inertial>
         <mass value="0.055"/>
         <origin xyz="0 0 0"/>
@@ -66,107 +21,31 @@
       </inertial>
 
       <visual>
-        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/ax12_box.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBase.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="Black"/>
       </visual>
 
       <collision>
-        <origin xyz="0.0 0.0 -0.01241" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.025 0.038 0.04762"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBase.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
     </link>
-    
+
     <gazebo reference="${name}_link">
       <material>Gazebo/Black</material>
       <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="bioloid_F10_fixed" params="parent name color *origin">
-    <joint name="${name}_joint" type="fixed">
-      <xacro:insert_block name="origin"/>
-      <parent link="${parent}"/>
-      <child link="${name}_link"/>
-    </joint>
-
-    <link name="${name}_link">
-      <inertial>
-        <mass value="0.004"/>
-        <origin xyz="0 0 0"/>
-        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
-                 iyy="0.000001" iyz="0.0"
-                 izz="0.000001"/>
-      </inertial>
-
-      <visual>
-        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/F10.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
-        </geometry>
-        <material name="${color}"/>
-      </visual>
-
-      <collision>
-        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.025 0.038 0.004"/>
-        </geometry>
-      </collision>
-    </link>
-    
-    <gazebo reference="${name}_link">
-      <material>Gazebo/${color}</material>
-      <gravity>true</gravity>
-    </gazebo>
-  </xacro:macro>
-
-  <xacro:macro name="bioloid_F3_fixed" params="parent name color *origin">
-    <joint name="${name}_joint" type="fixed">
-      <xacro:insert_block name="origin"/>
-      <parent link="${parent}"/>
-      <child link="${name}_link"/>
-    </joint>
-
-    <link name="${name}_link">
-      <inertial>
-        <mass value="0.005"/>
-        <origin xyz="0 0 0"/>
-        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
-                 iyy="0.000001" iyz="0.0"
-                 izz="0.000001"/>
-      </inertial>
-
-      <visual>
-        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/F3.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
-        </geometry>
-        <material name="${color}"/>
-      </visual>
-
-      <collision>
-        <origin xyz="0.0 0.0 -0.0045" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.025 0.038 0.009"/>
-        </geometry>
-      </collision>
-    </link>
-    
-    <gazebo reference="${name}_link">
-      <material>Gazebo/${color}</material>
-      <gravity>true</gravity>
-    </gazebo>
-  </xacro:macro>
-
-  <xacro:macro name="bioloid_F3_revolute" params="parent name color llimit ulimit vlimit *origin">
+  <xacro:macro name="bracket_F2_revolute" params="parent name color llimit ulimit vlimit *origin">
     <joint name="${name}_joint" type="revolute">
       <xacro:insert_block name="origin"/>
-      <axis xyz="0 0 -1"/>
+      <axis xyz="0 0 1"/>
       <limit effort="6" velocity="${vlimit}" lower="${llimit}" upper="${ulimit}"/>
       <dynamics friction="0.13"/>
       <parent link="${parent}"/>
@@ -174,6 +53,7 @@
     </joint>
 
     <link name="${name}_link">
+      <!-- TODO: This inertial field needs doesn't contain reliable data!! -->
       <inertial>
         <mass value="0.008"/>
         <origin xyz="0 0 0"/>
@@ -183,28 +63,28 @@
       </inertial>
 
       <visual>
-        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/F3.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/F2Bracket.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${color}"/>
       </visual>
 
       <collision>
-        <origin xyz="0.0 0.0 -0.0045" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.025 0.038 0.009"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/F2Bracket.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
     </link>
-    
+
     <gazebo reference="${name}_link">
       <material>Gazebo/${color}</material>
       <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="bioloid_F2_revolute" params="parent name color llimit ulimit vlimit *origin">
+  <xacro:macro name="pincher_bicep" params="parent name color llimit ulimit vlimit *origin">
     <joint name="${name}_joint" type="revolute">
       <xacro:insert_block name="origin"/>
       <axis xyz="0 1 0"/>
@@ -215,47 +95,7 @@
     </joint>
 
     <link name="${name}_link">
-      <inertial>
-        <mass value="0.01"/>
-        <origin xyz="0 0 0"/>
-        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
-                 iyy="0.000001" iyz="0.0"
-                 izz="0.000001"/>
-      </inertial>
-
-      <visual>
-        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/F2.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
-        </geometry>
-        <material name="${color}"/>
-      </visual>
-
-      <collision>
-        <origin xyz="0.0 0.0 0.00775" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.025 0.0485 0.0375"/>
-        </geometry>
-      </collision>
-    </link>
-    
-    <gazebo reference="${name}_link">
-      <material>Gazebo/${color}</material>
-      <gravity>true</gravity>
-    </gazebo>
-  </xacro:macro>
-
-  <xacro:macro name="bioloid_F4_revolute" params="parent name color llimit ulimit vlimit *origin">
-    <joint name="${name}_joint" type="revolute">
-      <xacro:insert_block name="origin"/>
-      <axis xyz="0 1 0"/>
-      <limit effort="6" velocity="${vlimit}" lower="${llimit}" upper="${ulimit}"/>
-      <dynamics friction="0.13"/>
-      <parent link="${parent}"/>
-      <child link="${name}_link"/>
-    </joint>
-
-    <link name="${name}_link">
+      <!-- TODO: This inertial field needs doesn't contain reliable data!! -->
       <inertial>
         <mass value="0.016"/>
         <origin xyz="0 0 0"/>
@@ -267,15 +107,15 @@
       <visual>
         <origin xyz=" 0 0 0 " rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/F4.stl" scale="${M_SCALE} ${M_SCALE} ${M_SCALE}"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBicep.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${color}"/>
       </visual>
 
       <collision>
-        <origin xyz="0.0 0.0 0.0215" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.028 0.0485 0.065"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBicep.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
     </link>
@@ -285,37 +125,42 @@
       <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
-  
-  <xacro:macro name="gripper_finger_base" params="parent name color *origin">
-    <joint name="${name}_joint" type="fixed">
+
+  <xacro:macro name="pincher_forearm" params="parent name color llimit ulimit vlimit *origin">
+    <joint name="${name}_joint" type="revolute">
       <xacro:insert_block name="origin"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="6" velocity="${vlimit}" lower="${llimit}" upper="${ulimit}"/>
+      <dynamics friction="0.13"/>
       <parent link="${parent}"/>
       <child link="${name}_link"/>
     </joint>
-    
+
     <link name="${name}_link">
+      <!-- TODO: This inertial field needs doesn't contain reliable data!! -->
       <inertial>
-        <mass value="0.01"/>
+        <mass value="0.016"/>
         <origin xyz="0 0 0"/>
         <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
                  iyy="0.000001" iyz="0.0"
                  izz="0.000001"/>
       </inertial>
+
       <visual>
-        <origin xyz="0.016 0.0 -0.015 " rpy="${M_PI} ${-M_PI/2} ${M_PI/2}"/>
+        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/pincher_finger_base.stl" scale=".01 .01 .01"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherForeArm.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${color}"/>
       </visual>
-      
+
       <collision>
-        <origin xyz="0.015 0 -0.0135" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.002 0.040 0.075"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherForeArm.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
-    </link >
+    </link>
     
     <gazebo reference="${name}_link">
       <material>Gazebo/${color}</material>
@@ -323,9 +168,52 @@
     </gazebo>
   </xacro:macro>
   
-    <xacro:macro name="phantomx_pincher_gripper" params="name color *origin">
-      <link name="${name}_link">
+  <xacro:macro name="pincher_wrist" params="parent name color llimit ulimit vlimit *origin">
+    <joint name="${name}_joint" type="revolute">
+      <xacro:insert_block name="origin"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="6" velocity="${vlimit}" lower="${llimit}" upper="${ulimit}"/>
+      <dynamics friction="0.13"/>
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+
+    <link name="${name}_link">
+      <!-- TODO: This inertial field needs doesn't contain reliable data!! -->
       <inertial>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0"/>
+        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
+                 iyy="0.000001" iyz="0.0"
+                 izz="0.000001"/>
+      </inertial>
+
+      <visual>
+        <origin xyz=" 0 0 0 " rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherWristGripper.stl" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="${color}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherWristGripper.stl" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+    
+    <gazebo reference="${name}_link">
+      <material>Gazebo/${color}</material>
+      <gravity>true</gravity>
+    </gazebo>
+  </xacro:macro>
+  
+  <xacro:macro name="pincher_finger" params="name color *origin">
+    <link name="${name}_link">
+      <inertial>
+        <!-- TODO: This inertial field needs doesn't contain reliable data!! -->
         <mass value="0.01"/>
         <origin xyz="0 0 0"/>
         <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
@@ -335,19 +223,19 @@
       <visual>
         <xacro:insert_block name="origin"/>
         <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/pincher_finger.stl" scale=".01 .01 .01"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherFinger.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${color}"/>
       </visual>
       <collision>
         <xacro:insert_block name="origin"/>
         <geometry>
-          <mesh filename="package://phantomx_pincher_arm_description/meshes/pincher_finger.stl" scale=".0115 .0115 .0115"/>
+          <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherFinger.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
     </link>
   
-      <gazebo reference="${name}_link">
+    <gazebo reference="${name}_link">
       <material>Gazebo/${color}</material>
       <!--selfCollide>true</selfCollide-->
       <gravity>true</gravity>

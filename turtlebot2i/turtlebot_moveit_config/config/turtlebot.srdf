@@ -13,593 +13,128 @@
         <chain base_link="arm_base_link" tip_link="gripper_link" />
     </group>
     <group name="pincher_gripper">
-        <link name="gripper_servo_link" />
         <link name="gripper_active_link" />
         <link name="gripper_active2_link" />
         <joint name="gripper_joint" />
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="pose_navigation" group="pincher_arm">
-        <joint name="arm_elbow_flex_joint" value="1.3514" />
-        <joint name="arm_shoulder_lift_joint" value="2.0163" />
-        <joint name="arm_shoulder_pan_joint" value="0" />
-        <joint name="arm_wrist_flex_joint" value="-1.72" />
-    </group_state>
-    <group_state name="pose_docking" group="pincher_arm">
-        <joint name="arm_elbow_flex_joint" value="2.3273" />
-        <joint name="arm_shoulder_lift_joint" value="-0.9303" />
-        <joint name="arm_shoulder_pan_joint" value="0" />
-        <joint name="arm_wrist_flex_joint" value="-0.6552" />
-    </group_state>
-    <group_state name="pose_manipluation" group="pincher_arm">
-        <joint name="arm_elbow_flex_joint" value="1.17" />
-        <joint name="arm_shoulder_lift_joint" value="-1.2" />
-        <joint name="arm_shoulder_pan_joint" value="0" />
-        <joint name="arm_wrist_flex_joint" value="1.6" />
+    <group_state name="pose_parked" group="pincher_arm">
+        <joint name="arm_bicep_joint" value="-1.57" />
+        <joint name="arm_forearm_joint" value="-1.57" />
+        <joint name="arm_shoulder_pan_joint" value="1.57" />
+        <joint name="arm_wrist_flex_joint" value="-0.4289" />
         <joint name="gripper_link_joint" value="0" />
     </group_state>
-    <group_state name="pose_navigation_alternate" group="pincher_arm">
-        <joint name="arm_elbow_flex_joint" value="1.4569" />
-        <joint name="arm_shoulder_lift_joint" value="-1.8" />
-        <joint name="arm_shoulder_pan_joint" value="-1.545" />
-        <joint name="arm_wrist_flex_joint" value="0.6525" />
+    <group_state name="pose_grasping" group="pincher_arm">
+        <joint name="arm_bicep_joint" value="-0.7477" />
+        <joint name="arm_forearm_joint" value="-0.8112" />
+        <joint name="arm_shoulder_pan_joint" value="0" />
+        <joint name="arm_wrist_flex_joint" value="-1.253" />
         <joint name="gripper_link_joint" value="0" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="main_eef" parent_link="gripper_link" group="pincher_gripper" parent_group="pincher_arm" />
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="world_joint" type="fixed" parent_frame="reference_frame" child_link="base_footprint" />
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
     <passive_joint name="gripper_link_joint" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_elbow_F10_1_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_elbow_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_elbow_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_elbow_flex_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_elbow_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_F10_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_F10_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_elbow_F10_2_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_elbow_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_elbow_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_elbow_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_F10_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_F10_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_1_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_elbow_F3_0_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_elbow_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_elbow_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_F10_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_F10_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F10_2_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_elbow_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_elbow_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_F10_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_F10_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="arm_wrist_flex_servo_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_F3_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_elbow_flex_servo_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_shoulder_F10_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_shoulder_F10_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_F10_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_F10_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_F3_0_link" reason="Adjacent" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_elbow_flex_servo_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_shoulder_F10_1_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_shoulder_F10_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_shoulder_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_shoulder_lift_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_shoulder_F10_2_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_shoulder_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_1_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_shoulder_F3_0_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F10_2_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="arm_shoulder_lift_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="arm_shoulder_lift_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="arm_shoulder_pan_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_F3_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="arm_shoulder_lift_servo_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="arm_shoulder_pan_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="arm_shoulder_pan_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="arm_wrist_F3_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="plate_bottom_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_lift_servo_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="arm_shoulder_pan_servo_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="arm_wrist_flex_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="arm_wrist_flex_servo_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="arm_shoulder_pan_link" reason="Adjacent" />
+    <disable_collisions link1="arm_base_link" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="arm_base_link" link2="camera_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="camera_sr300" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="caster_back_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="caster_front_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="plate_bottom_link" reason="Default" />
+    <disable_collisions link1="arm_base_link" link2="plate_middle_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="plate_top_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="plate_utility_lower_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="plate_utility_upper_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_124mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_124mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_124mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_124mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_209mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_6_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_7_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_38mm_9_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_51mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="arm_forearm_link" reason="Adjacent" />
+    <disable_collisions link1="arm_bicep_link" link2="arm_shoulder_pan_link" reason="Adjacent" />
+    <disable_collisions link1="arm_bicep_link" link2="camera_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="camera_sr300" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="caster_back_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="caster_front_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="plate_top_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="plate_utility_lower_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="plate_utility_upper_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_209mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_6_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_7_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_9_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="arm_wrist_flex_link" reason="Adjacent" />
+    <disable_collisions link1="arm_forearm_link" link2="caster_back_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="gripper_active2_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="gripper_active_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="plate_top_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="plate_utility_upper_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_124mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_124mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_9_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_51mm_5_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="base_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="camera_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="camera_sr300" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="caster_back_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="plate_bottom_link" reason="Default" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="plate_bottom_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="plate_middle_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="plate_utility_lower_link" reason="Never" />
@@ -632,98 +167,13 @@
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_5_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="base_link" reason="Adjacent" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="camera_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="camera_sr300" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="plate_bottom_link" reason="Default" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="plate_middle_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="plate_utility_lower_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_servo_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="arm_wrist_flex_link" reason="Adjacent" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="arm_wrist_flex_servo_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="gripper_servo_link" reason="Adjacent" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_F3_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="arm_wrist_flex_servo_link" reason="Adjacent" />
     <disable_collisions link1="arm_wrist_flex_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="gripper_servo_link" reason="Default" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="plate_top_link" reason="Default" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_124mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="gripper_active2_link" reason="Adjacent" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="gripper_active_link" reason="Adjacent" />
     <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_10_link" reason="Never" />
     <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_11_link" reason="Never" />
     <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_12_link" reason="Never" />
     <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="caster_back_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="gripper_servo_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="plate_top_link" reason="Default" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_servo_link" link2="standoff_51mm_5_link" reason="Never" />
     <disable_collisions link1="base_link" link2="camera_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="camera_sr300" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="caster_back_link" reason="Adjacent" />
@@ -833,9 +283,6 @@
     <disable_collisions link1="camera_sr300" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="caster_front_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="gripper_active2_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="gripper_finger_base_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="gripper_servo_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_bottom_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_middle_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_top_link" reason="Never" />
@@ -903,19 +350,14 @@
     <disable_collisions link1="caster_front_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="gripper_active2_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="gripper_active2_link" link2="gripper_finger_base_link" reason="Default" />
-    <disable_collisions link1="gripper_active2_link" link2="gripper_servo_link" reason="Adjacent" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_10_link" reason="Never" />
     <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="gripper_active_link" link2="gripper_finger_base_link" reason="Default" />
-    <disable_collisions link1="gripper_active_link" link2="gripper_servo_link" reason="Adjacent" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_8_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="gripper_active_link" link2="standoff_38mm_12_link" reason="Never" />
     <disable_collisions link1="gripper_active_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="gripper_finger_base_link" link2="gripper_servo_link" reason="Adjacent" />
-    <disable_collisions link1="gripper_finger_base_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="gripper_finger_base_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="gripper_servo_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="gripper_servo_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="gripper_servo_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_38mm_5_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_middle_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_utility_lower_link" reason="Never" />

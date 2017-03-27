@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+
+<!-- Simplified URDF for PhantomX Pincher Arm MK3 and IKFast-->
+
+<robot name="phantomx_pincher_arm">
+  <link name="base_link"/>
+
+  <joint name="arm_base_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.020"/>
+    <parent link="base_link"/>
+    <child link="arm_base_link"/>
+  </joint>
+  <link name="arm_base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBase.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBase.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="arm_shoulder_pan_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.020"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="6" lower="-2.617" upper="2.617" velocity="1.571"/>
+    <dynamics friction="0.13"/>
+    <parent link="arm_base_link"/>
+    <child link="arm_shoulder_pan_link"/>
+  </joint>
+  <link name="arm_shoulder_pan_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/F2Bracket.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/F2Bracket.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </collision>
+  </link>
+ 
+  <joint name="arm_bicep_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.027"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="6" lower="-2.3" upper="2.3" velocity="1.571"/>
+    <dynamics friction="0.13"/>
+    <parent link="arm_shoulder_pan_link"/>
+    <child link="arm_bicep_link"/>
+  </joint>
+  <link name="arm_bicep_link">
+    <visual>
+      <origin rpy="0 0 0" xyz=" 0 0 0 "/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBicep.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherBicep.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="arm_forearm_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0325 0 0.104"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="6" lower="-2.42" upper="2.38" velocity="1.571"/>
+    <dynamics friction="0.13"/>
+    <parent link="arm_bicep_link"/>
+    <child link="arm_forearm_link"/>
+  </joint>
+  <link name="arm_forearm_link">
+    <visual>
+      <origin rpy="0 0 0" xyz=" 0 0 0 "/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherForeArm.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherForeArm.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="arm_wrist_flex_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.104 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="6" lower="-1.72" upper="1.68" velocity="1.571"/>
+    <dynamics friction="0.13"/>
+    <parent link="arm_forearm_link"/>
+    <child link="arm_wrist_flex_link"/>
+  </joint>
+  <link name="arm_wrist_flex_link">
+    <visual>
+      <origin rpy="0 0 0" xyz=" 0 0 0 "/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherWristGripper.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://phantomx_pincher_arm_description/meshes/PincherWristGripper.stl" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- gripper_link -->
+  <joint name="gripper_link_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.110 0 0"/>
+    <parent link="arm_wrist_flex_link"/>
+    <child link="gripper_link"/>
+    <limit effort="6" lower="-3.14" upper="3.14" velocity="1"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  <link name="gripper_link">
+  </link>
+</robot>

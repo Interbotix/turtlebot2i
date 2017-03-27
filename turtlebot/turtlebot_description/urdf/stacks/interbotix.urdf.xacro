@@ -231,7 +231,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://turtlebot_description/meshes/stacks/interbotix/plate_middle.stl"/>
+          <mesh filename="package://turtlebot_description/meshes/stacks/interbotix/plate_middle.stl" scale="1.1 1.1 1.1"/>
         </geometry>
       </collision>
       <inertial>
@@ -330,7 +330,7 @@
     <standoff_38mm parent="${parent}" number="13" x_loc="-0.104" y_loc="-0.098" z_loc="0.378"/>
 
     <joint name="plate_top_joint" type="fixed">
-      <origin xyz="0.0 0.0 0.3995" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.4375" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_top_link"/>
     </joint>  

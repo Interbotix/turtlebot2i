@@ -5,14 +5,14 @@
     <!-- We can configure joints velocity limit and lower/upper limits
     to allow access to different operational areas, e.g. left handed vs. right handed robot -->
     <xacro:property name="joints_vlimit" value="1.571"/>
-    <xacro:property name="pan_llimit" value="-2.617"/>
-    <xacro:property name="pan_ulimit" value="2.617"/>
-    <xacro:property name="shoulder_llimit" value="-2.3"/>
-    <xacro:property name="shoulder_ulimit" value="2.3"/>
-    <xacro:property name="elbow_llimit" value="-2.42"/>
-    <xacro:property name="elbow_ulimit" value="2.38"/>
-    <xacro:property name="wrist_llimit" value="-1.72"/>
-    <xacro:property name="wrist_ulimit" value="1.68"/>
+    <xacro:property name="pan_llimit" value="-1.74"/>
+    <xacro:property name="pan_ulimit" value="1.74"/>
+    <xacro:property name="shoulder_llimit" value="-1.98"/>
+    <xacro:property name="shoulder_ulimit" value="1.88"/>
+    <xacro:property name="elbow_llimit" value="-1.58"/>
+    <xacro:property name="elbow_ulimit" value="0.59"/>
+    <xacro:property name="wrist_llimit" value="-1.79"/>
+    <xacro:property name="wrist_ulimit" value="1.67"/>
 
     <!-- Included URDF Files -->
     <xacro:include filename="$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_arm.xacro"/>
@@ -21,7 +21,7 @@
     <link name="base_link"/>
 
     <!-- phantomx_pincher_arm macro //joints_vlimit="${joints_vlimit}" pan_llimit="-2.617" pan_ulimit="2.617// -->
-    <phantomx_pincher_arm parent="base_link" color="Black" gripper_color="Black">
+    <phantomx_pincher_arm parent="base_link" color="White" gripper_color="White">
         <origin xyz="0.12 0.00 0.140"/>
     </phantomx_pincher_arm>
     

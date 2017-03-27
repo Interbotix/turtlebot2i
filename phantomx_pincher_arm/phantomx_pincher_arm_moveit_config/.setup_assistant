@@ -1,8 +1,10 @@
 moveit_setup_assistant_config:
   URDF:
     package: phantomx_pincher_arm_description
-    relative_path: urdf/arm.urdf
+    relative_path: urdf/pincher_arm.urdf
   SRDF:
     relative_path: config/phantomx_pincher_arm.srdf
   CONFIG:
-    generated_timestamp: 1400868392
+    author_name: Renee Love
+    author_email: renee@interbotix.com
+    generated_timestamp: 1490227084

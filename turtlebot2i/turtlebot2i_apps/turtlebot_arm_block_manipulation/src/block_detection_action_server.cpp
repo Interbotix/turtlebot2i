@@ -199,8 +199,7 @@ public:
     pass.setInputCloud(cloud_transformed);
     pass.setFilterFieldName("z");
 
-    //pass.setFilterLimits(table_height_ - 0.05, table_height_ + block_size_ + 0.05);
-    pass.setFilterLimits(-0.2,-0.05); //pass.setFilterLimits(table_height_ - 0.05, table_height_ + block_size_ + 0.05);
+    pass.setFilterLimits(table_height_ + table_pose_[2] - 0.05, table_height_ + table_pose_[2] + block_size_ + 0.05);
 
     pass.filter(*cloud_filtered);
     if (cloud_filtered->points.size() == 0)
@@ -374,7 +373,6 @@ public:
       ROS_INFO_STREAM("[block detection] Couldn't find any blocks this iteration! Checked " << cluster_indices.size() << " possible clusters.");
       ros::Duration(2.0).sleep();
     }
-    //as_.setAborted(result_);
   }
 
 private:
