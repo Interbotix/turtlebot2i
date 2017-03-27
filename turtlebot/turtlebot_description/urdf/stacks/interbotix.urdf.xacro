@@ -254,7 +254,7 @@
     <standoff_38mm parent="${parent}" number="9" x_loc="-0.104" y_loc="-0.098" z_loc="0.206"/>
 
     <joint name="plate_utility_lower" type="fixed">
-      <origin xyz="0.0 0.0 0.2275" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.2655" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_utility_lower_link"/>
     </joint>  
