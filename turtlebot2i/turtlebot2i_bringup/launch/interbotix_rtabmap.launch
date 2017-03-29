@@ -30,7 +30,7 @@
   
   <arg name="wait_for_transform"  default="0.2"/> 
   <!-- 
-      robot_state_publisher's publishing frequency in "turtlebot_bringup/launch/includes/robot.launch.xml" 
+      robot_state_publisher's publishing frequency in "turtlebot2i_bringup/launch/includes/robot.launch.xml" 
       can be increase from 5 to 10 Hz to avoid some TF warnings.
   -->
   
