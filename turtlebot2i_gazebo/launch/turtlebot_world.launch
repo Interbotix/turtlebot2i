@@ -32,6 +32,6 @@
     args="-urdf -model turtlebot -param robot_description"/>
 
   <!-- ros_control turtlebot launch file -->
-  <include file="$(find turtlebot_control)/launch/turtlebot_control.launch" />
+  <include file="$(find turtlebot2i_control)/launch/turtlebot2i_control.launch" />
 
 </launch>

@@ -7,7 +7,7 @@
 	roslaunch turtlebot_gazebo turtlebot_world.launch
 
 	*Arm Joint Controllers
-	roslaunch turtlebot_control turtlebot_control.launch
+	roslaunch turtlebot2i_control turtlebot2i_control.launch
 
 	*Manually Command Arm
 	rostopic pub -1 /turtlebot/arm_shoulder_pan_position_controller/command std_msgs/Float64 "data: 0.4"
