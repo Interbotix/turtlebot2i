@@ -49,62 +49,13 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        arm_elbow_F10_0_link:
+          Value: true
+        arm_bicep_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        arm_elbow_F10_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_elbow_F10_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_elbow_F3_0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_elbow_flex_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_elbow_flex_servo_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_shoulder_F10_0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_shoulder_F10_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_shoulder_F10_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_shoulder_F3_0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_shoulder_lift_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_shoulder_lift_servo_link:
+        arm_forearm_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -114,22 +65,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        arm_shoulder_pan_servo_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_wrist_F3_0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         arm_wrist_flex_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        arm_wrist_flex_servo_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -148,6 +84,14 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
         camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_fisheye_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_fisheye_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -217,20 +161,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        gripper_finger_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         gripper_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        gripper_servo_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         gyro_link:
           Alpha: 1
           Show Axes: false
@@ -260,57 +194,17 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        standoff_124mm_0_link:
+        standoff_251mm_0_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        standoff_124mm_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_124mm_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_124mm_3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_209mm_0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_209mm_1_link:
+        standoff_251mm_1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         standoff_38mm_0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_10_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_11_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_12_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_13_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -336,26 +230,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         standoff_38mm_5_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_6_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_7_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_8_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        standoff_38mm_9_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -386,6 +260,66 @@ Visualization Manager:
           Show Trail: false
           Value: true
         standoff_51mm_5_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_10_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_11_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_12_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_13_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_6_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_7_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_8_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_9_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -413,39 +347,13 @@ Visualization Manager:
         All Enabled: false
         arm_base_link:
           Value: true
-        arm_elbow_F10_0_link:
+        arm_bicep_link:
           Value: true
-        arm_elbow_F10_1_link:
-          Value: true
-        arm_elbow_F10_2_link:
-          Value: true
-        arm_elbow_F3_0_link:
-          Value: true
-        arm_elbow_flex_link:
-          Value: true
-        arm_elbow_flex_servo_link:
-          Value: true
-        arm_shoulder_F10_0_link:
-          Value: true
-        arm_shoulder_F10_1_link:
-          Value: true
-        arm_shoulder_F10_2_link:
-          Value: true
-        arm_shoulder_F3_0_link:
-          Value: true
-        arm_shoulder_lift_link:
-          Value: true
-        arm_shoulder_lift_servo_link:
+        arm_forearm_link:
           Value: true
         arm_shoulder_pan_link:
           Value: true
-        arm_shoulder_pan_servo_link:
-          Value: true
-        arm_wrist_F3_0_link:
-          Value: true
         arm_wrist_flex_link:
-          Value: true
-        arm_wrist_flex_servo_link:
           Value: true
         base_footprint:
           Value: true
@@ -454,6 +362,10 @@ Visualization Manager:
         camera_depth_frame:
           Value: true
         camera_depth_optical_frame:
+          Value: true
+        camera_fisheye_frame:
+          Value: true
+        camera_fisheye_optical_frame:
           Value: true
         camera_link:
           Value: true
@@ -485,11 +397,7 @@ Visualization Manager:
           Value: true
         gripper_active_link:
           Value: true
-        gripper_finger_base_link:
-          Value: true
         gripper_link:
-          Value: true
-        gripper_servo_link:
           Value: true
         gyro_link:
           Value: true
@@ -507,27 +415,11 @@ Visualization Manager:
           Value: true
         plate_utility_upper_link:
           Value: true
-        standoff_124mm_0_link:
+        standoff_251mm_0_link:
           Value: true
-        standoff_124mm_1_link:
-          Value: true
-        standoff_124mm_2_link:
-          Value: true
-        standoff_124mm_3_link:
-          Value: true
-        standoff_209mm_0_link:
-          Value: true
-        standoff_209mm_1_link:
+        standoff_251mm_1_link:
           Value: true
         standoff_38mm_0_link:
-          Value: true
-        standoff_38mm_10_link:
-          Value: true
-        standoff_38mm_11_link:
-          Value: true
-        standoff_38mm_12_link:
-          Value: true
-        standoff_38mm_13_link:
           Value: true
         standoff_38mm_1_link:
           Value: true
@@ -538,14 +430,6 @@ Visualization Manager:
         standoff_38mm_4_link:
           Value: true
         standoff_38mm_5_link:
-          Value: true
-        standoff_38mm_6_link:
-          Value: true
-        standoff_38mm_7_link:
-          Value: true
-        standoff_38mm_8_link:
-          Value: true
-        standoff_38mm_9_link:
           Value: true
         standoff_51mm_0_link:
           Value: true
@@ -558,6 +442,30 @@ Visualization Manager:
         standoff_51mm_4_link:
           Value: true
         standoff_51mm_5_link:
+          Value: true
+        standoff_81mm_0_link:
+          Value: true
+        standoff_81mm_10_link:
+          Value: true
+        standoff_81mm_11_link:
+          Value: true
+        standoff_81mm_12_link:
+          Value: true
+        standoff_81mm_13_link:
+          Value: true
+        standoff_81mm_1_link:
+          Value: true
+        standoff_81mm_2_link:
+          Value: true
+        standoff_81mm_3_link:
+          Value: true
+        standoff_81mm_6_link:
+          Value: true
+        standoff_81mm_7_link:
+          Value: true
+        standoff_81mm_8_link:
+          Value: true
+        standoff_81mm_9_link:
           Value: true
         wheel_left_link:
           Value: true
@@ -574,40 +482,26 @@ Visualization Manager:
             base_footprint:
               base_link:
                 arm_base_link:
-                  arm_shoulder_pan_servo_link:
-                    arm_shoulder_pan_link:
-                      arm_shoulder_lift_servo_link:
-                        arm_shoulder_lift_link:
-                          arm_shoulder_F10_0_link:
-                            arm_shoulder_F10_1_link:
-                              arm_shoulder_F10_2_link:
-                                arm_shoulder_F3_0_link:
-                                  arm_elbow_flex_servo_link:
-                                    arm_elbow_flex_link:
-                                      arm_elbow_F10_0_link:
-                                        arm_elbow_F10_1_link:
-                                          arm_elbow_F10_2_link:
-                                            arm_elbow_F3_0_link:
-                                              arm_wrist_flex_servo_link:
-                                                arm_wrist_flex_link:
-                                                  arm_wrist_F3_0_link:
-                                                    gripper_servo_link:
-                                                      gripper_active2_link:
-                                                        {}
-                                                      gripper_active_link:
-                                                        {}
-                                                      gripper_finger_base_link:
-                                                        {}
-                                                  gripper_link:
-                                                    {}
-                camera_rgb_frame:
-                  camera_depth_frame:
-                    camera_depth_optical_frame:
+                  arm_shoulder_pan_link:
+                    arm_bicep_link:
+                      arm_forearm_link:
+                        arm_wrist_flex_link:
+                          gripper_active2_link:
+                            {}
+                          gripper_active_link:
+                            {}
+                          gripper_link:
+                            {}
+                camera_link:
+                  camera_rgb_frame:
+                    camera_depth_frame:
+                      camera_depth_optical_frame:
+                        {}
+                    camera_fisheye_frame:
+                      camera_fisheye_optical_frame:
+                        {}
+                    camera_rgb_optical_frame:
                       {}
-                  camera_link:
-                    {}
-                  camera_rgb_optical_frame:
-                    {}
                 camera_sr300:
                   camera_sr300_rgb_frame:
                     camera_sr300_depth_frame:
@@ -637,27 +531,11 @@ Visualization Manager:
                   {}
                 plate_utility_upper_link:
                   {}
-                standoff_124mm_0_link:
+                standoff_251mm_0_link:
                   {}
-                standoff_124mm_1_link:
-                  {}
-                standoff_124mm_2_link:
-                  {}
-                standoff_124mm_3_link:
-                  {}
-                standoff_209mm_0_link:
-                  {}
-                standoff_209mm_1_link:
+                standoff_251mm_1_link:
                   {}
                 standoff_38mm_0_link:
-                  {}
-                standoff_38mm_10_link:
-                  {}
-                standoff_38mm_11_link:
-                  {}
-                standoff_38mm_12_link:
-                  {}
-                standoff_38mm_13_link:
                   {}
                 standoff_38mm_1_link:
                   {}
@@ -668,14 +546,6 @@ Visualization Manager:
                 standoff_38mm_4_link:
                   {}
                 standoff_38mm_5_link:
-                  {}
-                standoff_38mm_6_link:
-                  {}
-                standoff_38mm_7_link:
-                  {}
-                standoff_38mm_8_link:
-                  {}
-                standoff_38mm_9_link:
                   {}
                 standoff_51mm_0_link:
                   {}
@@ -688,6 +558,30 @@ Visualization Manager:
                 standoff_51mm_4_link:
                   {}
                 standoff_51mm_5_link:
+                  {}
+                standoff_81mm_0_link:
+                  {}
+                standoff_81mm_10_link:
+                  {}
+                standoff_81mm_11_link:
+                  {}
+                standoff_81mm_12_link:
+                  {}
+                standoff_81mm_13_link:
+                  {}
+                standoff_81mm_1_link:
+                  {}
+                standoff_81mm_2_link:
+                  {}
+                standoff_81mm_3_link:
+                  {}
+                standoff_81mm_6_link:
+                  {}
+                standoff_81mm_7_link:
+                  {}
+                standoff_81mm_8_link:
+                  {}
+                standoff_81mm_9_link:
                   {}
                 wheel_left_link:
                   {}
@@ -944,62 +838,13 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          arm_elbow_F10_0_link:
+            Value: true
+          arm_bicep_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          arm_elbow_F10_1_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_elbow_F10_2_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_elbow_F3_0_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_elbow_flex_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_elbow_flex_servo_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_shoulder_F10_0_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_shoulder_F10_1_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_shoulder_F10_2_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_shoulder_F3_0_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_shoulder_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_shoulder_lift_servo_link:
+          arm_forearm_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1009,22 +854,7 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          arm_shoulder_pan_servo_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_wrist_F3_0_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           arm_wrist_flex_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm_wrist_flex_servo_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1043,6 +873,14 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
           camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_fisheye_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_fisheye_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1112,20 +950,10 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          gripper_finger_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           gripper_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          gripper_servo_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           gyro_link:
             Alpha: 1
             Show Axes: false
@@ -1155,57 +983,17 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          standoff_124mm_0_link:
+          standoff_251mm_0_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
-          standoff_124mm_1_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_124mm_2_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_124mm_3_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_209mm_0_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_209mm_1_link:
+          standoff_251mm_1_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
             Value: true
           standoff_38mm_0_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_10_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_11_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_12_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_13_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1231,26 +1019,6 @@ Visualization Manager:
             Show Trail: false
             Value: true
           standoff_38mm_5_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_6_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_7_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_8_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          standoff_38mm_9_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1281,6 +1049,66 @@ Visualization Manager:
             Show Trail: false
             Value: true
           standoff_51mm_5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_0_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_10_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_11_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_12_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_13_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_8_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_9_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1347,24 +1175,24 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.6953671
+      Distance: 0.869117558
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.682144821
-        Y: 0.149365783
-        Z: 1.07288361e-06
+        X: 0.0367159545
+        Y: -0.0260981619
+        Z: 9.23871994e-07
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.0500000007
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.225398257
+      Pitch: 0.380398154
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 2.43227959
+      Yaw: 0.407285929
     Saved: ~
 Window Geometry:
   Displays:
@@ -1380,5 +1208,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1833
-  X: 45
-  Y: 52
+  X: 44
+  Y: 24

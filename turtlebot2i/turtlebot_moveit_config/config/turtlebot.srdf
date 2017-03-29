@@ -50,32 +50,32 @@
     <disable_collisions link1="arm_base_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_base_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_base_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_base_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="arm_forearm_link" reason="Adjacent" />
@@ -87,48 +87,64 @@
     <disable_collisions link1="arm_bicep_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_bicep_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_bicep_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_bicep_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="arm_wrist_flex_link" reason="Adjacent" />
+    <disable_collisions link1="arm_forearm_link" link2="camera_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="camera_sr300" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="caster_back_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="caster_front_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="gripper_active2_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="gripper_active_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="plate_top_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_9_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="arm_forearm_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="arm_forearm_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="base_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="camera_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="camera_sr300" reason="Never" />
@@ -139,41 +155,54 @@
     <disable_collisions link1="arm_shoulder_pan_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="arm_shoulder_pan_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_shoulder_pan_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_wrist_flex_link" link2="caster_back_link" reason="Never" />
     <disable_collisions link1="arm_wrist_flex_link" link2="gripper_active2_link" reason="Adjacent" />
     <disable_collisions link1="arm_wrist_flex_link" link2="gripper_active_link" reason="Adjacent" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="plate_top_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="arm_wrist_flex_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="base_link" link2="camera_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="camera_sr300" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="caster_back_link" reason="Adjacent" />
@@ -183,32 +212,32 @@
     <disable_collisions link1="base_link" link2="plate_top_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="plate_utility_lower_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="plate_utility_upper_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_124mm_0_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_124mm_1_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_124mm_2_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_124mm_3_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_209mm_0_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_209mm_1_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_251mm_0_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_251mm_1_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_38mm_0_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_10_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_11_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_12_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_13_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_38mm_1_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_38mm_2_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_38mm_3_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_38mm_4_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_38mm_5_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_6_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_7_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_8_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="standoff_38mm_9_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_51mm_0_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_51mm_1_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_51mm_2_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_51mm_3_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_51mm_4_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="standoff_51mm_5_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_0_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_10_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_11_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_12_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_13_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_1_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_2_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_3_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_6_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_7_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_8_link" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="standoff_81mm_9_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="wheel_left_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="wheel_right_link" reason="Adjacent" />
     <disable_collisions link1="camera_link" link2="camera_sr300" reason="Never" />
@@ -217,34 +246,34 @@
     <disable_collisions link1="camera_link" link2="plate_bottom_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="plate_middle_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="plate_top_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="plate_utility_lower_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="plate_utility_lower_link" reason="Default" />
     <disable_collisions link1="camera_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="camera_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="camera_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="caster_back_link" reason="Never" />
@@ -254,66 +283,68 @@
     <disable_collisions link1="camera_sr300" link2="plate_top_link" reason="Default" />
     <disable_collisions link1="camera_sr300" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="camera_sr300" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="camera_sr300" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="camera_sr300" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="caster_front_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="gripper_active2_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="gripper_active_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_bottom_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_middle_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="caster_back_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="caster_back_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="caster_back_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="plate_bottom_link" reason="Never" />
@@ -321,569 +352,591 @@
     <disable_collisions link1="caster_front_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="caster_front_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="caster_front_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="caster_front_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="gripper_active2_link" link2="gripper_active_link" reason="Never" />
-    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_8_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="gripper_active_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="gripper_active_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="gripper_active2_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="gripper_active_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_51mm_3_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="gripper_active_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_middle_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_0_link" reason="Default" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_1_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_2_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_3_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_4_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_5_link" reason="Default" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="plate_bottom_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_51mm_0_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_51mm_1_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_51mm_2_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_51mm_3_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_51mm_4_link" reason="Default" />
     <disable_collisions link1="plate_bottom_link" link2="standoff_51mm_5_link" reason="Default" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="plate_bottom_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="plate_bottom_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="plate_top_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_251mm_0_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_251mm_1_link" reason="Default" />
     <disable_collisions link1="plate_middle_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_0_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_1_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_2_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_3_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_4_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_51mm_5_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_6_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_7_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_8_link" reason="Default" />
+    <disable_collisions link1="plate_middle_link" link2="standoff_81mm_9_link" reason="Default" />
     <disable_collisions link1="plate_middle_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="plate_middle_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="plate_utility_lower_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_209mm_0_link" reason="Default" />
-    <disable_collisions link1="plate_top_link" link2="standoff_209mm_1_link" reason="Default" />
+    <disable_collisions link1="plate_top_link" link2="standoff_251mm_0_link" reason="Default" />
+    <disable_collisions link1="plate_top_link" link2="standoff_251mm_1_link" reason="Default" />
     <disable_collisions link1="plate_top_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_10_link" reason="Default" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_11_link" reason="Default" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_12_link" reason="Default" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_13_link" reason="Default" />
     <disable_collisions link1="plate_top_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="plate_top_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_10_link" reason="Default" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_11_link" reason="Default" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_12_link" reason="Default" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_13_link" reason="Default" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="plate_top_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="plate_top_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="plate_utility_upper_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="plate_utility_lower_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_0_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_1_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_2_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_3_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_6_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_7_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_8_link" reason="Default" />
+    <disable_collisions link1="plate_utility_lower_link" link2="standoff_81mm_9_link" reason="Default" />
     <disable_collisions link1="plate_utility_lower_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="plate_utility_lower_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_124mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_209mm_1_link" reason="Never" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_251mm_0_link" reason="Never" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_251mm_1_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_13_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="plate_utility_upper_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_0_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_10_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_11_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_12_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_13_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_1_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_2_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_3_link" reason="Default" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="plate_utility_upper_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="plate_utility_upper_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_124mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_124mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_1_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_124mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_2_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_209mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_124mm_3_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_209mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_209mm_1_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_10_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_251mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_38mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_38mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_51mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_0_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_38mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_38mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_38mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_38mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_38mm_4_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_38mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_51mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_51mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_51mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_51mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_51mm_4_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_251mm_1_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_0_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_0_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_11_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_10_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_12_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_11_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_13_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_12_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_13_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_1_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_1_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_2_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_2_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_38mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_3_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_3_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_38mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_4_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_4_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_38mm_6_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_38mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="standoff_51mm_0_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_38mm_5_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_38mm_5_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_38mm_7_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_6_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_38mm_8_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_7_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_38mm_9_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_8_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="standoff_51mm_0_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="standoff_51mm_1_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="standoff_51mm_2_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="standoff_51mm_3_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="standoff_51mm_4_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="standoff_51mm_5_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="standoff_38mm_9_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="standoff_51mm_1_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_0_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_0_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_1_link" link2="standoff_51mm_2_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_1_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_1_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_1_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_1_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_1_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_1_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_2_link" link2="standoff_51mm_3_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_2_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_2_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_2_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_2_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_2_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_3_link" link2="standoff_51mm_4_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_3_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_3_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_3_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_3_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_4_link" link2="standoff_51mm_5_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_4_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_4_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_4_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_0_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_51mm_5_link" link2="standoff_81mm_9_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_5_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="standoff_51mm_5_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_10_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_0_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_11_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_10_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_12_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_11_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_13_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_12_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_1_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_13_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="standoff_81mm_2_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_1_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="standoff_81mm_3_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_2_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_3_link" link2="standoff_81mm_6_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_3_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_3_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_3_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_3_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_3_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_6_link" link2="standoff_81mm_7_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_6_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_6_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_6_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_6_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_7_link" link2="standoff_81mm_8_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_7_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_7_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_7_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_8_link" link2="standoff_81mm_9_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_8_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_8_link" link2="wheel_right_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_9_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="standoff_81mm_9_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="wheel_left_link" link2="wheel_right_link" reason="Never" />
 </robot>
