@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Describe URDF for PhantomX Pincher Arm -->
+<robot name="phantomx_pincher_arm" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- We can configure joints velocity limit and lower/upper limits
+          to allow access to different operational areas, e.g. left handed vs. right handed robot -->
+    <xacro:property name="joints_vlimit" value="1.571"/>
+    <xacro:property name="pan_llimit" value="-1.74"/>
+    <xacro:property name="pan_ulimit" value="1.74"/>
+    <xacro:property name="shoulder_llimit" value="-1.98"/>
+    <xacro:property name="shoulder_ulimit" value="1.88"/>
+    <xacro:property name="elbow_llimit" value="-1.58"/>
+    <xacro:property name="elbow_ulimit" value="0.59"/>
+    <xacro:property name="wrist_llimit" value="-1.79"/>
+    <xacro:property name="wrist_ulimit" value="1.67"/>
+
+    <!-- Included URDF Files -->
+    <xacro:include filename="$(find phantomx_pincher_arm_description)/urdf/phantomx_pincher_arm.xacro" />
+    
+</robot>

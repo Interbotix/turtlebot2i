@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 	
-	<include file="$(find turtlebot_bringup)/launch/interbotix.launch" />
+	<include file="$(find turtlebot2i_bringup)/launch/interbotix.launch" />
 
 	<!--  ************* Moveit config stuff *************  -->
 
