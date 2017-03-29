@@ -23,8 +23,8 @@
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <!--param name="robot_description"
-    command="$(find xacro)/xacro -/-inorder '$(find turtlebot_description)/urdf/rrbot.xacro'" /-->
-  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find turtlebot_description)/robots/$(arg base)_$(arg stacks)_$(arg 3d_sensor).urdf.xacro'" />
+    command="$(find xacro)/xacro -/-inorder '$(find turtlebot2i_description)/urdf/rrbot.xacro'" /-->
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find turtlebot2i_description)/robots/$(arg base)_$(arg stacks)_$(arg 3d_sensor).urdf.xacro'" />
   <param name="robot_description" command="$(arg urdf_file)" />
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->

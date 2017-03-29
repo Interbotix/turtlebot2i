@@ -3,7 +3,7 @@
 <launch>
   <!-- 
        Bringup Turtlebot:
-       $ roslaunch turtlebot_bringup minimal.launch
+       $ roslaunch turtlebot2i_bringup minimal.launch
        
        Mapping:
        $ roslaunch rtabmap_ros demo_turtlebot_mapping.launch
