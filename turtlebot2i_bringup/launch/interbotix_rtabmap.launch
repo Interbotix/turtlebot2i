@@ -37,7 +37,6 @@
   <!-- 3D Sensor(s) -->
   <include file="$(find turtlebot2i_bringup)/launch/interbotix_3dsensor.launch"/>
   <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" />
-  <arg name="3d_sensor2" default="$(env TURTLEBOT_3D_SENSOR2)" />
 
   <!-- Navigation stuff (move_base) -->
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
@@ -78,9 +77,9 @@
 	  <param name="RGBD/LinearUpdate"            type="string" value="0.1"/>    <!-- Update map only if the robot is moving -->
 	  <param name="Rtabmap/TimeThr"              type="string" value="700"/>
 	  <param name="Mem/RehearsalSimilarity"      type="string" value="0.30"/>
-	  <param name="Optimizer/Slam2D"             type="string" value="true"/>
 	  <param name="Reg/Force3DoF"                type="string" value="true"/>   
-	  
+	  <param name="Grid/FromDepth"               type="string" value="false"/>
+
 	  <!-- localization mode -->
 	  <param     if="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="false"/>
 	  <param unless="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="true"/>
