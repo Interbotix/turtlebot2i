@@ -5,6 +5,6 @@
   <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
 
   <!-- load controller_list -->
-  <rosparam file="$(find turtlebot_moveit_config)/config/controllers.yaml"/>
+  <rosparam file="$(find turtlebot2i_moveit_config)/config/controllers.yaml"/>
 
 </launch>

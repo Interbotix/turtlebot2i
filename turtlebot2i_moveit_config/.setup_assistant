@@ -3,7 +3,7 @@ moveit_setup_assistant_config:
     package: turtlebot2i_description
     relative_path: robots/kobuki_interbotix_zr300.urdf.xacro
   SRDF:
-    relative_path: config/turtlebot.srdf
+    relative_path: config/turtlebot2i.srdf
   CONFIG:
     author_name: Renee Love
     author_email: renee@interbotix.com

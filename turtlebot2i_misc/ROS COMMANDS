@@ -91,7 +91,7 @@
 {
 	*On robot
 	roslaunch turtlebot2i_bringup interbotix.launch
-	roslaunch turtlebot_moveit_config turtlebot_moveit.launch sim:=false
+	roslaunch turtlebot2i_moveit_config turtlebot_moveit.launch sim:=false
 
 	*Off robot
 	roslaunch phantomx_pincher_arm_bringup arm.launch
