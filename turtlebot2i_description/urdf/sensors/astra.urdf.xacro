@@ -6,12 +6,10 @@
   <!-- Xacro properties -->
   <xacro:property name="astra_cam_px" value="-0.050"/>
   <xacro:property name="astra_cam_py" value="0.0"/>
-  <xacro:property name="astra_cam_pz" value="0.3051"/>
+  <xacro:property name="astra_cam_pz" value="0.3051"/> <!--Sensor base is ~34.6mm below origin-->
 
   <xacro:property name="astra_depth_rel_rgb_py" value="0.038" />
   <xacro:property name="astra_cam_rel_rgb_py"   value="0.012" />
-
-  <xacro:property name="astra_dae_display_scale"   value="1.0" />
 
   <!-- Parameterised in part by properties above -->
   <xacro:macro name="sensor_astra" params="parent">
@@ -40,7 +38,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://turtlebot2i_description/meshes/sensors/astra_new.stl" scale="${astra_dae_display_scale} ${astra_dae_display_scale} ${astra_dae_display_scale}"/>
+          <mesh filename="package://turtlebot2i_description/meshes/sensors/astra_new.stl"/>
         </geometry>
         <xacro:insert_block name="material_black"/>
       </visual>
