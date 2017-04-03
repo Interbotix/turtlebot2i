@@ -27,5 +27,5 @@
 
   <include file="$(find kobuki_auto_docking)/launch/standalone.launch" />
 
-  <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_zoning_demo)/rviz/zoning_demo_config.rviz" />
+  <include if="$(arg rviz)" file="$(find turtlebot2i_bringup)/launch/rviz.launch"/>
 </launch>

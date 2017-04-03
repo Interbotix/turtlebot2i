@@ -1,0 +1,1212 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /PlanningScene1/Scene Geometry1
+      Splitter Ratio: 0.401459992
+    Tree Height: 329
+  - Class: rviz/Help
+    Name: Help
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        arm_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_bicep_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_forearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_shoulder_pan_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm_wrist_flex_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_fisheye_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_fisheye_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_sr300:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_sr300_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_sr300_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_sr300_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_sr300_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        caster_back_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_front_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        cliff_sensor_front_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        cliff_sensor_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        cliff_sensor_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        gripper_active2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper_active_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        gripper_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        gyro_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        plate_bottom_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        plate_middle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        plate_top_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        plate_utility_lower_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        plate_utility_upper_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_251mm_0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_251mm_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_38mm_0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_38mm_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_38mm_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_38mm_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_38mm_4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_38mm_5_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_51mm_0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_51mm_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_51mm_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_51mm_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_51mm_4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_51mm_5_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_10_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_11_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_12_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_13_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_6_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_7_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_8_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        standoff_81mm_9_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        arm_base_link:
+          Value: true
+        arm_bicep_link:
+          Value: true
+        arm_forearm_link:
+          Value: true
+        arm_shoulder_pan_link:
+          Value: true
+        arm_wrist_flex_link:
+          Value: true
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
+        camera_depth_frame:
+          Value: true
+        camera_depth_optical_frame:
+          Value: true
+        camera_fisheye_frame:
+          Value: true
+        camera_fisheye_optical_frame:
+          Value: true
+        camera_link:
+          Value: true
+        camera_rgb_frame:
+          Value: true
+        camera_rgb_optical_frame:
+          Value: true
+        camera_sr300:
+          Value: true
+        camera_sr300_depth_frame:
+          Value: true
+        camera_sr300_depth_optical_frame:
+          Value: true
+        camera_sr300_rgb_frame:
+          Value: true
+        camera_sr300_rgb_optical_frame:
+          Value: true
+        caster_back_link:
+          Value: true
+        caster_front_link:
+          Value: true
+        cliff_sensor_front_link:
+          Value: true
+        cliff_sensor_left_link:
+          Value: true
+        cliff_sensor_right_link:
+          Value: true
+        gripper_active2_link:
+          Value: true
+        gripper_active_link:
+          Value: true
+        gripper_link:
+          Value: true
+        gyro_link:
+          Value: true
+        map:
+          Value: true
+        odom:
+          Value: true
+        plate_bottom_link:
+          Value: true
+        plate_middle_link:
+          Value: true
+        plate_top_link:
+          Value: true
+        plate_utility_lower_link:
+          Value: true
+        plate_utility_upper_link:
+          Value: true
+        standoff_251mm_0_link:
+          Value: true
+        standoff_251mm_1_link:
+          Value: true
+        standoff_38mm_0_link:
+          Value: true
+        standoff_38mm_1_link:
+          Value: true
+        standoff_38mm_2_link:
+          Value: true
+        standoff_38mm_3_link:
+          Value: true
+        standoff_38mm_4_link:
+          Value: true
+        standoff_38mm_5_link:
+          Value: true
+        standoff_51mm_0_link:
+          Value: true
+        standoff_51mm_1_link:
+          Value: true
+        standoff_51mm_2_link:
+          Value: true
+        standoff_51mm_3_link:
+          Value: true
+        standoff_51mm_4_link:
+          Value: true
+        standoff_51mm_5_link:
+          Value: true
+        standoff_81mm_0_link:
+          Value: true
+        standoff_81mm_10_link:
+          Value: true
+        standoff_81mm_11_link:
+          Value: true
+        standoff_81mm_12_link:
+          Value: true
+        standoff_81mm_13_link:
+          Value: true
+        standoff_81mm_1_link:
+          Value: true
+        standoff_81mm_2_link:
+          Value: true
+        standoff_81mm_3_link:
+          Value: true
+        standoff_81mm_6_link:
+          Value: true
+        standoff_81mm_7_link:
+          Value: true
+        standoff_81mm_8_link:
+          Value: true
+        standoff_81mm_9_link:
+          Value: true
+        wheel_left_link:
+          Value: true
+        wheel_right_link:
+          Value: true
+      Marker Scale: 0.100000001
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                arm_base_link:
+                  arm_shoulder_pan_link:
+                    arm_bicep_link:
+                      arm_forearm_link:
+                        arm_wrist_flex_link:
+                          gripper_active2_link:
+                            {}
+                          gripper_active_link:
+                            {}
+                          gripper_link:
+                            {}
+                camera_link:
+                  camera_rgb_frame:
+                    camera_depth_frame:
+                      camera_depth_optical_frame:
+                        {}
+                    camera_fisheye_frame:
+                      camera_fisheye_optical_frame:
+                        {}
+                    camera_rgb_optical_frame:
+                      {}
+                camera_sr300:
+                  camera_sr300_rgb_frame:
+                    camera_sr300_depth_frame:
+                      camera_sr300_depth_optical_frame:
+                        {}
+                    camera_sr300_rgb_optical_frame:
+                      {}
+                caster_back_link:
+                  {}
+                caster_front_link:
+                  {}
+                cliff_sensor_front_link:
+                  {}
+                cliff_sensor_left_link:
+                  {}
+                cliff_sensor_right_link:
+                  {}
+                gyro_link:
+                  {}
+                plate_bottom_link:
+                  {}
+                plate_middle_link:
+                  {}
+                plate_top_link:
+                  {}
+                plate_utility_lower_link:
+                  {}
+                plate_utility_upper_link:
+                  {}
+                standoff_251mm_0_link:
+                  {}
+                standoff_251mm_1_link:
+                  {}
+                standoff_38mm_0_link:
+                  {}
+                standoff_38mm_1_link:
+                  {}
+                standoff_38mm_2_link:
+                  {}
+                standoff_38mm_3_link:
+                  {}
+                standoff_38mm_4_link:
+                  {}
+                standoff_38mm_5_link:
+                  {}
+                standoff_51mm_0_link:
+                  {}
+                standoff_51mm_1_link:
+                  {}
+                standoff_51mm_2_link:
+                  {}
+                standoff_51mm_3_link:
+                  {}
+                standoff_51mm_4_link:
+                  {}
+                standoff_51mm_5_link:
+                  {}
+                standoff_81mm_0_link:
+                  {}
+                standoff_81mm_10_link:
+                  {}
+                standoff_81mm_11_link:
+                  {}
+                standoff_81mm_12_link:
+                  {}
+                standoff_81mm_13_link:
+                  {}
+                standoff_81mm_1_link:
+                  {}
+                standoff_81mm_2_link:
+                  {}
+                standoff_81mm_3_link:
+                  {}
+                standoff_81mm_6_link:
+                  {}
+                standoff_81mm_7_link:
+                  {}
+                standoff_81mm_8_link:
+                  {}
+                standoff_81mm_9_link:
+                  {}
+                wheel_left_link:
+                  {}
+                wheel_right_link:
+                  {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rtabmap_ros/MapCloud
+      Cloud decimation: 4
+      Cloud max depth (m): 4
+      Cloud min depth (m): 0
+      Cloud voxel size (m): 0.00999999978
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Download graph: false
+      Download map: false
+      Enabled: true
+      Filter ceiling (m): 0
+      Filter floor (m): 0
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: MapCloud
+      Node filtering angle (degrees): 30
+      Node filtering radius (m): 0
+      Position Transformer: XYZ
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /rtabmap/mapData
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 2
+      Size (m): 0.00999999978
+      Style: Points
+      Topic: /camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 71; 255; 15
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 1
+      Size (m): 0.00499999989
+      Style: Points
+      Topic: /camera_sr300/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /camera/rgb/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /camera_sr300/rgb/image_rect_color
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Value: true
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /move_base/local_costmap/costmap
+      Unreliable: false
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /zone_visualization_marker
+      Name: MarkerArray
+      Namespaces:
+        turtlebot_zones: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /zone_destination_marker
+      Name: MarkerArray
+      Namespaces:
+        turtlebot_destinations: true
+      Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.100000001
+      Class: rviz/Pose
+      Color: 220; 220; 220
+      Enabled: true
+      Head Length: 0.0199999996
+      Head Radius: 0.0199999996
+      Name: Pick/Place Pose
+      Shaft Length: 0.0799999982
+      Shaft Radius: 0.00999999978
+      Shape: Arrow
+      Topic: /gripper_pose
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Axes Length: 0.100000001
+      Axes Radius: 0.00800000038
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.300000012
+      Head Radius: 0.100000001
+      Name: Pose
+      Shaft Length: 1
+      Shaft Radius: 0.0500000007
+      Shape: Axes
+      Topic: /target_pose
+      Unreliable: false
+      Value: true
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: true
+      Name: InteractiveMarkers
+      Show Axes: true
+      Show Descriptions: true
+      Show Visual Aids: true
+      Update Topic: /block_controls/update
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /block_detection_action_server/block_output
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: moveit_rviz_plugin/PlanningScene
+      Enabled: true
+      Move Group Namespace: ""
+      Name: PlanningScene
+      Planning Scene Topic: move_group/monitored_planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 0.200000003
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.200000003
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          All Links Enabled: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+          arm_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          arm_bicep_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          arm_forearm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          arm_shoulder_pan_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          arm_wrist_flex_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_footprint:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_fisheye_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_fisheye_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_sr300:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_sr300_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_sr300_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_sr300_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_sr300_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          caster_back_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          caster_front_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          cliff_sensor_front_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cliff_sensor_left_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          cliff_sensor_right_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          gripper_active2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          gripper_active_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          gripper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          gyro_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          plate_bottom_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          plate_middle_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          plate_top_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          plate_utility_lower_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          plate_utility_upper_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_251mm_0_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_251mm_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_38mm_0_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_38mm_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_38mm_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_38mm_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_38mm_4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_38mm_5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_51mm_0_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_51mm_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_51mm_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_51mm_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_51mm_4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_51mm_5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_0_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_10_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_11_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_12_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_13_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_8_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          standoff_81mm_9_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wheel_left_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wheel_right_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Robot Alpha: 1
+        Show Robot Collision: false
+        Show Robot Visual: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/Measure
+  Value: true
+  Views:
+    Current:
+      Class: rviz/XYOrbit
+      Distance: 0.869117558
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0.0367159545
+        Y: -0.0260981619
+        Z: 9.23871994e-07
+      Focal Shape Fixed Size: false
+      Focal Shape Size: 0.0500000007
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.380398154
+      Target Frame: base_link
+      Value: XYOrbit (rviz)
+      Yaw: 0.407285929
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 962
+  Help:
+    collapsed: false
+  Hide Left Dock: false
+  Hide Right Dock: true
+  Image:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd00000001000000000000017300000363fc0200000008fb000000100044006900730070006c00610079007301000000410000018a000000d700fffffffb0000000800480065006c00700000000342000000bb0000007300fffffffb0000000a0056006900650077007300000001d8000000bc000000ad00fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001d1000000f10000001600fffffffb0000000a0049006d00610067006501000002c8000000dc0000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000005b00000036300000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Views:
+    collapsed: false
+  Width: 1833
+  X: 44
+  Y: 24
