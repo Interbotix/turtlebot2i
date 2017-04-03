@@ -17,7 +17,7 @@
 	roslaunch turtlebot2i_bringup turtlebot2i_basic.launch
 
 	*To bring up the full robot with mapping, arm pose manager, moveit and zone detection:
-	roslaunch turtlebot2i_bringup interbotix_demo1.launch
+	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch
 		No parameters: Mapping will resume using last ~/.ros/rtabmap.db
 		Optional parameters:
 			new_rtabmap:=true 	*Delete rtabmap.db on start
@@ -26,16 +26,16 @@
 			rtabmapviz:=true 	*Load RTAB-Map GUI with launch
 
 }
-//Interbotix Demos 1 & 2 (WIP)
+//Turtlebot2i Demos
 { 
 	*To resume mapping:
-	roslaunch turtlebot2i_bringup interbotix_demo1.launch
+	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch
 
 	*To start a new map:
-	roslaunch turtlebot2i_bringup interbotix_demo1.launch new_rtabmap:=true
+	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch new_rtabmap:=true
 
 	*To use existing map for localization purposes only:
-	roslaunch turtlebot2i_bringup interbotix_demo1.launch localization:=true
+	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch localization:=true
 
 	*Drive around then when the markers have been identified you can publish a zone destination request:
 	rostopic pub /zone_destination_request std_msgs/String "charging_zone"
@@ -50,10 +50,10 @@
 	menu [Perspectives] / [Import...] and import /rqt_perspectives/NewTest.perspective
 
 	*To start the block sorting demo at a docking station:
-	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch at_dock:=true
+	roslaunch turtlebot_arm_block_manipulation block_sorting_demo.launch at_dock:=true
 
 	*To start the block sorting demo (green on the right, others on the left) (sorting into bins expected to be about 77mm in height):
-	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch
+	roslaunch turtlebot_arm_block_manipulation block_sorting_demo.launch
 }
 
 //Arm Tool Detection and Marker Handling (WIP)
@@ -61,10 +61,10 @@
 //Works well on dry erase board with low friction
 {
 	*Bring up robot with arm and moveit:
-	roslaunch turtlebot2i_bringup interbotix_demo1.launch new_rtabmap:=true
+	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch new_rtabmap:=true
 
 	*Start tool detection and pick and draw action servers:
-	roslaunch turtlebot_arm_marker_manipulation interbotix_marker_demo.launch
+	roslaunch turtlebot_arm_marker_manipulation marker_demo.launch
 }
 
 //Arm Block/2cm Object Sorting & Interactive Manipulation
@@ -72,10 +72,10 @@
 //Blocks can be clicked and moved in RViz and will be repositioned by the robot
 {
 	*Bring up robot with arm and moveit:
-	roslaunch turtlebot2i_bringup interbotix_demo1.launch new_rtabmap:=true
+	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch new_rtabmap:=true
 
 	*Start block detection, interactive manipulation and pickandplace action servers:
-	roslaunch turtlebot_arm_block_manipulation interbotix_block_sorting.launch at_dock:=true/false auto_sort:=false/true
+	roslaunch turtlebot_arm_block_manipulation block_sorting_demo.launch at_dock:=true/false auto_sort:=false/true
 }
 
 //Custom arm_pose_director (action server) with CLI example
