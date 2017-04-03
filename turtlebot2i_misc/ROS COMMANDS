@@ -14,7 +14,7 @@
 //Bringup up the robot
 {
 	*To bring up the base, arm and sensors only:
-	roslaunch turtlebot2i_bringup interbotix.launch
+	roslaunch turtlebot2i_bringup turtlebot2i_basic.launch
 
 	*To bring up the full robot with mapping, arm pose manager, moveit and zone detection:
 	roslaunch turtlebot2i_bringup interbotix_demo1.launch
@@ -90,7 +90,7 @@
 //Pincher Arm MoveIt! Demo
 {
 	*On robot
-	roslaunch turtlebot2i_bringup interbotix.launch
+	roslaunch turtlebot2i_bringup turtlebot2i_basic.launch
 	roslaunch turtlebot2i_moveit_config turtlebot_moveit.launch sim:=false
 
 	*Off robot
