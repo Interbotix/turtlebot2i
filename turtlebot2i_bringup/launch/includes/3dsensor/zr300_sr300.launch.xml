@@ -1,4 +1,4 @@
-<!-- Launch file for using ZR300 and SR300 RealSense cameras with RGBD -->
+<!-- Launch file for using ZR300 and SR300 RealSense cameras at the same time -->
 <launch>
   <arg name="depth_registration"  default=""/> <!--TODO: required to be included from 3dsensor.launch-->
   <arg name="camera"              default=""/> <!--TODO: required to be included from 3dsensor.launch-->
@@ -31,7 +31,7 @@
     <param name="$(arg camera)/driver/color_width"         type="int"  value="640" />
     <param name="$(arg camera)/driver/color_height"         type="int"  value="480" />
 
-    <include file="$(find turtlebot2i_bringup)/launch/realsense_nodelet.launch.xml">
+    <include file="$(find turtlebot2i_bringup)/launch/includes/3dsensor/realsense_nodelet.launch.xml">
       <arg name="manager"      value="/$(arg manager)" />
       <arg name="camera"       value="$(arg camera1)" />
       <arg name="camera_type"  value="$(arg camera1_camera_type)" />
