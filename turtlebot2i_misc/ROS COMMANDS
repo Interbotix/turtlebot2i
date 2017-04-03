@@ -22,7 +22,7 @@
 		Optional parameters:
 			new_rtabmap:=true 	*Delete rtabmap.db on start
 			localization:=true  *Use rtabmap for localization (existing map)
-			rviz:=false			*Supress loading RViz (terminal/Joule)
+			rviz:=true			*Load RViz with launch (local/NUC)
 			rtabmapviz:=true 	*Load RTAB-Map GUI with launch
 
 }
