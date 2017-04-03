@@ -1,27 +1,6 @@
 <?xml version="1.0"?>
 
 <launch>
-  <!-- 
-       Bringup Turtlebot:
-       $ roslaunch turtlebot2i_bringup minimal.launch
-       
-       Mapping:
-       $ roslaunch rtabmap_ros demo_turtlebot_mapping.launch
-       
-       Visualization:
-       $ roslaunch rtabmap_ros demo_turtlebot_rviz.launch
-       
-       This launch file is a one to one replacement of the gmapping_demo.launch in the 
-       "SLAM Map Building with TurtleBot" tutorial:
-       http://wiki.ros.org/turtlebot_navigation/Tutorials/indigo/Build%20a%20map%20with%20SLAM
-       
-       For localization-only after a mapping session, add argument "localization:=true" to
-       demo_turtlebot_mapping.launch line above. Move the robot around until it can relocalize in 
-       the previous map, then the 2D map should re-appear again. You can then follow the same steps 
-       from 3.3.2 of the "Autonomous Navigation of a Known Map with TurtleBot" tutorial:
-       http://wiki.ros.org/turtlebot_navigation/Tutorials/Autonomously%20navigate%20in%20a%20known%20map
-  -->
-  
   <arg name="database_path"     default="rtabmap.db"/>
   <arg name="localization"      default="false"/>
   <arg name="rgbd_odometry"     default="false"/>
@@ -29,10 +8,6 @@
   <arg name="rtabmapviz"        default="false"/>
   
   <arg name="wait_for_transform"  default="0.2"/> 
-  <!-- 
-      robot_state_publisher's publishing frequency in "turtlebot2i_bringup/launch/includes/robot.launch.xml" 
-      can be increase from 5 to 10 Hz to avoid some TF warnings.
-  -->
   
   <!-- 3D Sensor(s) -->
   <include file="$(find turtlebot2i_bringup)/launch/dual_3dsensor.launch"/>
@@ -40,7 +15,7 @@
 
   <!-- Navigation stuff (move_base) -->
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
-    <arg name="custom_param_file" value="$(find turtlebot2i_bringup)/param/interbotix_dwa_planner.yaml"/>
+    <arg name="custom_param_file" value="$(find turtlebot2i_bringup)/param/turtlebot2i_dwa_planner.yaml"/>
   </include>
   
   <!-- Mapping -->

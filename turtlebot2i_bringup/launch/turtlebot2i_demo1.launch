@@ -14,7 +14,7 @@
     <arg name="load_moveit" value="true"/>
   </include>
 
-  <include file="$(find turtlebot2i_bringup)/launch/interbotix_rtabmap.launch">
+  <include file="$(find turtlebot2i_bringup)/launch/rtabmap.launch">
     <arg if="$(arg new_rtabmap)" name="args" value="--delete_db_on_start"/>
     <arg name="localization" value="$(arg localization)"/>
     <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
