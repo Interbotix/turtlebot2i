@@ -1,8 +1,0 @@
-New dependencies:
-
-git clone https://github.com/Interbotix/phantomx_pincher_arm.git
-git clone https://github.com/Interbotix/arbotix_ros.git -b turtlebot2i
-
-Optional for Astra use:
-
-git clone https://github.com/orbbec/ros_astra_camera.git -b filterlibrary
