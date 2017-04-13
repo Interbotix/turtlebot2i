@@ -1,7 +1,0 @@
-#udevadm info -a -n /dev/ttyUSB0 | grep '{serial}' | head -n1
-
-#andrew SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="kobuki_AI02MTPE", SYMLINK+="kobuki"
-#andrew SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="A7036HL6", SYMLINK+="arbotix"
-
-#renee SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="kobuki_AI02MQNP", SYMLINK+="kobuki"
-#renee SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{serial}=="AE01J5J1", SYMLINK+="arbotix"
