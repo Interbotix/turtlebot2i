@@ -5,7 +5,7 @@
 
   <!-- 3D Sensor(s) -->
   <include if="$(eval arg('3d_sensor') != 'zr300')" file="$(find turtlebot2i_bringup)/launch/3dsensor.launch"/>
-  <include if="$(eval arg('3d_sensor') == 'zr300' and arg('3d_sensor2') == 'sr300')" file="$(find turtlebot2i_bringup)/launch/includes/3dsensor/zr300_sr300.launch"/>
+  <include if="$(eval arg('3d_sensor') == 'zr300' and arg('3d_sensor2') == 'sr300')" file="$(find turtlebot2i_bringup)/launch/includes/3dsensor/zr300_sr300.launch.xml"/>
   <include if="$(eval arg('3d_sensor') != 'zr300' and arg('3d_sensor2') != 'None')" file="$(find turtlebot2i_bringup)/launch/includes/3dsensor/$(arg 3d_sensor2).launch.xml">
     <arg name="launch_camera" value="false"/>
     <arg name="manager" value="/camera/camera_nodelet_manager"/>
