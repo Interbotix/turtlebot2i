@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /PlanningScene1/Scene Geometry1
       Splitter Ratio: 0.401459992
-    Tree Height: 329
+    Tree Height: 341
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -87,14 +87,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        camera_fisheye_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_fisheye_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         camera_link:
           Alpha: 1
           Show Axes: false
@@ -169,6 +161,11 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        laser:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         plate_bottom_link:
           Alpha: 1
           Show Axes: false
@@ -363,10 +360,6 @@ Visualization Manager:
           Value: true
         camera_depth_optical_frame:
           Value: true
-        camera_fisheye_frame:
-          Value: true
-        camera_fisheye_optical_frame:
-          Value: true
         camera_link:
           Value: true
         camera_rgb_frame:
@@ -400,6 +393,8 @@ Visualization Manager:
         gripper_link:
           Value: true
         gyro_link:
+          Value: true
+        laser:
           Value: true
         map:
           Value: true
@@ -492,16 +487,14 @@ Visualization Manager:
                             {}
                           gripper_link:
                             {}
-                camera_link:
-                  camera_rgb_frame:
-                    camera_depth_frame:
-                      camera_depth_optical_frame:
-                        {}
-                    camera_fisheye_frame:
-                      camera_fisheye_optical_frame:
-                        {}
-                    camera_rgb_optical_frame:
+                camera_rgb_frame:
+                  camera_depth_frame:
+                    camera_depth_optical_frame:
                       {}
+                  camera_link:
+                    {}
+                  camera_rgb_optical_frame:
+                    {}
                 camera_sr300:
                   camera_sr300_rgb_frame:
                     camera_sr300_depth_frame:
@@ -520,6 +513,8 @@ Visualization Manager:
                 cliff_sensor_right_link:
                   {}
                 gyro_link:
+                  {}
+                laser:
                   {}
                 plate_bottom_link:
                   {}
@@ -876,14 +871,6 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          camera_fisheye_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          camera_fisheye_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           camera_link:
             Alpha: 1
             Show Axes: false
@@ -958,6 +945,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          laser:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           plate_bottom_link:
             Alpha: 1
             Show Axes: false
@@ -1142,9 +1134,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
+      Max Intensity: 47
       Min Color: 0; 0; 0
-      Min Intensity: 0
+      Min Intensity: 47
       Name: LaserScan
       Position Transformer: XYZ
       Queue Size: 10
@@ -1152,7 +1144,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Flat Squares
-      Topic: /scan
+      Topic: /rplidar_scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -1175,7 +1167,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 0.869117558
+      Distance: 2.69934773
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -1189,10 +1181,10 @@ Visualization Manager:
       Focal Shape Size: 0.0500000007
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.380398154
+      Pitch: 0.400398105
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 0.407285929
+      Yaw: 1.97728598
     Saved: ~
 Window Geometry:
   Displays:
@@ -1204,9 +1196,9 @@ Window Geometry:
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000001000000000000017300000363fc0200000008fb000000100044006900730070006c00610079007301000000410000018a000000d700fffffffb0000000800480065006c00700000000342000000bb0000007300fffffffb0000000a0056006900650077007300000001d8000000bc000000ad00fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001d1000000f10000001600fffffffb0000000a0049006d00610067006501000002c8000000dc0000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000005b00000036300000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001730000037cfc0200000008fb000000100044006900730070006c006100790073010000002800000196000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000001d8000000bc000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001c4000000f80000001600fffffffb0000000a0049006d00610067006501000002c2000000e20000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000005b00000037c00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1833
-  X: 44
+  X: 65
   Y: 24
