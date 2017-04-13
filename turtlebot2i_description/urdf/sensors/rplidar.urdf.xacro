@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<robot name="sensor_rplidar" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find turtlebot2i_description)/urdf/turtlebot_gazebo.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot2i_description)/urdf/turtlebot_properties.urdf.xacro"/>
+
+  <xacro:macro name="sensor_rplidar" params="parent">
+
+    <!-- sensor_rplidar body -->
+    <joint name="sensor_rplidar_joint" type="fixed">
+      <origin xyz="0 0 0.35" rpy="0 0 ${M_PI}"/>
+      <parent link="${parent}"/>
+      <child link="laser" />
+    </joint>
+    <link name="laser">
+      <visual>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+         <mesh filename="package://turtlebot2i_description/meshes/sensors/sr300.stl" />
+        </geometry>
+        <xacro:insert_block name="material_black"/>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://turtlebot2i_description/meshes/sensors/sr300.stl" />
+        </geometry>
+      </collision>
+ 
+    </link>
+
+  </xacro:macro>
+</robot>
