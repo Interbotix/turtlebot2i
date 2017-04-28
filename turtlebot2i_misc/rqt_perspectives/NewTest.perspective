@@ -84,7 +84,7 @@
                 }, 
                 "mouse_pub_topic": {
                   "type": "repr", 
-                  "repr": "u'/camera_sr300/rgb/image_color_mouse_left'"
+                  "repr": "u'/camera_floor/rgb/image_color_mouse_left'"
                 }, 
                 "zoom1": {
                   "type": "repr", 
@@ -96,7 +96,7 @@
                 }, 
                 "topic": {
                   "type": "repr", 
-                  "repr": "u'/camera_sr300/rgb/image_color'"
+                  "repr": "u'/camera_floor/rgb/image_color'"
                 }, 
                 "publish_click_location": {
                   "type": "repr", 
@@ -172,7 +172,7 @@
                 }, 
                 "mouse_pub_topic": {
                   "type": "repr", 
-                  "repr": "u'/camera/rgb/image_raw_mouse_left'"
+                  "repr": "u'/camera_navigation/rgb/image_raw_mouse_left'"
                 }, 
                 "zoom1": {
                   "type": "repr", 
@@ -184,7 +184,7 @@
                 }, 
                 "topic": {
                   "type": "repr", 
-                  "repr": "u'/camera/rgb/image_raw'"
+                  "repr": "u'/camera_navigation/rgb/image_raw'"
                 }, 
                 "publish_click_location": {
                   "type": "repr", 

@@ -31,11 +31,11 @@
 	
 	  <!-- inputs -->
 	  <remap from="scan"            to="/scan"/>
-	  <!-- TODO: zr300: remap from="rgb/image"       to="/camera/rgb/image_rect_color"/> -->
-    <remap from="rgb/image"       to="/camera/rgb/image_raw"/>
-    <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera/depth_registered/image_raw"/>
-    <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera/depth/image_raw"/>
-    <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
+	  <!-- TODO: zr300: remap from="rgb/image"       to="/camera_navigation/rgb/image_rect_color"/> -->
+    <remap from="rgb/image"       to="/camera_navigation/rgb/image_raw"/>
+    <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera_navigation/depth_registered/image_raw"/>
+    <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera_navigation/depth/image_raw"/>
+    <remap from="rgb/camera_info" to="/camera_navigation/rgb/camera_info"/>
 
     <!-- output -->
     <remap from="grid_map" to="/map"/>
@@ -68,9 +68,9 @@
       <param name="Reg/Force3DoF"               type="string" value="true"/>
       <param name="Vis/InlierDistance"          type="string" value="0.05"/>
       
-      <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
-      <remap from="depth/image"     to="/camera/depth/image_raw"/>
-      <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
+      <remap from="rgb/image"       to="/camera_navigation/rgb/image_rect_color"/>
+      <remap from="depth/image"     to="/camera_navigation/depth/image_raw"/>
+      <remap from="rgb/camera_info" to="/camera_navigation/rgb/camera_info"/>
     </node>
     
     <!-- visualization with rtabmapviz -->
@@ -80,10 +80,10 @@
       <param name="frame_id"                    type="string" value="base_footprint"/>
       <param name="wait_for_transform_duration" type="double" value="$(arg wait_for_transform)"/>
     
-      <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
-      <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera/depth_registered/image_raw"/>
-      <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera/depth/image_raw"/>
-      <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
+      <remap from="rgb/image"       to="/camera_navigation/rgb/image_rect_color"/>
+      <remap if="$(eval arg('3d_sensor') != 'zr300')" from="depth/image" to="/camera_navigation/depth_registered/image_raw"/>
+      <remap if="$(eval arg('3d_sensor') == 'zr300')" from="depth/image" to="/camera_navigation/depth/image_raw"/>
+      <remap from="rgb/camera_info" to="/camera_navigation/rgb/camera_info"/>
       <remap from="scan"            to="/scan"/>
     </node>
     

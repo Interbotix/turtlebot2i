@@ -651,7 +651,7 @@ Visualization Manager:
       Size (Pixels): 2
       Size (m): 0.00999999978
       Style: Points
-      Topic: /camera/depth_registered/points
+      Topic: /camera_navigation/depth_registered/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -681,14 +681,14 @@ Visualization Manager:
       Size (Pixels): 1
       Size (m): 0.00499999989
       Style: Points
-      Topic: /camera_sr300/depth_registered/points
+      Topic: /camera_floor/depth_registered/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /camera/rgb/image_raw
+      Image Topic: /camera_navigation/rgb/image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -700,7 +700,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /camera_sr300/rgb/image_rect_color
+      Image Topic: /camera_floor/rgb/image_rect_color
       Max Value: 1
       Median window: 5
       Min Value: 0

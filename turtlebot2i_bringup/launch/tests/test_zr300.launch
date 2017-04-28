@@ -60,7 +60,7 @@
   <!-- Push down all topics/nodelets into "camera" namespace -->
   <group ns="$(arg camera)">
 
-    <remap from="depth_registered/sw_registered/image_rect_raw"     to="/camera/depth_registered/image_raw"/>
+    <remap from="depth_registered/sw_registered/image_rect_raw"     to="/camera_navigation/depth_registered/image_raw"/>
 
     <!-- Start nodelet manager in provided namespace -->
     <arg name="manager" value="$(arg camera)_nodelet_manager" />

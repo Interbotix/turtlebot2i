@@ -12,11 +12,11 @@
      -->
   <arg name="zr300_registration"  default="true"/> <!-- Forces pointcloud from ZR300 driver -->
 
-  <arg name="camera1"              default="camera" />
+  <arg name="camera1"              default="camera_navigation" />
   <arg name="camera1_camera_type"  default="ZR300"    /> <!-- Type of camera -->
   <arg name="camera1_serial_no"    default=""        /> <!-- Note: Replace with actual serial number -->
   <arg name="camera1_usb_port_id"  default=""        /> <!-- USB "Bus#-Port#" -->
-  <arg name="camera2"              default="camera_sr300" />
+  <arg name="camera2"              default="camera_floor" />
   <arg name="camera2_camera_type"  default="SR300"    /> <!-- Type of camera -->
   <arg name="camera2_serial_no"    default=""        /> <!-- Note: Replace with actual serial number -->
   <arg name="camera2_usb_port_id"  default=""        /> <!-- USB "Bus#-Port#" -->
@@ -191,13 +191,13 @@
       <param name="scan_height" value="10"/>
       <param name="output_frame_id" value="/camera_depth_frame"/>
       <param name="range_min" value="0.45"/>
-      <remap from="image" to="/camera/$(arg depth)/image_raw"/>
+      <remap from="image" to="/camera_navigation/$(arg depth)/image_raw"/>
       <remap from="scan" to="$(arg scan_topic)"/>
 
       <!-- Somehow topics here get prefixed by "$(arg camera)" when not inside an app namespace,
            so in this case "$(arg scan_topic)" must provide an absolute topic name (issue #88).
            Probably is a bug in the nodelet manager: https://github.com/ros/nodelet_core/issues/7 -->
-      <remap from="camera/image" to="/camera/$(arg depth)/image_raw"/>
+      <remap from="camera/image" to="/camera_navigation/$(arg depth)/image_raw"/>
       <remap from="camera/scan" to="$(arg scan_topic)"/>
     </node>
   </group>

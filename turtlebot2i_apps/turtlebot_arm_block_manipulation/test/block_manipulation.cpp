@@ -122,7 +122,7 @@ public:
     client_.waitForResult(/*ros::Duration(30.0)*/);
 
     // subscribe to point cloud
-    sub_ = nh.subscribe("/camera/depth_registered/points", 1, &BlockManipulation::cloudCb, this);
+    sub_ = nh.subscribe("/camera_navigation/depth_registered/points", 1, &BlockManipulation::cloudCb, this);
     pub_ = nh.advertise< pcl::PointCloud<pcl::PointXYZRGB> >("block_output", 1);
 
     server.applyChanges();

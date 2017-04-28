@@ -13,28 +13,28 @@
 
   <!-- Parameterised in part by properties above -->
   <xacro:macro name="sensor_astra" params="parent">
-    <joint name="camera_rgb_joint" type="fixed">
+    <joint name="camera_navigation_rgb_joint" type="fixed">
       <origin xyz="${astra_cam_px} ${astra_cam_py} ${astra_cam_pz}"
               rpy="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="camera_rgb_frame" />
+      <child link="camera_navigation_rgb_frame" />
     </joint>
-    <link name="camera_rgb_frame"/>
+    <link name="camera_navigation_rgb_frame"/>
 
-    <joint name="camera_rgb_optical_joint" type="fixed">
+    <joint name="camera_navigation_rgb_optical_joint" type="fixed">
       <origin xyz="0 ${astra_cam_rel_rgb_py} 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_rgb_frame" />
-      <child link="camera_rgb_optical_frame" />
+      <parent link="camera_navigation_rgb_frame" />
+      <child link="camera_navigation_rgb_optical_frame" />
     </joint>
-    <link name="camera_rgb_optical_frame"/>
+    <link name="camera_navigation_rgb_optical_frame"/>
 
-    <joint name="camera_joint" type="fixed">
+    <joint name="camera_navigation_joint" type="fixed">
       <origin xyz="0 0 0"
               rpy="0 0 0"/>
-      <parent link="camera_rgb_frame"/>
-      <child link="camera_link"/>
+      <parent link="camera_navigation_rgb_frame"/>
+      <child link="camera_navigation_link"/>
     </joint>
-    <link name="camera_link">
+    <link name="camera_navigation_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -56,25 +56,25 @@
                  izz="0.003879257" />
       </inertial>
     </link>
-    <gazebo reference="camera_link">
+    <gazebo reference="camera_navigation_link">
       <material>Gazebo/Blue</material>
       <selfCollide>true</selfCollide>
       <gravity>true</gravity>
     </gazebo>
 
-    <joint name="camera_depth_joint" type="fixed">
+    <joint name="camera_navigation_depth_joint" type="fixed">
       <origin xyz="0 ${astra_depth_rel_rgb_py} 0" rpy="0 0 0" />
-      <parent link="camera_rgb_frame" />
-      <child link="camera_depth_frame" />
+      <parent link="camera_navigation_rgb_frame" />
+      <child link="camera_navigation_depth_frame" />
     </joint>
-    <link name="camera_depth_frame"/>
+    <link name="camera_navigation_depth_frame"/>
 
-    <joint name="camera_depth_optical_joint" type="fixed">
+    <joint name="camera_navigation_depth_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_depth_frame" />
-      <child link="camera_depth_optical_frame" />
+      <parent link="camera_navigation_depth_frame" />
+      <child link="camera_navigation_depth_optical_frame" />
     </joint>
-    <link name="camera_depth_optical_frame"/>
+    <link name="camera_navigation_depth_optical_frame"/>
 
     <!-- RGBD sensor for simulation, same as Kinect -->
     <turtlebot_sim_3dsensor/>

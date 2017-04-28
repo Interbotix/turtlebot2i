@@ -739,11 +739,11 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz/DepthCloud
       Color: 255; 255; 255
-      Color Image Topic: /camera/rgb/image_color
+      Color Image Topic: /camera_navigation/rgb/image_color
       Color Transformer: RGB8
       Color Transport Hint: raw
       Decay Time: 0
-      Depth Map Topic: /camera/depth_registered/image_raw
+      Depth Map Topic: /camera_navigation/depth_registered/image_raw
       Depth Map Transport Hint: raw
       Enabled: true
       Invert Rainbow: false

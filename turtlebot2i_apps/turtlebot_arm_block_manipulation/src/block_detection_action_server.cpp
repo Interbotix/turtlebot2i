@@ -115,7 +115,7 @@ public:
     as_.start();
     
     // Subscribe to point cloud
-    sub_ = nh_.subscribe("/camera_sr300/depth_registered/points", 1, &BlockDetectionServer::cloudCb, this);
+    sub_ = nh_.subscribe("/camera_floor/depth_registered/points", 1, &BlockDetectionServer::cloudCb, this);
 
     // Publish the filtered point cloud for debug purposes
     pub_ = nh_.advertise< pcl::PointCloud<pcl::PointXYZRGB> >("block_output", 1);

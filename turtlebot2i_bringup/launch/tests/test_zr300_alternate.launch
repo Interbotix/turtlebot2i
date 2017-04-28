@@ -25,7 +25,7 @@
     <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen"/>
 
     <include file="$(find turtlebot2i_bringup)/launch/realsense_nodelet.launch.xml">
-      <arg name="manager"      value="/camera/$(arg manager)" />
+      <arg name="manager"      value="/camera_navigation/$(arg manager)" />
       <arg name="camera"       value="$(arg camera)" />
       <arg name="camera_type"  value="$(arg camera_type)" />
       <arg name="serial_no"    value="$(arg serial_no)" />
