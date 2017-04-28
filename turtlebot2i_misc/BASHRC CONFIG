@@ -3,6 +3,7 @@ alias goros='source devel/setup.sh'
 export ROS_HOSTNAME=example.hostname
 export TURTLEBOT_3D_SENSOR=astra
 export TURTLEBOT_3D_SENSOR=zr300
+export TURTLEBOT_3D_SENSOR2=astra_s
 export TURTLEBOT_3D_SENSOR2=sr300
 export TURTLEBOT_BATTERY=None
 export TURTLEBOT_STACKS=interbotix

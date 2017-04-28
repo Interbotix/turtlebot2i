@@ -1,3 +1,7 @@
+//Multi Astra Testing
+{
+	roslaunch turtlebot2i_bringup multi_astra.launch.xml publish_tf:=true
+}
 //Gazebo Simulation ( http://gazebosim.org/tutorials/?tut=ros_control )
 {
 	*Gazebo, arm joint controllers, empty turtlebot2i world:
