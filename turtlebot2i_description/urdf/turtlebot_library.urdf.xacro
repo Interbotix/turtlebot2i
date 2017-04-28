@@ -14,6 +14,7 @@
   <xacro:include filename="$(find turtlebot2i_description)/urdf/sensors/astra.urdf.xacro"/>
   <xacro:include filename="$(find turtlebot2i_description)/urdf/sensors/sr300.urdf.xacro"/>
   <xacro:include filename="$(find turtlebot2i_description)/urdf/sensors/zr300.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot2i_description)/urdf/sensors/astra_s.urdf.xacro"/>
   <!-- Arms -->
   <xacro:include filename="$(find turtlebot2i_description)/urdf/arms/phantomx_pincher_arm.urdf.xacro"/>
   
