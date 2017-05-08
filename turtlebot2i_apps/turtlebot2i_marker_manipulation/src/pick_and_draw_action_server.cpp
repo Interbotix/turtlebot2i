@@ -75,12 +75,12 @@ private:
   moveit_msgs::CollisionObject tool_collision_object_;
   moveit_msgs::CollisionObject tool_holder_collision_object_;
 
-  // Arm heights
-  double arm_height_hover_tool;   //hovering over tool in holder
-  double arm_height_grasp_tool;   //prepared to grasp tool
-  double arm_height_detach_tool;  //detatch grasped tool from holder
-  double arm_height_prepare_draw; //holding tool and preparing to lay ink
-  double arm_height_draw_tool;    //height when drawing with tool grasped      
+  // Arm (eef) heights relative to arm_base_link
+  double arm_height_hover_tool_;   //hovering over tool in holder
+  double arm_height_grasp_tool_;   //prepared to grasp tool
+  double arm_height_detach_tool_;  //detatch grasped tool from holder
+  double arm_height_prepare_draw_; //holding tool and preparing to lay ink
+  double arm_height_draw_tool_;    //height when drawing with tool grasped      
 
 public:
   PickAndDrawServer(const std::string name) :
@@ -94,14 +94,11 @@ public:
 
     target_pose_pub_ = nh_.advertise<geometry_msgs::PoseStamped>("/target_pose", 1, true);
 
-    //TODO: load these as parameters
-    arm_height_hover_tool = 0.01;
-    arm_height_grasp_tool = -0.03;
-    arm_height_detach_tool = 0.0;
-    arm_height_prepare_draw = -0.005;
-    arm_height_draw_tool = -0.030;
-   
-    drawing_surface_height_ = 0.0058;
+    nh_.param<double>("arm_height_hover_tool_", arm_height_hover_tool_, 0.01);
+    nh_.param<double>("arm_height_grasp_tool_", arm_height_grasp_tool_, -0.03);
+    nh_.param<double>("arm_height_detach_tool_", arm_height_detach_tool_, 0.0);
+    nh_.param<double>("arm_height_prepare_draw_", arm_height_prepare_draw_, -0.005);
+    nh_.param<double>("arm_height_draw_tool_", arm_height_draw_tool_, -0.030);
     nh_.param<double>("drawing_surface_height", drawing_surface_height_, 0.0058);
   }
 
@@ -196,60 +193,11 @@ public:
       waypoints.push_back(ee_point_goal);
     }
 
-    /*
-    //TODO: Consider other shapes/paths
-    if (0)
-    { //triangle 
-      waypoints.clear();
-
-      //Start trajectory plan at top of triangle
-      ee_point_goal.position.x = target.position.x + radius;
-      ee_point_goal.position.y = target.position.y;
-      ee_point_goal.position.z = target.position.z;
-      waypoints.push_back(ee_point_goal);
-
-      //Lower left of triangle
-      ee_point_goal.position.x = target.position.x - radius;
-      ee_point_goal.position.y = target.position.y + radius;
-      waypoints.push_back(ee_point_goal);
-
-      //Lower right of triangle
-      ee_point_goal.position.x = target.position.x - radius;
-      ee_point_goal.position.y = target.position.y - radius;
-      waypoints.push_back(ee_point_goal);
-
-      //Back to top
-      waypoints.push_back( waypoints[0] );
-    }
-
-    //TODO: Consider other shapes/paths
-    if(0)
-    { //spiral
-      waypoints.clear();
-      double spiral_radius = 0.0;
-
-      //Start trajectory plan
-      ee_point_goal.position.x = x_center + spiral_radius*cos(angle);
-      ee_point_goal.position.y = y_center + spiral_radius*sin(angle);
-      ee_point_goal.position.z = target.position.z;
-      waypoints.push_back(ee_point_goal);
-
-      while ( spiral_radius < radius )
-      {
-        spiral_radius += d_angle / 1000.0;
-        angle += d_angle;
-        ee_point_goal.position.x = x_center + spiral_radius*cos(angle);
-        ee_point_goal.position.y = y_center + spiral_radius*sin(angle);
-        waypoints.push_back(ee_point_goal);
-      }
-    }
-    */
-
     ROS_DEBUG( "[pick_and_draw] There are %d number of waypoints", waypoints.size() );
 
     //Move over first point in trajectory
     ee_point_goal = waypoints[0];
-    ee_point_goal.position.z = arm_height_prepare_draw + drawing_surface_height_;
+    ee_point_goal.position.z = arm_height_prepare_draw_ + drawing_surface_height_;
     if (moveArmTo(ee_point_goal) == false)
     {
       ROS_ERROR( "[pick_and_draw] Uable to move arm over start pose for trajectory" );
@@ -261,7 +209,7 @@ public:
     if (moveArmTo(ee_point_goal) == false)
     {
       ROS_ERROR( "[pick_and_draw] Uable to move arm into start pose for trajectory" );
-      ee_point_goal.position.z = arm_height_prepare_draw + drawing_surface_height_;
+      ee_point_goal.position.z = arm_height_prepare_draw_ + drawing_surface_height_;
       return ee_point_goal;
     }
 
@@ -310,14 +258,14 @@ public:
     target_pose = start_pose;
     tf::Quaternion q = tf::createQuaternionFromRPY(0.0, M_PI_2, 0.0); //Wrist pointed straight down
     tf::quaternionTFToMsg(q, target_pose.orientation);
-    target_pose.position.z = arm_height_hover_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_hover_tool_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
     ROS_DEBUG( "[pick_and_draw] Dropping down to pickup tool" );
 
     /* drop down */
-    target_pose.position.z = arm_height_grasp_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_grasp_tool_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 
@@ -333,7 +281,7 @@ public:
 
     ROS_DEBUG( "[pick_and_draw] Detaching tool from tool holder (cube)" );
     /* raise up */
-    target_pose.position.z = arm_height_detach_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_detach_tool_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false) 
       return;
 
@@ -348,17 +296,17 @@ public:
     tf::quaternionTFToMsg(q, target_pose.orientation);
     target_pose.position.x = 0.152; //Eyes
     target_pose.position.y = 0.025; //Left eye
-    target_pose.position.z = arm_height_prepare_draw + drawing_surface_height_;
+    target_pose.position.z = arm_height_prepare_draw_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false) 
       return;
 
     /* draw first arc */
-    target_pose.position.z = arm_height_draw_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_draw_tool_ + drawing_surface_height_;
     geometry_msgs::Pose last_draw_pose = drawArc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
 
     /* move up */
     target_pose = last_draw_pose;
-    target_pose.position.z = arm_height_prepare_draw + drawing_surface_height_;
+    target_pose.position.z = arm_height_prepare_draw_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -369,12 +317,12 @@ public:
       return;
 
     /* draw second arc */
-    target_pose.position.z = arm_height_draw_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_draw_tool_ + drawing_surface_height_;
     last_draw_pose = drawArc( target_pose, 0.02, 0.0, 360 ); //draw a circle around the pose point
 
     /* move up */
     target_pose = last_draw_pose;
-    target_pose.position.z = arm_height_prepare_draw + drawing_surface_height_;
+    target_pose.position.z = arm_height_prepare_draw_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -384,19 +332,19 @@ public:
     if (moveArmTo(target_pose) == false)
       return;
 
-    target_pose.position.z = arm_height_draw_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_draw_tool_ + drawing_surface_height_;
     last_draw_pose = drawArc( target_pose, 0.02, 1.57, 180 ); //draw a half circle around the pose point (ccw from 90)
 
     /* raise up */
     target_pose = last_draw_pose;
-    target_pose.position.z = arm_height_prepare_draw + drawing_surface_height_;
+    target_pose.position.z = arm_height_prepare_draw_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false)
       return;
 
     /* move back to tool holder */
     target_pose.position.x = start_pose.position.x;
     target_pose.position.y = start_pose.position.y;
-    target_pose.position.z = arm_height_detach_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_detach_tool_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -404,7 +352,7 @@ public:
     removeToolHolder();
 
     /*drop down*/
-    target_pose.position.z = arm_height_grasp_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_grasp_tool_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false)
       return;
 
@@ -417,7 +365,7 @@ public:
     ros::Duration(0.6).sleep(); // ensure that gripper properly release the tool before lifting the arm
 
     /*raise up away from tool sitting in holder*/
-    target_pose.position.z = arm_height_hover_tool + drawing_surface_height_;
+    target_pose.position.z = arm_height_hover_tool_ + drawing_surface_height_;
     if (moveArmTo(target_pose) == false) //Move arm with orientation specified (not modified)
       return;
 

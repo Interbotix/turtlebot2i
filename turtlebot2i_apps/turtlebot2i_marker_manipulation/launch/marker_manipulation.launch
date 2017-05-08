@@ -8,7 +8,15 @@
   </node>
 
   <node name="pick_and_draw_action_server" pkg="turtlebot2i_marker_manipulation" type="pick_and_draw_action_server" output="screen">
-  	<param name="drawing_surface_height" value="0.0058"/> <!-- Dry erase board is 5.8mm thick -->
+  	<param name="drawing_surface_height" value="0.0058"/> <!-- Drawing surface height from ground ( Dry erase board is 5.8mm thick ) -->
+
+  	<!-- The following heights relative to arm_base_link -->
+  	<!-- Tool ( Expo dry erase marker ) is expected without cap in expo_marker_cube.stl -->
+  	<param name="arm_height_hover_tool" value="0.01"/> <!-- Gripper is posed above tool, unable to grasp -->
+    <param name="arm_height_grasp_tool" value="-0.03"/> <!-- Gripper is posed at tool and ready to grasp -->
+    <param name="arm_height_detach_tool" value="0.0"/> <!-- Gripper has grasped tool and detached from holder -->
+    <param name="arm_height_prepare_draw" value="-0.005"/> <!-- Gripper has grasped tool and hovering over drawing surface -->
+    <param name="arm_height_draw_tool" value="-0.030"/> <!-- Gripper has grasped tool and is pressed against drawing surface -->
   </node>
 
 </launch>
