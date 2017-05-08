@@ -20,10 +20,10 @@
     <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
   </include>
 
-  <include file="$(find turtlebot_zoning_demo)/launch/find_object_3d.launch" />
+  <include file="$(find turtlebot2i_zoning_demo)/launch/find_object_3d.launch" />
 
-  <include file="$(find turtlebot_zoning_demo)/launch/zone_detection_node.launch" />
-  <include file="$(find turtlebot_zoning_demo)/launch/zone_destination_node.launch" />
+  <include file="$(find turtlebot2i_zoning_demo)/launch/zone_detection_node.launch" />
+  <include file="$(find turtlebot2i_zoning_demo)/launch/zone_destination_node.launch" />
 
   <include file="$(find kobuki_auto_docking)/launch/standalone.launch" />
 

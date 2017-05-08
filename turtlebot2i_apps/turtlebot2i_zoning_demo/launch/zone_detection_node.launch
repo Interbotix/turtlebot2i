@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="zone_detection_node" pkg="turtlebot2i_zoning_demo" type="zone_detection_node" output="screen">
+		<rosparam param="zone_offset_x">1.0</rosparam>
+ 	</node>
+</launch>

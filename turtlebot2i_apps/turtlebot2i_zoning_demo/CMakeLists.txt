@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(turtlebot_zoning_demo)
+project(turtlebot2i_zoning_demo)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -105,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES turtlebot_zoning_demo
+#  LIBRARIES turtlebot2i_zoning_demo
 #  CATKIN_DEPENDS actionlib geometry_msgs move_base_msgs roscpp rospy std_msgs tf
 #  DEPENDS system_lib
 )
@@ -119,31 +119,31 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
-  include/turtlebot_zoning_demo/
+  include/turtlebot2i_zoning_demo/
 )
 
 ## Declare a C++ library
-# add_library(turtlebot_zoning_demo
-#   src/${PROJECT_NAME}/turtlebot_zoning_demo.cpp
+# add_library(turtlebot2i_zoning_demo
+#   src/${PROJECT_NAME}/turtlebot2i_zoning_demo.cpp
 # )
 add_library(nav_utils src/navigation_utils.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(turtlebot_zoning_demo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(turtlebot2i_zoning_demo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(turtlebot_zoning_demo_node src/turtlebot_zoning_demo_node.cpp)
+# add_executable(turtlebot2i_zoning_demo_node src/turtlebot2i_zoning_demo_node.cpp)
 add_executable(zone_detection_node src/zone_detection_node.cpp)
 add_executable(zone_destination_node src/zone_destination_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(turtlebot_zoning_demo_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(turtlebot2i_zoning_demo_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(turtlebot_zoning_demo_node
+# target_link_libraries(turtlebot2i_zoning_demo_node
 #   ${catkin_LIBRARIES}
 # )
 target_link_libraries(zone_detection_node
@@ -168,7 +168,7 @@ target_link_libraries(zone_destination_node
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS turtlebot_zoning_demo turtlebot_zoning_demo_node
+# install(TARGETS turtlebot2i_zoning_demo turtlebot2i_zoning_demo_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -193,7 +193,7 @@ target_link_libraries(zone_destination_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_turtlebot_zoning_demo.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_turtlebot2i_zoning_demo.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

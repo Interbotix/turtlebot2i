@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="zone_destination_node" pkg="turtlebot2i_zoning_demo" type="zone_destination_node" output="screen">
+ 	</node>
+</launch>
