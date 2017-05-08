@@ -1,9 +1,9 @@
 <launch>
   <include file="$(find turtlebot2i_bringup)/launch/turtlebot2i_basic.launch" />
 
-  <include file="$(find turtlebot_arm_block_manipulation)/launch/block_manipulation.launch" />
+  <include file="$(find turtlebot2i_block_manipulation)/launch/block_manipulation.launch" />
 
-  <node name="block_manipulation_demo" pkg="turtlebot_arm_block_manipulation" type="block_manipulation_demo" output="screen" >
+  <node name="block_manipulation_demo" pkg="turtlebot2i_block_manipulation" type="block_manipulation_demo" output="screen" >
     <param name="arm_link" value="/arm_base_link" />
     <param name="gripper_open" value="0.031" />
     <param name="block_size" value="0.02" />
@@ -18,5 +18,5 @@
     <arg name="load_moveit" value="true"/>
   </include>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_arm_block_manipulation)/demo/block_manipulation_demo.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot2i_block_manipulation)/demo/block_manipulation_demo.rviz" />
 </launch>

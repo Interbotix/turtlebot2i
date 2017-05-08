@@ -34,12 +34,12 @@
 #include <actionlib/server/simple_action_server.h>
 #include <interactive_markers/interactive_marker_server.h>
 
-#include <turtlebot_arm_block_manipulation/InteractiveBlockManipulationAction.h>
+#include <turtlebot2i_block_manipulation/InteractiveBlockManipulationAction.h>
 #include <geometry_msgs/PoseArray.h>
 
 using namespace visualization_msgs;
 
-namespace turtlebot_arm_block_manipulation
+namespace turtlebot2i_block_manipulation
 {
 
 class InteractiveManipulationServer
@@ -49,12 +49,12 @@ private:
 
   interactive_markers::InteractiveMarkerServer server_;
   
-  actionlib::SimpleActionServer<turtlebot_arm_block_manipulation::InteractiveBlockManipulationAction> as_;
+  actionlib::SimpleActionServer<turtlebot2i_block_manipulation::InteractiveBlockManipulationAction> as_;
   std::string action_name_;
   
-  turtlebot_arm_block_manipulation::InteractiveBlockManipulationFeedback     feedback_;
-  turtlebot_arm_block_manipulation::InteractiveBlockManipulationResult       result_;
-  turtlebot_arm_block_manipulation::InteractiveBlockManipulationGoalConstPtr goal_;
+  turtlebot2i_block_manipulation::InteractiveBlockManipulationFeedback     feedback_;
+  turtlebot2i_block_manipulation::InteractiveBlockManipulationResult       result_;
+  turtlebot2i_block_manipulation::InteractiveBlockManipulationGoalConstPtr goal_;
   
   ros::Subscriber block_sub_;
   ros::Publisher  pick_and_place_pub_;
@@ -243,7 +243,7 @@ int main(int argc, char** argv)
   // initialize node
   ros::init(argc, argv, "interactive_manipulation_action_server");
 
-  turtlebot_arm_block_manipulation::InteractiveManipulationServer manip("interactive_manipulation");
+  turtlebot2i_block_manipulation::InteractiveManipulationServer manip("interactive_manipulation");
 
   ros::spin();
 }

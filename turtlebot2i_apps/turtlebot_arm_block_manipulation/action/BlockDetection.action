@@ -5,6 +5,6 @@ float32 block_size
 ---
 #result definition
 geometry_msgs/PoseArray blocks
-turtlebot_arm_block_manipulation/BlockPoseArray colored_blocks
+turtlebot2i_block_manipulation/BlockPoseArray colored_blocks
 ---
 #feedback

@@ -50,10 +50,10 @@
 	menu [Perspectives] / [Import...] and import /rqt_perspectives/NewTest.perspective
 
 	*To start the block sorting demo at a docking station:
-	roslaunch turtlebot_arm_block_manipulation block_sorting_demo.launch at_dock:=true
+	roslaunch turtlebot2i_block_manipulation block_sorting_demo.launch at_dock:=true
 
 	*To start the block sorting demo (green on the right, others on the left) (sorting into bins expected to be about 77mm in height):
-	roslaunch turtlebot_arm_block_manipulation block_sorting_demo.launch
+	roslaunch turtlebot2i_block_manipulation block_sorting_demo.launch
 }
 
 //Arm Tool Detection and Marker Handling (WIP)
@@ -75,7 +75,7 @@
 	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch new_rtabmap:=true
 
 	*Start block detection, interactive manipulation and pickandplace action servers:
-	roslaunch turtlebot_arm_block_manipulation block_sorting_demo.launch at_dock:=true/false auto_sort:=false/true
+	roslaunch turtlebot2i_block_manipulation block_sorting_demo.launch at_dock:=true/false auto_sort:=false/true
 }
 
 //Custom arm_pose_director (action server) with CLI example
