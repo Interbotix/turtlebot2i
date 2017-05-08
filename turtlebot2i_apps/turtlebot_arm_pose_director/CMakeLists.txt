@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(turtlebot_arm_pose_director)
+project(turtlebot2i_arm_director)
 
 find_package(catkin REQUIRED COMPONENTS
   actionlib
@@ -28,7 +28,7 @@ add_compile_options("-std=c++11")
 
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES turtlebot_arm_pose_director
+#  LIBRARIES turtlebot2i_arm_director
   CATKIN_DEPENDS moveit_core moveit_ros_planning_interface roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -43,7 +43,7 @@ add_executable(named_pose_director src/named_pose_director.cpp)
 target_link_libraries(named_pose_director ${catkin_LIBRARIES})
 
 add_dependencies(named_pose_director ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(named_pose_director turtlebot_arm_pose_director_generate_messages_cpp)
+add_dependencies(named_pose_director turtlebot2i_arm_director_generate_messages_cpp)
 
 add_compile_options(${MOVEIT_CXX_FLAGS})
 

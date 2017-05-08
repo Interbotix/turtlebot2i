@@ -81,10 +81,10 @@
 //Custom arm_pose_director (action server) with CLI example
 //This simple action server moves the arm to a named pose typically found in the SRDF
 {
-	roslaunch turtlebot_arm_pose_director demo.launch
+	roslaunch turtlebot2i_arm_director demo.launch
 
-	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_parked"}}'
-	rostopic pub /named_pose_director/goal turtlebot_arm_pose_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_grasping"}}'
+	rostopic pub /named_pose_director/goal turtlebot2i_arm_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_parked"}}'
+	rostopic pub /named_pose_director/goal turtlebot2i_arm_director/NamedPoseDirectorActionGoal '{goal: { named_pose: "pose_grasping"}}'
 }
 
 //Pincher Arm MoveIt! Demo

@@ -8,9 +8,9 @@
 #include <geometric_shapes/solid_primitive_dims.h>
 
 #include <actionlib/server/simple_action_server.h>
-#include <turtlebot_arm_pose_director/NamedPoseDirectorAction.h>
+#include <turtlebot2i_arm_director/NamedPoseDirectorAction.h>
 
-namespace turtlebot_arm_pose_director
+namespace turtlebot2i_arm_director
 {
 
 class NamedPoseDirector
@@ -18,9 +18,9 @@ class NamedPoseDirector
 private:
 
   ros::NodeHandle nh_;
-  actionlib::SimpleActionServer<turtlebot_arm_pose_director::NamedPoseDirectorAction> as_;
-  turtlebot_arm_pose_director::NamedPoseDirectorGoalConstPtr goal_;
-  turtlebot_arm_pose_director::NamedPoseDirectorResult       result_;
+  actionlib::SimpleActionServer<turtlebot2i_arm_director::NamedPoseDirectorAction> as_;
+  turtlebot2i_arm_director::NamedPoseDirectorGoalConstPtr goal_;
+  turtlebot2i_arm_director::NamedPoseDirectorResult       result_;
 
   ros::Subscriber named_pose_sub_;
 
@@ -163,7 +163,7 @@ int main(int argc, char** argv)
   ros::AsyncSpinner spinner(2);
   spinner.start();
 
-  turtlebot_arm_pose_director::NamedPoseDirector director( "named_pose_director" );
+  turtlebot2i_arm_director::NamedPoseDirector director( "named_pose_director" );
 
   ros::Rate rate(1.0);
   while( ros::ok() )

@@ -16,7 +16,7 @@
 		<arg name="info" value="true"/>
 	</include>
 
-	<node name="named_pose_director" pkg="turtlebot_arm_pose_director" type="named_pose_director" output="screen">
+	<node name="named_pose_director" pkg="turtlebot2i_arm_director" type="named_pose_director" output="screen">
 		<rosparam param="startup_pose">pose_parked</rosparam>
 		<rosparam param="floor_pose">[0.078, 0.0, -0.012]</rosparam>
 	</node>

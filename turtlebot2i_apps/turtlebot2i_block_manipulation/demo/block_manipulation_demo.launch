@@ -14,7 +14,7 @@
     
   </node>
 
-  <include file="$(find turtlebot_arm_pose_director)/launch/named_pose_director.launch" >
+  <include file="$(find turtlebot2i_arm_director)/launch/named_pose_director.launch" >
     <arg name="load_moveit" value="true"/>
   </include>
 
