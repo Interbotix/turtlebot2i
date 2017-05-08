@@ -123,8 +123,7 @@ private:
 
   void addFloor()
   {
-    ROS_WARN("Adding FLOOR");
-    // Add a floor as a collision object into the world, so it gets excluded from the collision map
+    // Add a floor as a collision object into the world
     moveit_msgs::CollisionObject co;
     co.header.stamp = ros::Time::now();
     co.header.frame_id = "base_link";
