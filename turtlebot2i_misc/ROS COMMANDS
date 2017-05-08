@@ -64,7 +64,7 @@
 	roslaunch turtlebot2i_bringup turtlebot2i_demo1.launch new_rtabmap:=true
 
 	*Start tool detection and pick and draw action servers:
-	roslaunch turtlebot_arm_marker_manipulation marker_demo.launch
+	roslaunch turtlebot2i_marker_manipulation marker_demo.launch
 }
 
 //Arm Block/2cm Object Sorting & Interactive Manipulation

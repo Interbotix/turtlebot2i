@@ -1,2 +1,2 @@
 std_msgs/Header header
-turtlebot_arm_marker_manipulation/BlockPose[] poses
+turtlebot2i_marker_manipulation/BlockPose[] poses

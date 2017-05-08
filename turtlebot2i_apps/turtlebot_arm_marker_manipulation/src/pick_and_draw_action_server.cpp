@@ -32,7 +32,7 @@
 #include <tf/tf.h>
 
 #include <actionlib/server/simple_action_server.h>
-#include <turtlebot_arm_marker_manipulation/PickAndDrawAction.h>
+#include <turtlebot2i_marker_manipulation/PickAndDrawAction.h>
 
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
@@ -40,7 +40,7 @@
 
 #include <geometry_msgs/PoseArray.h>
 
-namespace turtlebot_arm_marker_manipulation
+namespace turtlebot2i_marker_manipulation
 {
 
 class PickAndDrawServer
@@ -48,12 +48,12 @@ class PickAndDrawServer
 private:
 
   ros::NodeHandle nh_;
-  actionlib::SimpleActionServer<turtlebot_arm_marker_manipulation::PickAndDrawAction> as_;
+  actionlib::SimpleActionServer<turtlebot2i_marker_manipulation::PickAndDrawAction> as_;
   std::string action_name_;
 
-  turtlebot_arm_marker_manipulation::PickAndDrawFeedback     feedback_;
-  turtlebot_arm_marker_manipulation::PickAndDrawResult       result_;
-  turtlebot_arm_marker_manipulation::PickAndDrawGoalConstPtr goal_;
+  turtlebot2i_marker_manipulation::PickAndDrawFeedback     feedback_;
+  turtlebot2i_marker_manipulation::PickAndDrawResult       result_;
+  turtlebot2i_marker_manipulation::PickAndDrawGoalConstPtr goal_;
 
   ros::Publisher target_pose_pub_;
   ros::Subscriber pick_and_draw_sub_;
@@ -653,7 +653,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "pick_and_draw_action_server");
 
-  turtlebot_arm_marker_manipulation::PickAndDrawServer server("pick_and_draw");
+  turtlebot2i_marker_manipulation::PickAndDrawServer server("pick_and_draw");
 
   //TODO: Does not work with only: ros::spin();
   ros::AsyncSpinner spinner(4);

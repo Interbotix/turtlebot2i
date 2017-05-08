@@ -5,6 +5,6 @@ float32 toolholder_size
 ---
 #result definition
 geometry_msgs/PoseArray blocks
-turtlebot_arm_marker_manipulation/BlockPoseArray colored_blocks
+turtlebot2i_marker_manipulation/BlockPoseArray colored_blocks
 ---
 #feedback

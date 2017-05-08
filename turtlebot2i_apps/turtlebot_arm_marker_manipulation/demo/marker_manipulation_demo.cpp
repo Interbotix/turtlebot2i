@@ -30,8 +30,8 @@
 #include <ros/ros.h>
 
 #include <actionlib/client/simple_action_client.h>
-#include <turtlebot_arm_marker_manipulation/ToolDetectionAction.h>
-#include <turtlebot_arm_marker_manipulation/PickAndDrawAction.h>
+#include <turtlebot2i_marker_manipulation/ToolDetectionAction.h>
+#include <turtlebot2i_marker_manipulation/PickAndDrawAction.h>
 #include <arbotix_msgs/Relax.h>
 
 #include <geometry_msgs/PoseArray.h>
@@ -42,7 +42,7 @@
 const std::string gripper_param = "/gripper_controller";
 const std::string pick_and_draw_topic = "/pick_and_draw";
 
-namespace turtlebot_arm_marker_manipulation
+namespace turtlebot2i_marker_manipulation
 {
 
 class MarkerManipulationAction
@@ -67,7 +67,7 @@ private:
   std::string arm_link;
   double gripper_open, gripper_tighten, gripper_closed, table_height, toolholder_size, tool_size;
 
-  turtlebot_arm_marker_manipulation::BlockPoseArray block_list_; //list of the positions and colors of blocks we've found
+  turtlebot2i_marker_manipulation::BlockPoseArray block_list_; //list of the positions and colors of blocks we've found
   
   int blockCount;  //number of blocks found
   
@@ -115,7 +115,7 @@ public:
   
   void addTool(const actionlib::SimpleClientGoalState& state, const ToolDetectionResultConstPtr& result)
   {
-    turtlebot_arm_marker_manipulation::BlockPose block;
+    turtlebot2i_marker_manipulation::BlockPose block;
     
     if (state != actionlib::SimpleClientGoalState::SUCCEEDED)
     {
@@ -162,7 +162,7 @@ public:
     }
   }
     
-  void sendDrawGoal(const turtlebot_arm_marker_manipulation::BlockPose& start_block_pose, const geometry_msgs::Pose& drawing_pose)
+  void sendDrawGoal(const turtlebot2i_marker_manipulation::BlockPose& start_block_pose, const geometry_msgs::Pose& drawing_pose)
   {
     geometry_msgs::Pose start_pose;
     start_pose.position = start_block_pose.position;
@@ -199,7 +199,7 @@ public:
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "marker_manipulation");
-  turtlebot_arm_marker_manipulation::MarkerManipulationAction manip;
+  turtlebot2i_marker_manipulation::MarkerManipulationAction manip;
 
   ros::AsyncSpinner spinner(2);
   spinner.start();

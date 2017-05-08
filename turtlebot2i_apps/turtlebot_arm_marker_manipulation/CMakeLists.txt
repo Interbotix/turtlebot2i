@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(turtlebot_arm_marker_manipulation)
+project(turtlebot2i_marker_manipulation)
 
 # setup
 find_package(catkin REQUIRED actionlib actionlib_msgs pcl_ros roscpp visualization_msgs arbotix_msgs moveit_core moveit_ros_planning_interface)
@@ -28,18 +28,18 @@ add_compile_options("-std=c++11")
 # nodes
 add_executable(tool_detection_action_server src/tool_detection_action_server.cpp)
 target_link_libraries(tool_detection_action_server ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(tool_detection_action_server turtlebot_arm_marker_manipulation_generate_messages_cpp)
+add_dependencies(tool_detection_action_server turtlebot2i_marker_manipulation_generate_messages_cpp)
 
 add_executable(pick_and_draw_action_server src/pick_and_draw_action_server.cpp)
 target_link_libraries(pick_and_draw_action_server ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-add_dependencies(pick_and_draw_action_server turtlebot_arm_marker_manipulation_generate_messages_cpp)
+add_dependencies(pick_and_draw_action_server turtlebot2i_marker_manipulation_generate_messages_cpp)
 
 
 # demo
 add_executable(marker_manipulation_demo demo/marker_manipulation_demo.cpp)
 target_link_libraries(marker_manipulation_demo ${catkin_LIBRARIES})
 
-add_dependencies(marker_manipulation_demo turtlebot_arm_marker_manipulation_generate_messages_cpp arbotix_msgs_generate_messages_cpp)
+add_dependencies(marker_manipulation_demo turtlebot2i_marker_manipulation_generate_messages_cpp arbotix_msgs_generate_messages_cpp)
 
 
 # install

@@ -33,7 +33,7 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <geometry_msgs/PoseArray.h>
 #include <actionlib/server/simple_action_server.h>
-#include <turtlebot_arm_marker_manipulation/ToolDetectionAction.h>
+#include <turtlebot2i_marker_manipulation/ToolDetectionAction.h>
 
 #include <tf/transform_listener.h>
 
@@ -59,7 +59,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace turtlebot_arm_marker_manipulation
+namespace turtlebot2i_marker_manipulation
 {
 
 class BlockDetectionServer
@@ -67,11 +67,11 @@ class BlockDetectionServer
 private:
     
   ros::NodeHandle nh_;
-  actionlib::SimpleActionServer<turtlebot_arm_marker_manipulation::ToolDetectionAction> as_;
+  actionlib::SimpleActionServer<turtlebot2i_marker_manipulation::ToolDetectionAction> as_;
   std::string action_name_;
-  turtlebot_arm_marker_manipulation::ToolDetectionFeedback      feedback_;
-  turtlebot_arm_marker_manipulation::ToolDetectionResult        result_;
-  turtlebot_arm_marker_manipulation::ToolDetectionGoalConstPtr  goal_;
+  turtlebot2i_marker_manipulation::ToolDetectionFeedback      feedback_;
+  turtlebot2i_marker_manipulation::ToolDetectionResult        result_;
+  turtlebot2i_marker_manipulation::ToolDetectionGoalConstPtr  goal_;
   ros::Subscriber sub_;
   ros::Publisher  pub_;
 
@@ -380,7 +380,7 @@ private:
 
   void addBlock(float x, float y, float z, float angle, std_msgs::ColorRGBA rgba )
   {
-    turtlebot_arm_marker_manipulation::BlockPose colored_block_pose;
+    turtlebot2i_marker_manipulation::BlockPose colored_block_pose;
     geometry_msgs::Pose block_pose;
 
     block_pose.position.x = x;
@@ -472,7 +472,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "block_detection_action_server");
 
-  turtlebot_arm_marker_manipulation::BlockDetectionServer server("block_detection");
+  turtlebot2i_marker_manipulation::BlockDetectionServer server("block_detection");
   ros::spin();
 
   return 0;
