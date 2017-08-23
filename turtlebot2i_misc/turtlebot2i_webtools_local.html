@@ -23,6 +23,10 @@
 </script>
 
 <script>
+  function sleep(ms)
+  {
+    return new Promise( resolve => setTimeout( resolve, ms ) );
+  }
   /**
    * Setup all visualization elements when the page is loaded. 
    */
@@ -33,7 +37,9 @@
       width : 640,
       height : 480
     });
-
+  
+    sleep( 1000 );
+    
     // Setup the nav client.
     var nav = NAV2D.OccupancyGridClientNav({
       ros : ros,
@@ -43,6 +49,14 @@
       withOrientation : 'true'//,
       //image: 'turtlebot.png' //Image is not working. No error noticed.
     });
+
+    sleep( 1000 );
+
+    cmdVel.publish(twist);
+    
+    sleep( 1000 );
+    
+    cmdTabletJoint.publish(tabletJointPosition);
   }
 </script>
 <script>
@@ -59,6 +73,7 @@
   // Find out exactly when we made a connection.
   ros.on('connection', function() {
     console.log('ROS connection established!');
+    init();
   });
 
   ros.on('close', function() {
@@ -70,7 +85,6 @@
 
   // Publishing a Topic
   // ------------------
-
   // First, we create a Topic object with details of the topic's name and message type.
   var cmdVel = new ROSLIB.Topic({
     ros : ros,
@@ -92,9 +106,6 @@
       z : 0.0
     }
   });
-
-  // And finally, publish.
-  cmdVel.publish(twist);
 </script>
 <script>
   var twistTimeoutID = -1;
@@ -235,14 +246,40 @@
   });
   function test_tts( text_to_say )
   {
-  	sndMessage.arg = text_to_say;
-  	sndPlay.publish( sndMessage );
+    sndMessage.arg = text_to_say;
+    sndPlay.publish( sndMessage );
   }
 
 </script>
+<script>
+  // First, we create a Topic object with details of the topic's name and message type.
+  var cmdTabletJoint = new ROSLIB.Topic({
+    ros : ros,
+    name : '/tablet_joint/command/',
+    messageType : 'std_msgs/Float64'
+  });
+
+  // Then we create the payload to be published. The object we pass in to ros.Message matches the
+  // fields defined in the geometry_msgs/Twist.msg definition.
+  var tabletJointPosition = new ROSLIB.Message({
+    data: 0.0
+  });
+
+  function moveTabletUp()
+  {
+    tabletJointPosition.data = tabletJointPosition.data + 0.1;
+    cmdTabletJoint.publish(tabletJointPosition);
+  }
+  function moveTabletDown()
+  {
+    tabletJointPosition.data = tabletJointPosition.data - 0.1;
+    cmdTabletJoint.publish(tabletJointPosition);
+  }
+  
+</script>
 </head>
 
-<body onload="init()">
+<body onload="">
   <h1>Turtlebot2i ROS Web Tools</h1>
   <p>Run the following command(s) in the terminal then refresh this page:</p>
   <ul>   
@@ -257,6 +294,8 @@
         <button type="button" onmousedown="turn_right();" onmouseup="stop_base();" onmouseout="stop_base();">Turn Right</button>
         <button type="button" onmousedown="move_forward();" onmouseup="stop_base();" onmouseout="stop_base();">Move Forward</button>
         <button type="button" onmousedown="move_backward();" onmouseup="stop_base();" onmouseout="stop_base();">Move Backward</button>
+        <button type="button" onclick="moveTabletUp();">Tablet Up</button>
+        <button type="button" onclick="moveTabletDown();">Tablet Down</button>
       </td>
       <td>
         <input id="sayText" size="42" placeholder="Say something: "></textarea><button type="button" onclick="test_tts(document.getElementById('sayText').value);" >Speak text</button>

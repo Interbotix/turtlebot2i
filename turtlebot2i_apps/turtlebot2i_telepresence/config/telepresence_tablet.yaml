@@ -1,0 +1,7 @@
+source: telepresence_tablet.yaml
+port: /dev/arbotix
+read_rate: 15
+write_rate: 25
+joints: {
+    tablet_joint: {id: 10, max_angle: 90, min_angle: -90, max_speed: 90, type: dynamixel }
+}
