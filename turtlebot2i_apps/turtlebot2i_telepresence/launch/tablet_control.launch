@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="simulation" default="false"/>
+
+  <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+    <rosparam file="$(find turtlebot2i_telepresence)/config/telepresence_tablet.yaml" command="load"/>
+    <param name="sim" value="$(arg simulation)"/>
+  </node>
+
+</launch>

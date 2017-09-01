@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="new_rtabmap" default="false"/>
+  <arg name="localization" default="false"/>
+  <arg name="rviz" default="false"/>
+  <arg name="rtabmapviz" default="false"/>
+  <arg name="with_tablet" default="false"/>
+
+  <include file="$(find turtlebot2i_bringup)/launch/minimal.launch"/>
+
+  <include if="$(arg with_tablet)" file="$(find turtlebot2i_telepresence)/launch/tablet_control.launch"/>
+  
+  <group unless="$(arg with_tablet)">
+    <include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/>
+
+    <include file="$(find turtlebot2i_arm_director)/launch/named_pose_director.launch">
+      <arg name="load_moveit" value="true"/>
+    </include>
+  </group>
+
+  <include file="$(find turtlebot2i_bringup)/launch/rtabmap.launch">
+    <arg if="$(arg new_rtabmap)" name="args" value="--delete_db_on_start"/>
+    <arg name="localization" value="$(arg localization)"/>
+    <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
+  </include>
+
+  <include file="$(find kobuki_auto_docking)/launch/standalone.launch" />
+
+  <include if="$(arg rviz)" file="$(find turtlebot2i_bringup)/launch/rviz.launch"/>
+
+  <node name="robot_pose_publisher" pkg="robot_pose_publisher" type="robot_pose_publisher"/>
+
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
+  <node name="web_video_server" pkg="web_video_server" type="web_video_server"/>
+
+  <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+  
+</launch>
