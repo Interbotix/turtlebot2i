@@ -6,7 +6,7 @@
   <!-- Xacro properties -->
   <xacro:property name="astra_cam_px" value="-0.050"/>
   <xacro:property name="astra_cam_py" value="0.0"/>
-  <xacro:property name="astra_cam_pz" value="0.3051"/> <!--Sensor base is ~34.6mm below origin-->
+  <xacro:property name="astra_cam_pz" value="0.285"/> <!--Sensor base is ~34.6mm below origin-->
 
   <xacro:property name="astra_depth_rel_rgb_py" value="0.038" />
   <xacro:property name="astra_cam_rel_rgb_py"   value="0.012" />
