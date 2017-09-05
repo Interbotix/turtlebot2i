@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="new_rtabmap" default="false"/>
+  <arg name="localization" default="false"/>
+  <arg name="rviz" default="false"/>
+  <arg name="rtabmapviz" default="false"/>
+
+  <include file="$(find turtlebot2i_bringup)/launch/minimal.launch"/>
+
+  <include file="$(find turtlebot2i_bringup)/launch/arms/phantomx_pincher_arm.launch"/>
+
+  <include file="$(find turtlebot2i_arm_director)/launch/named_pose_director.launch">
+    <arg name="load_moveit" value="true"/>
+  </include>
+
+  <include file="$(find turtlebot2i_bringup)/launch/rtabmap.launch">
+    <arg if="$(arg new_rtabmap)" name="args" value="--delete_db_on_start"/>
+    <arg name="localization" value="$(arg localization)"/>
+    <arg name="rtabmapviz" value="$(arg rtabmapviz)"/>
+  </include>
+
+  <include file="$(find kobuki_auto_docking)/launch/standalone.launch" />
+
+  <include if="$(arg rviz)" file="$(find turtlebot2i_bringup)/launch/rviz.launch"/>
+
+</launch>
