@@ -26,7 +26,9 @@ Major considerations in development were:
 
 The TurtleBot is an open community project.
 If you have improvements or suggestions for the TurtleBot2i please open pull requests against [this document](https://github.com/Interbotix/turtlebot2i).
+
 If you would like to suggest anything that doesn't fit into this document directly please start a thread on the [TurtleBot Forums](http://discourse.ros.org/c/turtlebot)
+
 ROS Wiki : (http://www.ros.org/wiki/Robots/TurtleBot)
 
 
