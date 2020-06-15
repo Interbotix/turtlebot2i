@@ -14,6 +14,8 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -105,19 +107,19 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        camera_sr300_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_sr300_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         camera_sr300_depth_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
         camera_sr300_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_sr300_rgb_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_sr300_rgb_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -363,13 +365,13 @@ Visualization Manager:
           Value: true
         camera_sr300:
           Value: true
+        camera_sr300_color_frame:
+          Value: true
+        camera_sr300_color_optical_frame:
+          Value: true
         camera_sr300_depth_frame:
           Value: true
         camera_sr300_depth_optical_frame:
-          Value: true
-        camera_sr300_rgb_frame:
-          Value: true
-        camera_sr300_rgb_optical_frame:
           Value: true
         caster_back_link:
           Value: true
@@ -489,12 +491,12 @@ Visualization Manager:
                   camera_rgb_optical_frame:
                     {}
                 camera_sr300:
-                  camera_sr300_rgb_frame:
+                  camera_sr300_color_frame:
+                    camera_sr300_color_optical_frame:
+                      {}
                     camera_sr300_depth_frame:
                       camera_sr300_depth_optical_frame:
                         {}
-                    camera_sr300_rgb_optical_frame:
-                      {}
                 caster_back_link:
                   {}
                 caster_front_link:
@@ -585,6 +587,7 @@ Visualization Manager:
       Channel Name: intensity
       Class: rtabmap_ros/MapCloud
       Cloud decimation: 4
+      Cloud from scan: false
       Cloud max depth (m): 4
       Cloud min depth (m): 0
       Cloud voxel size (m): 0.00999999978
@@ -686,7 +689,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /camera_sr300/rgb/image_rect_color
+      Image Topic: /camera_sr300/color/image_rect_color
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -882,19 +885,19 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          camera_sr300_color_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_sr300_color_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           camera_sr300_depth_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
           camera_sr300_depth_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          camera_sr300_rgb_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          camera_sr300_rgb_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -1140,6 +1143,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
+    Default Light: true
     Fixed Frame: map
     Frame Rate: 30
   Name: root
@@ -1185,7 +1189,7 @@ Window Geometry:
   Hide Right Dock: true
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001730000037cfc0200000008fb000000100044006900730070006c006100790073010000002800000196000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000001d8000000bc000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001c4000000f80000001600fffffffb0000000a0049006d00610067006501000002c2000000e20000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000005b00000037c00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001730000037cfc0200000008fb000000100044006900730070006c006100790073010000002800000196000000d700fffffffb0000000800480065006c00700000000342000000bb0000007300fffffffb0000000a0056006900650077007300000001d8000000bc000000ad00fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000001f4000001cc0000000000000000fb0000000a0049006d00610067006501000001c4000000f80000001600fffffffb0000000a0049006d00610067006501000002c2000000e20000001600fffffffb0000000a0049006d00610067006501000002a7000000fd0000000000000000000005b00000037c00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1833

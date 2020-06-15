@@ -62,19 +62,19 @@
     ==  RGB joints & links ==
     -->
 
-    <joint name="camera_sr300_rgb_joint" type="fixed">
+    <joint name="camera_sr300_color_joint" type="fixed">
       <origin xyz="${sr300_cam_rgb_px} ${sr300_cam_rgb_py} ${sr300_cam_rgb_pz}" rpy="0 1.16 0"/>
       <parent link="camera_sr300"/>
-      <child link="camera_sr300_rgb_frame" />
+      <child link="camera_sr300_color_frame" />
     </joint>
-    <link name="camera_sr300_rgb_frame"/>
+    <link name="camera_sr300_color_frame"/>
 
-    <joint name="camera_sr300_rgb_optical_joint" type="fixed">
+    <joint name="camera_sr300_color_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_sr300_rgb_frame" />
-      <child link="camera_sr300_rgb_optical_frame" />
+      <parent link="camera_sr300_color_frame" />
+      <child link="camera_sr300_color_optical_frame" />
     </joint>
-    <link name="camera_sr300_rgb_optical_frame"/>
+    <link name="camera_sr300_color_optical_frame"/>
   
 
     <!--
@@ -83,7 +83,7 @@
 
     <joint name="camera_sr300_depth_joint" type="fixed">
         <origin xyz="0 ${sr300_cam_depth_offset} 0" rpy="0 0 0" />
-        <parent link="camera_sr300_rgb_frame" />
+        <parent link="camera_sr300_color_frame" />
         <child link="camera_sr300_depth_frame" />
     </joint>
     <link name="camera_sr300_depth_frame"/>
