@@ -6,43 +6,42 @@
 
 
   <!-- Intel SR300 parameters -->
-  <xacro:property name="sr300_cam_offset_px" value="0.138" />
+  <xacro:property name="sr300_cam_offset_px" value="0.120" />
   <xacro:property name="sr300_cam_offset_py" value="0.0" />
-  <xacro:property name="sr300_cam_offset_pz" value="0.444" />
+  <xacro:property name="sr300_cam_offset_pz" value="0.0023" />
 
   <xacro:property name="sr300_cam_rgb_px" value="0.0"/>
-  <xacro:property name="sr300_cam_rgb_py" value="0.003"/>
+  <xacro:property name="sr300_cam_rgb_py" value="0.02403"/>
   <xacro:property name="sr300_cam_rgb_pz" value="0.0"/>
-
-  <xacro:property name="sr300_cam_depth_offset" value="-0.024"/>
 
   <xacro:macro name="sensor_sr300" params="parent">
 
     <!--
     ==  Intel SR300 body joints & links ==
     -->
-    
+
     <!-- camera_sr300 body -->
-    <joint name="camera_sr300_joint" type="fixed">
+    <joint name="camera_sr300_assembly_joint" type="fixed">
       <origin xyz="${sr300_cam_offset_px} ${sr300_cam_offset_py} ${sr300_cam_offset_pz}" rpy="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="camera_sr300" />
+      <child link="camera_sr300_assembly"/>
     </joint>
-    <link name="camera_sr300">
+
+    <link name="camera_sr300_assembly">
       <visual>
        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-         <mesh filename="package://turtlebot2i_description/meshes/sensors/sr300_tb2i.stl" />
+         <mesh filename="package://turtlebot2i_description/meshes/sensors/sr300_tb2i.stl" scale="0.001 0.001 0.001"/>
         </geometry>
-        <xacro:insert_block name="material_black"/>
+        <xacro:insert_block name="material_grey"/>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://turtlebot2i_description/meshes/sensors/sr300_tb2i.stl" scale="2.0 2.0 2.0" />
+          <mesh filename="package://turtlebot2i_description/meshes/sensors/sr300_tb2i.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
- 
+
       <!-- This inertial field needs doesn't contain reliable data!! -->
      <inertial>
         <mass value="0.15" />
@@ -52,18 +51,26 @@
                  izz="0.003879257" />
       </inertial>
     </link>
-    <gazebo reference="camera_sr300">
+    <gazebo reference="camera_sr300_assembly">
       <material>Gazebo/Blue</material>
       <selfCollide>true</selfCollide>
       <gravity>true</gravity>
     </gazebo>
-    
+
+    <joint name="camera_sr300_joint" type="fixed">
+      <origin xyz="0.033584 -0.00754 -0.004849" rpy="0 1.15192 0"/>
+      <parent link="camera_sr300_assembly"/>
+      <child link="camera_sr300"/>
+    </joint>
+    <link name="camera_sr300"/>
+
+
     <!--
     ==  RGB joints & links ==
     -->
 
     <joint name="camera_sr300_color_joint" type="fixed">
-      <origin xyz="${sr300_cam_rgb_px} ${sr300_cam_rgb_py} ${sr300_cam_rgb_pz}" rpy="0 1.16 0"/>
+      <origin xyz="${sr300_cam_rgb_px} ${sr300_cam_rgb_py} ${sr300_cam_rgb_pz}" rpy="0 0 0"/>
       <parent link="camera_sr300"/>
       <child link="camera_sr300_color_frame" />
     </joint>
@@ -75,15 +82,15 @@
       <child link="camera_sr300_color_optical_frame" />
     </joint>
     <link name="camera_sr300_color_optical_frame"/>
-  
+
 
     <!--
     ==  Depth joints & links ==
     -->
 
     <joint name="camera_sr300_depth_joint" type="fixed">
-        <origin xyz="0 ${sr300_cam_depth_offset} 0" rpy="0 0 0" />
-        <parent link="camera_sr300_color_frame" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="camera_sr300" />
         <child link="camera_sr300_depth_frame" />
     </joint>
     <link name="camera_sr300_depth_frame"/>
@@ -94,9 +101,9 @@
         <child link="camera_sr300_depth_optical_frame" />
     </joint>
     <link name="camera_sr300_depth_optical_frame"/>
-  	
+
   	<!-- Simulation sensor -->
-    <gazebo reference="camera_sr300">  
+    <gazebo reference="camera_sr300">
       <sensor type="depth" name="camera_sr300">
         <always_on>true</always_on>
         <update_rate>20.0</update_rate>

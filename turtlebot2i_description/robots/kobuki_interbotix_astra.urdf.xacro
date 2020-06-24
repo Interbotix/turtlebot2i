@@ -5,7 +5,7 @@
     - 3d Sensor : astra
 
     - arm : TODO: supported arms?
--->    
+-->
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find turtlebot2i_description)/urdf/turtlebot_library.urdf.xacro" />
@@ -15,7 +15,7 @@
   
   <sensor_astra parent="base_link"/>
 
-  <sensor_sr300 parent="base_link"/>
+  <sensor_sr300 parent="plate_top_link"/>
 
   <phantomx_pincher_arm parent="base_link" color="Red" gripper_color="Red">
     <origin xyz="0.145 0.0 0.124"/>

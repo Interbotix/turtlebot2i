@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <robot name="stack_interbotix" xmlns:xacro="http://ros.org/wiki/xacro">
-  
+
   <!-- TODO: Intertia fields do not contain valid data. Follow tutorial to correct them: http://gazebosim.org/tutorials?tut=inertia -->
 
   <xacro:include filename="$(find turtlebot2i_description)/urdf/common_properties.urdf.xacro"/>
-  
+
   <!-- Xacro properties -->
   <xacro:property name="PLATE_HEIGHT" value="0.0046"/>
   <xacro:property name="STANDOFF_50_HEIGHT" value="0.05"/>
@@ -16,7 +16,7 @@
 
   <xacro:property name="STANDOFF_BOTTOM_Z" value="${KOBUKI_TOP_HEIGHT+STANDOFF_50_HEIGHT/2.0-BASE_LINK_HEIGHT}"/>
   <xacro:property name="PLATE_BOTTOM_Z" value="${STANDOFF_BOTTOM_Z+STANDOFF_50_HEIGHT/2.0+PLATE_HEIGHT/2.0}"/>
-  
+
   <xacro:property name="STANDOFF_MIDDLE_Z" value="${PLATE_BOTTOM_Z+PLATE_HEIGHT/2.0+STANDOFF_50_HEIGHT/2.0}"/>
   <xacro:property name="PLATE_MIDDLE_Z" value="${STANDOFF_MIDDLE_Z+STANDOFF_50_HEIGHT/2.0+PLATE_HEIGHT/2.0}"/>
 
@@ -44,7 +44,7 @@
 
   <!-- Xacro macros -->
   <!-- Standoff macros -->
-  <xacro:macro name="standoff_50mm" params="parent number x_loc y_loc z_loc">  
+  <xacro:macro name="standoff_50mm" params="parent number x_loc y_loc z_loc">
     <joint name="standoff_50mm_${number}_joint" type="fixed">
       <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0" />
       <parent link="${parent}"/>
@@ -79,7 +79,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="standoff_100mm" params="parent number x_loc y_loc z_loc">  
+  <xacro:macro name="standoff_100mm" params="parent number x_loc y_loc z_loc">
     <joint name="standoff_100mm_${number}_joint" type="fixed">
       <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
       <parent link="${parent}"/>
@@ -114,7 +114,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="standoff_258mm" params="parent number x_loc y_loc z_loc">  
+  <xacro:macro name="standoff_258mm" params="parent number x_loc y_loc z_loc">
     <joint name="standoff_258mm_${number}_joint" type="fixed">
       <origin xyz="${x_loc} ${y_loc} ${z_loc}" rpy="0 0 0"/>
       <parent link="${parent}"/>
@@ -149,8 +149,8 @@
     </gazebo>
   </xacro:macro>
 
-  <!-- 
-    Stack macro - all the components relative transforms are made with respect 
+  <!--
+    Stack macro - all the components relative transforms are made with respect
     to the parent link (usually base_link). They could be made relative to each
     other, but there is no necessary reason to do so.
   -->
@@ -161,12 +161,12 @@
     <standoff_50mm parent="${parent}" number="3" x_loc= "0.120" y_loc="-0.082" z_loc="${STANDOFF_BOTTOM_Z}"/>
     <standoff_50mm parent="${parent}" number="4" x_loc= "0.055" y_loc="-0.120" z_loc="${STANDOFF_BOTTOM_Z}"/>
     <standoff_50mm parent="${parent}" number="5" x_loc="-0.055" y_loc="-0.120" z_loc="${STANDOFF_BOTTOM_Z}"/>
-    
+
     <joint name="plate_bottom_joint" type="fixed">
       <origin xyz="0.0 0.0 ${PLATE_BOTTOM_Z}" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_bottom_link"/>
-    </joint>  
+    </joint>
     <link name="plate_bottom_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -194,7 +194,7 @@
       <selfCollide>true</selfCollide>
       <gravity>true</gravity>
     </gazebo>
-    
+
     <standoff_50mm parent="${parent}" number="6" x_loc= "0.069" y_loc= "0.130" z_loc="${STANDOFF_MIDDLE_Z}"/>
     <standoff_50mm parent="${parent}" number="7" x_loc= "0.069" y_loc="-0.130" z_loc="${STANDOFF_MIDDLE_Z}"/>
 
@@ -203,12 +203,12 @@
 
     <standoff_50mm parent="${parent}" number="10" x_loc="-0.104" y_loc= "0.098" z_loc="${STANDOFF_MIDDLE_Z}"/>
     <standoff_50mm parent="${parent}" number="11" x_loc="-0.104" y_loc="-0.098" z_loc="${STANDOFF_MIDDLE_Z}"/>
-    
+
     <joint name="plate_middle_joint" type="fixed">
       <origin xyz="0.0 0.0 ${PLATE_MIDDLE_Z}" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_middle_link"/>
-    </joint>  
+    </joint>
     <link name="plate_middle_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -216,7 +216,7 @@
           <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_MiddlePlate.stl"/>
         </geometry>
         <xacro:insert_block name="material_near_black"/>
-      </visual>  
+      </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
@@ -229,14 +229,14 @@
         <inertia ixx="0.003328" ixy="0.0" ixz="0.0"
                  iyy="0.003328" iyz="0.0"
                  izz="0.006656" />
-      </inertial>  
+      </inertial>
     </link>
     <gazebo reference="plate_middle_link">
       <material>Gazebo/Black</material>
       <selfCollide>true</selfCollide>
       <gravity>true</gravity>
     </gazebo>
-    
+
     <standoff_100mm parent="${parent}" number="6" x_loc= "-0.001" y_loc= "0.162" z_loc="${STANDOFF_UTILITY_BOTTOM_Z}"/>
     <standoff_100mm parent="${parent}" number="7" x_loc= "-0.001" y_loc="-0.162" z_loc="${STANDOFF_UTILITY_BOTTOM_Z}"/>
     <standoff_100mm parent="${parent}" number="8" x_loc="-0.104" y_loc= "0.098" z_loc="${STANDOFF_UTILITY_BOTTOM_Z}"/>
@@ -246,7 +246,7 @@
       <origin xyz="0.0 0.0 ${PLATE_UTILITY_BOTTOM_Z}" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_utility_lower_link"/>
-    </joint>  
+    </joint>
     <link name="plate_utility_lower_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -254,7 +254,7 @@
           <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_CameraPlate.stl"/>
         </geometry>
         <xacro:insert_block name="material_near_black"/>
-      </visual>  
+      </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
@@ -267,7 +267,7 @@
         <inertia ixx="0.003328" ixy="0.0" ixz="0.0"
                  iyy="0.003328" iyz="0.0"
                  izz="0.006656" />
-      </inertial>  
+      </inertial>
     </link>
     <gazebo reference="plate_utility_lower_link">
       <material>Gazebo/Black</material>
@@ -284,7 +284,7 @@
       <origin xyz="0.0 0.0 ${PLATE_UTILITY_UPPER_Z}" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_utility_upper_link"/>
-    </joint>  
+    </joint>
     <link name="plate_utility_upper_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -292,7 +292,7 @@
           <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_UtilityPlate.stl"/>
         </geometry>
         <xacro:insert_block name="material_near_black"/>
-      </visual>  
+      </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
@@ -305,7 +305,7 @@
         <inertia ixx="0.003328" ixy="0.0" ixz="0.0"
                  iyy="0.003328" iyz="0.0"
                  izz="0.006656" />
-      </inertial>  
+      </inertial>
     </link>
     <gazebo reference="plate_utility_upper_link">
       <material>Gazebo/Black</material>
@@ -322,19 +322,19 @@
       <origin xyz="0.0 0.0 ${PLATE_TOP_Z}" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="plate_top_link"/>
-    </joint>  
+    </joint>
     <link name="plate_top_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_TopPlate.stl"/>
+          <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_TopPlate.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:insert_block name="material_near_black"/>
-      </visual>  
+      </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_TopPlate.stl"/>
+          <mesh filename="package://turtlebot2i_description/meshes/stacks/interbotix/TurtleBot2i_TopPlate.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
