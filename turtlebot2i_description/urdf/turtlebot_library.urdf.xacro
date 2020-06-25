@@ -6,6 +6,7 @@
   <!-- General -->
   <xacro:include filename="$(find turtlebot2i_description)/urdf/common_properties.urdf.xacro"/>
   <xacro:include filename="$(find turtlebot2i_description)/urdf/turtlebot_properties.urdf.xacro"/>
+  <xacro:include filename="$(find turtlebot2i_description)/urdf/turtlebot_gazebo_plugin.urdf.xacro"/>
   <!-- Bases -->
   <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
   <!-- Stacks -->
@@ -16,5 +17,5 @@
   <xacro:include filename="$(find turtlebot2i_description)/urdf/sensors/zr300.urdf.xacro"/>
   <!-- Arms -->
   <xacro:include filename="$(find turtlebot2i_description)/urdf/arms/phantomx_pincher_arm.urdf.xacro"/>
-  
+
 </robot>

@@ -5,7 +5,7 @@
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/turtlebot" args="arm_shoulder_pan_position_controller arm_shoulder_lift_position_controller arm_elbow_flex_position_controller arm_wrist_flex_position_controller joint_state_controller"/>
+    output="screen" ns="/turtlebot" args="arm_shoulder_pan_position_controller arm_bicep_position_controller arm_forearm_position_controller arm_wrist_flex_position_controller joint_state_controller"/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"

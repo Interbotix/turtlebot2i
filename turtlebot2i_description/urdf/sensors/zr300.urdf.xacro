@@ -17,7 +17,7 @@
   <xacro:property name="zr300_fisheye_y" value="0.0875"/>
 
   <xacro:macro name="sensor_zr300" params="parent">
-    
+
     <!--Sensor body-->
     <joint name="camera_joint" type="fixed">
       <origin xyz="${zr300_origin_x} ${zr300_origin_y} ${zr300_origin_z}"
@@ -50,7 +50,7 @@
     </link>
     <gazebo reference="camera_link">
       <material>Gazebo/Blue</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 

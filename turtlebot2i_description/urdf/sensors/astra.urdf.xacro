@@ -58,7 +58,7 @@
     </link>
     <gazebo reference="camera_link">
       <material>Gazebo/Blue</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 

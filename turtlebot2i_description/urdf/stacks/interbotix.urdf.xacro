@@ -74,7 +74,7 @@
     </link>
     <gazebo reference="standoff_50mm_${number}_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
@@ -109,7 +109,7 @@
     </link>
     <gazebo reference="standoff_100mm_${number}_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
@@ -144,7 +144,7 @@
     </link>
     <gazebo reference="standoff_258mm_${number}_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
@@ -191,7 +191,7 @@
     </link>
     <gazebo reference="plate_bottom_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 
@@ -233,7 +233,7 @@
     </link>
     <gazebo reference="plate_middle_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 
@@ -271,7 +271,7 @@
     </link>
     <gazebo reference="plate_utility_lower_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 
@@ -309,7 +309,7 @@
     </link>
     <gazebo reference="plate_utility_upper_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 
@@ -347,7 +347,7 @@
     </link>
     <gazebo reference="plate_top_link">
       <material>Gazebo/Black</material>
-      <selfCollide>true</selfCollide>
+      <!-- <selfCollide>true</selfCollide> -->
       <gravity>true</gravity>
     </gazebo>
 
