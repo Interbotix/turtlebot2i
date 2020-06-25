@@ -25,7 +25,7 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * Author: Michael Ferguson, Helen Oleynikova
  */
 
@@ -65,7 +65,7 @@ namespace turtlebot2i_block_manipulation
 class BlockDetectionServer
 {
 private:
-    
+
   ros::NodeHandle nh_;
   actionlib::SimpleActionServer<turtlebot2i_block_manipulation::BlockDetectionAction> as_;
   std::string action_name_;
@@ -79,21 +79,21 @@ private:
   moveit::planning_interface::PlanningSceneInterface planning_scene_interface_;
 
   tf::TransformListener tf_listener_;
-  
+
   // Parameters from goal
   std::string arm_link_;
   double block_size_;
   double table_height_;
-  
+
   ros::Publisher block_pub_;
   ros::Publisher c_obj_pub_;
-  
+
   // Parameters from node
   std::vector<double> table_pose_;
   std::vector<double> dock_pose_;
-  
+
 public:
-  BlockDetectionServer(const std::string name) : 
+  BlockDetectionServer(const std::string name) :
     nh_("~"), as_(name, false), action_name_(name)
   {
     // Load parameters from the server.
@@ -111,9 +111,9 @@ public:
     // Register the goal and feeback callbacks.
     as_.registerGoalCallback(boost::bind(&BlockDetectionServer::goalCB, this));
     as_.registerPreemptCallback(boost::bind(&BlockDetectionServer::preemptCB, this));
-    
+
     as_.start();
-    
+
     // Subscribe to point cloud
     sub_ = nh_.subscribe("/camera_sr300/depth_registered/points", 1, &BlockDetectionServer::cloudCb, this);
 
@@ -132,7 +132,7 @@ public:
     result_.colored_blocks.poses.clear();
 
     goal_ = as_.acceptNewGoal();
-    
+
     block_size_ = goal_->block_size;
     table_height_ = goal_->table_height;
     arm_link_ = goal_->frame;
@@ -175,7 +175,7 @@ public:
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_transformed(new pcl::PointCloud<pcl::PointXYZRGB>);
 
     tf_listener_.waitForTransform(std::string(arm_link_), cloud.header.frame_id,
-                                  ros::Time(cloud.header.stamp), ros::Duration(1.0));
+                                  ros::Time::now(), ros::Duration(1.0));
     if (!pcl_ros::transformPointCloud(std::string(arm_link_), cloud, *cloud_transformed, tf_listener_))
     {
       ROS_ERROR("Error converting to desired frame");
@@ -257,12 +257,12 @@ public:
 
     // for each cluster, see if it is a block
     for (size_t c = 0; c < cluster_indices.size(); ++c)
-    {  
+    {
       // find the outer dimensions of the cluster
       float xmin = 0; float xmax = 0;
       float ymin = 0; float ymax = 0;
       float zmin = 0; float zmax = 0;
-      
+
       unsigned long redSum=0, greenSum=0, blueSum=0, redCount = 0, greenCount = 0, blueCount = 0;
 
       for (size_t i = 0; i < cluster_indices[c].indices.size(); i++)
@@ -272,7 +272,7 @@ public:
           float y = cloud_filtered->points[j].y;
           float z = cloud_filtered->points[j].z;
           unsigned long rgb = cloud_filtered->points[j].rgba;
-                 
+
           //Calculate average color of cluster
           //TODO: This may be BGR not RGB
           if ( rgb & 0xff > 128 )
@@ -290,7 +290,7 @@ public:
             blueSum += (rgb >> 16) & 0xff;
             ++blueCount;
           }
-          
+
           //Determine the min and max x,y,z for cluster
           if (i == 0)
           {
@@ -306,9 +306,9 @@ public:
             ymax = std::max(ymax, y);
             zmin = std::min(zmin, z);
             zmax = std::max(zmax, z);
-          }    
+          }
       }
-      
+
       // Check if these dimensions make sense for the block size specified
       float xside = xmax-xmin;
       float yside = ymax-ymin;
@@ -325,10 +325,10 @@ public:
       {
         // If so, then figure out the position and the orientation of the block
         float angle = atan(block_size_/((xside + yside)/2));
-        
+
         if (yside < block_size_)
           angle = 0.0;
-          
+
         // Then add it to our set
         ROS_INFO("Found new block! x=%.3f y=%.3f z=%.3f", (float) xmin + xside/2.0, (float) ymin + (float) yside/2.0, zmax - block_size_/2.0);
         ROS_INFO_STREAM("Block length x side: " << xside << "m y side: " << yside << "m z side " << zside << "m angle: " << angle);
@@ -336,7 +336,7 @@ public:
         xmin += xside/2.0;
         ymin += yside/2.0;
         zmax -= block_size_/2.0;
-        
+
         //TODO: Don't exclude blocks by hardcoded bounds
         if ( fabs(ymin) > 0.142 )
         {
@@ -345,7 +345,7 @@ public:
         }
 
         ROS_INFO("Adding a new block! x=%.3f y=%.3f z=%.3f", (float) xmin , (float) ymin , (float) zmax );
-        
+
         std_msgs::ColorRGBA rgba;
         rgba.r = redSum/redCount;
         rgba.g = greenSum/greenCount;
@@ -359,9 +359,9 @@ public:
       {
         ROS_WARN_STREAM("Block detection failed on cluster " << c << " with size xyz: " << xside << ", " << yside << ", " << zside << "; XYZ eval: " << (xside > block_size_ - tol && xside < block_size_*sqrt(2) + tol) << ", " << (yside > block_size_ - tol && yside < block_size_*sqrt(2) + tol) << ", " << (zside > tol && zside < block_size_ + tol) );
       }
-    
+
     }
-     
+
     if (result_.blocks.poses.size() > 0)
     {
       as_.setSucceeded(result_);
@@ -385,14 +385,14 @@ private:
     block_pose.position.x = x;
     block_pose.position.y = y;
     block_pose.position.z = z;
-    
+
     Eigen::Quaternionf quat(Eigen::AngleAxis<float>(angle, Eigen::Vector3f(0,0,1)));
-    
+
     block_pose.orientation.x = quat.x();
     block_pose.orientation.y = quat.y();
     block_pose.orientation.z = quat.z();
     block_pose.orientation.w = quat.w();
-    
+
     result_.blocks.poses.push_back(block_pose);
 
     colored_block_pose.position = block_pose.position;

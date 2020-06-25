@@ -1,6 +1,7 @@
 <launch>
   <arg name="auto_sort" default="false"/>
   <arg name="at_dock" default="false"/>
+  <arg name="block_size" default="0.02"/>
 
   <include file="$(find turtlebot2i_block_manipulation)/launch/block_manipulation.launch">
     <arg name="at_dock" value="$(arg at_dock)"/>
@@ -9,12 +10,12 @@
   <node name="block_manipulation_demo" pkg="turtlebot2i_block_manipulation" type="block_manipulation_demo" output="screen" >
     <param name="arm_link" value="/arm_base_link" />
     <param name="gripper_open" value="0.031" />
-    <param name="block_size" value="0.02" />
+    <param name="block_size" value="$(arg block_size)" />
     <param name="gripper_tighten" value="0.004" />
     <param name="z_up" value="0.06" />
     <param name="target_bin_height" value="0.06" />
     <param name="table_height" value="0.0" />
-  
+
     <param name="auto_sort" value="$(arg auto_sort)" />
 
   </node>
