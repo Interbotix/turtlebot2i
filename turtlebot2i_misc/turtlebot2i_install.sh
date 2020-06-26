@@ -35,7 +35,7 @@ fi
 
 # Step 2: Install Orbbec packages
 ORBBEC_WS=~/orbbec_ws
-if [ ! -d "$TURTLEBOT2I_WS/src"]; then
+if [ ! -d "$ORBBEC_WS/src" ]; then
   echo "Installing Orbbec ROS packages..."
   sudo apt -y install ros-kinetic-rgbd-launch
   sudo apt -y install ros-kinetic-libuvc
