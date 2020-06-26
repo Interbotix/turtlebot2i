@@ -8,10 +8,10 @@ This guide documents how to install ROS Kinetic and all necessary packages to ge
 The Intel NUC7i3BNH computer for the Turtlebot2i robot comes pre-installed with the [latest Ubuntu Desktop image (16.04.6)](https://releases.ubuntu.com/16.04/) already on it. After unpacking it, connect a mouse, HDMI monitor, and keyboard to it. Then, plug in the power supply and press the **Power** button.
 A login screen should appear on your monitor with **turtlebot** as the user name. Conveniently, the password is the same as the user name so type *turtlebot* and hit **Enter**. Next, update the computer by performing the following steps.
 
-1. Press **Cntrl-Alt-T** to open a terminal screen, and type `sudo apt update`. If prompted for a password, type *turtlebot*.
-2. After the process completes, type `sudo apt -y upgrade`. It might take a few minutes for the computer to upgrade. If prompted to update to *Ubuntu 18.04*, just decline.
-3. Finally, type `sudo apt -y autoremove` to get rid of unnecessary software packages. Then close out of the terminal.
-4. Next, connect the Turtlebot computer to your local network. This is as simple as clicking the Wifi icon on the top right of the Desktop and selecting your desired network. Note that this step should be completed *before* running the install script below if you'd like to connect to the Turtlebot from a local (remote) computer.
+1. Connect the Turtlebot computer to your local network. This is as simple as clicking the Wifi icon on the top right of the Desktop and selecting your desired network.
+2. Press **Cntrl-Alt-T** to open a terminal screen, and type `sudo apt update`. If prompted for a password, type *turtlebot*.
+3. After the process completes, type `sudo apt -y upgrade`. It might take a few minutes for the computer to upgrade. If prompted to update to *Ubuntu 18.04*, just decline.
+4. Finally, type `sudo apt -y autoremove` to get rid of unnecessary software packages. Then close out of the terminal and reboot the computer.
 
 #### Install Packages on the Turtlebot Computer
 Once rebooted, login and open up a terminal as before. Instead of manually installing all the software needed for the robot, you will download and run an installation script. Follow the commands below to get started! Note that nothing (cameras, Kobuki, Arbotix) needs to be connected to the computer for the installation to work.
