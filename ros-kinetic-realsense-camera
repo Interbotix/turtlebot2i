@@ -1,9 +1,0 @@
-Section: misc
-Priority: optional
-Standards-Version: 3.9.2
-
-Package: ros-kinetic-realsense-camera
-Version: 99
-Maintainer: Interbotix <solomon@trossenrobotics.com>
-Architecture: all
-Description: fake ros-kinetic-realsense-camera to block a dumb dependency
