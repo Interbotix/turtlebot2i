@@ -10,11 +10,21 @@ A login screen should appear on your monitor with **turtlebot** as the user name
 
 1. Press **Cntrl-Alt-T** to open a terminal screen, and type `sudo apt update`. If prompted for a password, type *turtlebot*.
 2. After the process completes, type `sudo apt -y upgrade`. It might take a few minutes for the computer to upgrade. If prompted to update to *Ubuntu 18.04*, just decline.
-3. Finally, type `sudo apt -y autoremove` to get rid of unnecessary software packages. Then close out of the terminal and reboot the  computer.
+3. Finally, type `sudo apt -y autoremove` to get rid of unnecessary software packages. Then close out of the terminal.
+4. Next, connect the Turtlebot computer to your local network. This is as simple as clicking the Wifi icon on the top right of the Desktop and selecting your desired network. Note that this step should be completed *before* running the install script below if you'd like to connect to the Turtlebot from a local (remote) computer.
 
-Once rebooted, login and open up a terminal as before. Instead of manually installing all the software needed for the robot, you will download and run an installation script. Follow the commands below to get started!
+#### Install Packages on the Turtlebot Computer
+Once rebooted, login and open up a terminal as before. Instead of manually installing all the software needed for the robot, you will download and run an installation script. Follow the commands below to get started! Note that nothing (cameras, Kobuki, Arbotix) needs to be connected to the computer for the installation to work.
 
     $ sudo apt install curl
     $ curl 'https://raw.githubusercontent.com/Interbotix/turtlebot2i/master/turtlebot2i_misc/turtlebot2i_install.sh' > turtlebot2i_install.sh
     $ chmod +x turtlebot2i_install.sh
     $ ./turtlebot2i_install.sh
+
+#### Install Packages on a Local (Remote) Computer
+To interface with the Turtlebot from a local (remote) computer, connect your local computer to the same network to which the Turtlebot is connected. Then run the following commands on your *local* computer. Note that it will only install the packages necessary to remotely monitor the Turtlebot using Rviz. It will also allow you to simulate the robot in Gazebo.
+
+    $ sudo apt install curl
+    $ curl 'https://raw.githubusercontent.com/Interbotix/turtlebot2i/master/turtlebot2i_misc/turtlebot2i_remote_install.sh' > turtlebot2i_remote_install.sh
+    $ chmod +x turtlebot2i_remote_install.sh
+    $ ./turtlebot2i_remote_install.sh
