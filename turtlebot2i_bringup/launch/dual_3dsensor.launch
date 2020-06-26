@@ -1,12 +1,12 @@
 <launch>
-  
+
   <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" />
   <arg name="3d_sensor2" default="$(optenv TURTLEBOT_3D_SENSOR2 None)" />
 
   <!-- 3D Sensor(s) -->
   <include if="$(eval arg('3d_sensor') != 'zr300')" file="$(find turtlebot2i_bringup)/launch/3dsensor.launch"/>
   <include if="$(eval arg('3d_sensor') == 'zr300' and arg('3d_sensor2') == 'sr300')" file="$(find turtlebot2i_bringup)/launch/includes/3dsensor/zr300_sr300.launch.xml"/>
-<!--  
+<!--
 	<include if="$(eval arg('3d_sensor') != 'zr300' and arg('3d_sensor2') != 'None')" file="$(find turtlebot2i_bringup)/launch/includes/3dsensor/$(arg 3d_sensor2).launch.xml">
     <arg name="launch_camera" value="false"/>
     <arg name="manager" value="/camera/camera_nodelet_manager"/>
@@ -14,7 +14,7 @@
 -->
 
   <include if="$(eval arg('3d_sensor') != 'zr300' and arg('3d_sensor2') != 'None')" file="$(find realsense2_camera)/launch/rs_rgbd.launch">
-    <arg name="camera"			  value="camera_sr300"/>
+    <arg name="camera"			              value="camera_sr300"/>
     <arg name="enable_pointcloud"         value="false"/>
     <arg name="enable_fisheye"            value="false"/>
     <arg name="enable_gyro"               value="false"/>
@@ -22,8 +22,8 @@
     <arg name="enable_infra1"             value="false"/>
     <arg name="enable_infra2"             value="false"/>
     <arg name="enable_depth"              value="true"/>
-    <arg name="align_depth"		  value="false"/>
-    <arg name="publish_tf"		  value="false"/>
+    <arg name="align_depth"		            value="false"/>
+    <arg name="publish_tf"		            value="false"/>
   </include>
 
 </launch>
