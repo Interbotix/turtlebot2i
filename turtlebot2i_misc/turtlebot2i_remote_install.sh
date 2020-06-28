@@ -31,7 +31,7 @@ fi
 source $TURTLEBOT2I_WS/devel/setup.bash
 
 # Step 2: Setup Environment variables
-if [ -z ${TURTLEBOT_3D_SENSOR} ]; then
+if [ -z ${TURTLEBOT_ARM} ]; then
 	echo "Setting up Environment variables..."
 	echo "export TURTLEBOT_3D_SENSOR=astra" >> ~/.bashrc
 	echo "export TURTLEBOT_3D_SENSOR2=sr300" >> ~/.bashrc
