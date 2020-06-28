@@ -24,14 +24,18 @@ if [ $(dpkg-query -W -f='${Status}' ros-kinetic-desktop-full 2>/dev/null | grep 
   sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
   sudo apt update
   sudo apt -y install ros-kinetic-desktop-full
+	if [ -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then
+		sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
+	fi
   echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
   sudo apt -y install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
   sudo rosdep init
   rosdep update
-  source ~/.bashrc
 else
   echo "ros-kinetic-desktop-full is already installed!"
 fi
+
+source /opt/ros/kinetic/setup.bash
 
 # Step 2: Install Orbbec packages
 ORBBEC_WS=~/orbbec_ws
@@ -44,7 +48,7 @@ if [ ! -d "$ORBBEC_WS/src" ]; then
   mkdir -p $ORBBEC_WS/src
   cd $ORBBEC_WS && catkin_make
   echo "source $ORBBEC_WS/devel/setup.bash" >> ~/.bashrc
-  source ~/.bashrc
+  source $ORBBEC_WS/devel/setup.bash
   cd $ORBBEC_WS/src
   git clone https://github.com/orbbec/ros_astra_camera
   git clone https://github.com/orbbec/ros_astra_launch.git
@@ -88,14 +92,14 @@ if [ ! -d "$REALSENSE_WS/src" ]; then
   catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
   catkin_make install
   echo "source $REALSENSE_WS/devel/setup.bash" >> ~/.bashrc
-  source ~/.bashrc
+  source $REALSENSE_WS/devel/setup.bash
 else
   echo "RealSense ROS packages already installed!"
 fi
 
 # Step 4: Install Turtlebot2i packages
 TURTLEBOT2I_WS=~/turtlebot2i_ws
-if [ ! -d "$TURTLEBOT2I_WS/src"]; then
+if [ ! -d "$TURTLEBOT2I_WS/src" ]; then
   echo "Installing Turtlebot2i ROS packages..."
   mkdir -p $TURTLEBOT2I_WS/src
   cd $TURTLEBOT2I_WS/src
@@ -114,7 +118,7 @@ if [ ! -d "$TURTLEBOT2I_WS/src"]; then
   sudo apt -y install ros-kinetic-controller-manager
   cd $TURTLEBOT_WS && catkin_make
   echo "source $TURTLEBOT2I_WS/devel/setup.bash" >> ~/.bashrc
-  source ~/.bashrc
+  source $TURTLEBOT2I_WS/devel/setup.bash
 else
   echo "Turtlebot2i ROS packages already installed!"
 fi
