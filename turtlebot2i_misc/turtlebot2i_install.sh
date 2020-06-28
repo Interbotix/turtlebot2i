@@ -34,7 +34,6 @@ if [ $(dpkg-query -W -f='${Status}' ros-kinetic-desktop-full 2>/dev/null | grep 
 else
   echo "ros-kinetic-desktop-full is already installed!"
 fi
-
 source /opt/ros/kinetic/setup.bash
 
 # Step 2: Install Orbbec packages
@@ -58,6 +57,7 @@ if [ ! -d "$ORBBEC_WS/src" ]; then
 else
   echo "Orbbec ROS packages already installed!"
 fi
+source $ORBBEC_WS/devel/setup.bash
 
 # Step 3: Install Realsense packages
 
@@ -92,10 +92,10 @@ if [ ! -d "$REALSENSE_WS/src" ]; then
   catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
   catkin_make install
   echo "source $REALSENSE_WS/devel/setup.bash" >> ~/.bashrc
-  source $REALSENSE_WS/devel/setup.bash
 else
   echo "RealSense ROS packages already installed!"
 fi
+source $REALSENSE_WS/devel/setup.bash
 
 # Step 4: Install Turtlebot2i packages
 TURTLEBOT2I_WS=~/turtlebot2i_ws
@@ -118,20 +118,30 @@ if [ ! -d "$TURTLEBOT2I_WS/src" ]; then
   sudo apt -y install ros-kinetic-controller-manager
   cd $TURTLEBOT2I_WS && catkin_make
   echo "source $TURTLEBOT2I_WS/devel/setup.bash" >> ~/.bashrc
-  source $TURTLEBOT2I_WS/devel/setup.bash
 else
   echo "Turtlebot2i ROS packages already installed!"
 fi
+source $TURTLEBOT2I_WS/devel/setup.bash
 
 # Step 5: Setup Environment variables
-echo "Setting up Environment variables..."
-echo "export ROS_IP=$(hostname -I)" >> ~/.bashrc
-echo "export TURTLEBOT_3D_SENSOR=astra" >> ~/.bashrc
-echo "export TURTLEBOT_3D_SENSOR2=sr300" >> ~/.bashrc
-echo "export TURTLEBOT_BATTERY=None" >> ~/.bashrc
-echo "export TURTLEBOT_STACKS=interbotix" >> ~/.bashrc
-echo "export TURTLEBOT_BASE=kobuki" >> ~/.bashrc
-echo "export TURTLEBOT_ARM=pincher" >> ~/.bashrc
+if [ -z ${TURTLEBOT_3D_SENSOR} ]; then
+	echo "Setting up Environment variables..."
+	echo '
+	export TURTLEBOT_3D_SENSOR=astra
+	export TURTLEBOT_3D_SENSOR2=sr300
+	export TURTLEBOT_BATTERY=None
+	export TURTLEBOT_STACKS=interbotix
+	export TURTLEBOT_BASE=kobuki
+	export TURTLEBOT_ARM=pincher
+	export ROS_IP=$(echo `hostname -I`)
+	if [ -z ${ROS_IP} ]; then
+	  export ROS_IP=127.0.0.1
+	fi
+	' >> ~/.bashrc
+else
+	echo "Environment variables already set!"
+fi
+
 sudo usermod -a -G dialout turtlebot
 
 end_time="$(date -u +%s)"
