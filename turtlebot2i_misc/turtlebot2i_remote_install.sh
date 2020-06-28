@@ -12,11 +12,11 @@ echo "Installing just enough dependencies to access the Turtlebot2i remotely fro
 echo "Note that ROS Kinetic must already be installed on your system (including Rviz and Gazebo) for the script to work."
 
 # Step 1: Install Turtlebot2i packages
+TURTLEBOT2I_WS=~/turtlebot2i_ws
 if [ ! -d "$TURTLEBOT2I_WS/src" ]; then
 	echo "Installing Turtlebot2i dependencies..."
 	sudo apt -y install ros-kinetic-rtabmap-ros
 	sudo apt -y install ros-kinetic-kobuki-desktop
-	TURTLEBOT2I_WS=~/turtlebot2i_ws
 	mkdir -p $TURTLEBOT2I_WS/src
 	cd $TURTLEBOT2I_WS/src
 	git clone https://github.com/Interbotix/arbotix_ros.git -b turtlebot2i
