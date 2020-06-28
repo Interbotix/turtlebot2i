@@ -9,7 +9,7 @@ if [ $ubuntu_version != "16.04" ]; then
 fi
 
 echo -e "\e[1;33m ***************************************** \e[0m"
-echo -e "\e[1;33m The installation takes around 20 Minutes! \e[0m"
+echo -e "\e[1;33m The installation takes around 15 Minutes! \e[0m"
 echo -e "\e[1;33m ***************************************** \e[0m"
 sleep 4
 start_time="$(date -u +%s)"
