@@ -46,5 +46,8 @@ else
 	echo "Environment variables already set!"
 fi
 
+ORANGE='\033[;33m'
+NC='\033[0m'
+
 echo "Installation Complete! Close this terminal and open a new one to finish."
-echo "NOTE: Remember to comment out the 'source $TURTLEBOT2I_WS/devel/setup.bash' and 'export ROS_MASTER_URI=http://turtlebot.local:11311' lines from the ~/.bashrc file when done using the Turtlebot! Then close out of your terminal and open a new one."
+echo -e "NOTE: Remember to comment out the ${ORANGE}source $TURTLEBOT2I_WS/devel/setup.bash${NC} and ${ORANGE}export ROS_MASTER_URI=http://turtlebot.local:11311${NC} lines from the ~/.bashrc file when done using the Turtlebot! Then close out of your terminal and open a new one."
