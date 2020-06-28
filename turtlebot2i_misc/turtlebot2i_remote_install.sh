@@ -33,22 +33,18 @@ source $TURTLEBOT2I_WS/devel/setup.bash
 # Step 2: Setup Environment variables
 if [ -z ${TURTLEBOT_3D_SENSOR} ]; then
 	echo "Setting up Environment variables..."
-	echo '
-	export TURTLEBOT_3D_SENSOR=astra
-	export TURTLEBOT_3D_SENSOR2=sr300
-	export TURTLEBOT_BATTERY=None
-	export TURTLEBOT_STACKS=interbotix
-	export TURTLEBOT_BASE=kobuki
-	export TURTLEBOT_ARM=pincher
-	export ROS_MASTER_URI=http://turtlebot.local:11311
-	export ROS_IP=$(echo `hostname -I`)
-	if [ -z ${ROS_IP} ]; then
-	  export ROS_IP=127.0.0.1
-	fi
-	' >> ~/.bashrc
+	echo "export TURTLEBOT_3D_SENSOR=astra" >> ~/.bashrc
+	echo "export TURTLEBOT_3D_SENSOR2=sr300" >> ~/.bashrc
+	echo "export TURTLEBOT_BATTERY=None" >> ~/.bashrc
+	echo "export TURTLEBOT_STACKS=interbotix" >> ~/.bashrc
+	echo "export TURTLEBOT_BASE=kobuki" >> ~/.bashrc
+	echo "export TURTLEBOT_ARM=pincher" >> ~/.bashrc
+	echo "export ROS_MASTER_URI=http://turtlebot.local:11311" >> ~/.bashrc
+	echo 'export ROS_IP=$(echo `hostname -I`)' >> ~/.bashrc
+	echo -e 'if [ -z ${ROS_IP} ]; then\n\texport ROS_IP=127.0.0.1\nfi' >> ~/.bashrc
 else
 	echo "Environment variables already set!"
 fi
 
 echo "Installation Complete! Close this terminal and open a new one to finish."
-echo "NOTE: Remember to comment out the 'source $TURTLEBOT2I_WS/devel/setup.bash' and\n'export ROS_MASTER_URI=http://turtlebot.local:11311' lines from the ~/.bashrc file when done using the Turtlebot!\nThen close out of your terminal and open a new one."
+echo "NOTE: Remember to comment out the 'source $TURTLEBOT2I_WS/devel/setup.bash' and 'export ROS_MASTER_URI=http://turtlebot.local:11311' lines from the ~/.bashrc file when done using the Turtlebot! Then close out of your terminal and open a new one."

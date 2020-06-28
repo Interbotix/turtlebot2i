@@ -126,18 +126,14 @@ source $TURTLEBOT2I_WS/devel/setup.bash
 # Step 5: Setup Environment variables
 if [ -z ${TURTLEBOT_3D_SENSOR} ]; then
 	echo "Setting up Environment variables..."
-	echo '
-	export TURTLEBOT_3D_SENSOR=astra
-	export TURTLEBOT_3D_SENSOR2=sr300
-	export TURTLEBOT_BATTERY=None
-	export TURTLEBOT_STACKS=interbotix
-	export TURTLEBOT_BASE=kobuki
-	export TURTLEBOT_ARM=pincher
-	export ROS_IP=$(echo `hostname -I`)
-	if [ -z ${ROS_IP} ]; then
-	  export ROS_IP=127.0.0.1
-	fi
-	' >> ~/.bashrc
+	echo "export TURTLEBOT_3D_SENSOR=astra" >> ~/.bashrc
+	echo "export TURTLEBOT_3D_SENSOR2=sr300" >> ~/.bashrc
+	echo "export TURTLEBOT_BATTERY=None" >> ~/.bashrc
+	echo "export TURTLEBOT_STACKS=interbotix" >> ~/.bashrc
+	echo "export TURTLEBOT_BASE=kobuki" >> ~/.bashrc
+	echo "export TURTLEBOT_ARM=pincher" >> ~/.bashrc
+	echo 'export ROS_IP=$(echo `hostname -I`)' >> ~/.bashrc
+	echo -e 'if [ -z ${ROS_IP} ]; then\n\texport ROS_IP=127.0.0.1\nfi' >> ~/.bashrc
 else
 	echo "Environment variables already set!"
 fi
