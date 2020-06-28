@@ -116,7 +116,7 @@ if [ ! -d "$TURTLEBOT2I_WS/src" ]; then
   sudo apt -y install ros-kinetic-octomap-ros
   sudo apt -y install ros-kinetic-manipulation-msgs
   sudo apt -y install ros-kinetic-controller-manager
-  cd $TURTLEBOT_WS && catkin_make
+  cd $TURTLEBOT2I_WS && catkin_make
   echo "source $TURTLEBOT2I_WS/devel/setup.bash" >> ~/.bashrc
   source $TURTLEBOT2I_WS/devel/setup.bash
 else
