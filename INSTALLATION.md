@@ -1,7 +1,6 @@
 # Interbotix Turtlebot2i Installation Instructions
 
-
-This guide documents how to install ROS Kinetic and all necessary packages to get up and running with the Interbotix Turtlebot2i.
+This guide documents how to install ROS Kinetic and all necessary packages to get up and running with the Interbotix Turtlebot2i platform. Note that these instructions only apply to platforms shipped with the [SR305 camera](https://www.intelrealsense.com/depth-camera-sr305/) by Intel. For platforms shipped with the older [SR300 camera](https://support.creative.com/Products/ProductDetails.aspx?catID=218&CatName=Cameras&subCatID=231&subCatName=MIDI+Keyboards&prodID=22906&prodName=Intel+RealSense+Developer+Kit+(SR300)&bTopTwenty=1&VARSET=prodfaq:PRODFAQ_22906,VARSET=CategoryID:218) by Creative, refer to the installation instructions [here](https://github.com/Interbotix/turtlebot2i/wiki/Full-Build-Instructions). As an FYI, the only difference between these two camera models is the housing, but the module inside is the same.
 
 #### Update Linux
 
