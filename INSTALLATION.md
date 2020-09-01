@@ -4,7 +4,7 @@ This guide documents how to install ROS Kinetic and all necessary packages to ge
 
 #### Update Linux
 
-The Intel NUC7i3BNH computer for the Turtlebot2i robot comes pre-installed with the [latest Ubuntu Desktop image (16.04.6)](https://releases.ubuntu.com/16.04/) already on it. After unpacking it, connect a mouse, HDMI monitor, and keyboard to it. Then, plug in the power supply and press the **Power** button.
+The Intel NUC7i3BNH computer for the Turtlebot2i robot comes pre-installed with the [latest Ubuntu Desktop image (16.04.7)](https://releases.ubuntu.com/16.04/) already on it. After unpacking it, connect a mouse, HDMI monitor, and keyboard to it. Then, plug in the power supply and press the **Power** button.
 A login screen should appear on your monitor with **turtlebot** as the user name. Conveniently, the password is the same as the user name so type *turtlebot* and hit **Enter**. Next, update the computer by performing the following steps.
 
 1. Connect the Turtlebot computer to your local network. This is as simple as clicking the Wifi icon on the top right of the Desktop and selecting your desired network.
