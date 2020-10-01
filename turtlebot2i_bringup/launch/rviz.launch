@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot2i_bringup)/rviz/turtlebot2i.rviz" />
+  <arg name="fixed_frame"     default="map"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-f $(arg fixed_frame) -d $(find turtlebot2i_bringup)/rviz/turtlebot2i.rviz" />
 </launch>

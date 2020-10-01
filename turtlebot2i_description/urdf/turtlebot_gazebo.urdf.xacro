@@ -25,7 +25,7 @@
           <updateRate>10</updateRate>
           <imageTopicName>rgb/image_raw</imageTopicName>
           <depthImageTopicName>depth/image_raw</depthImageTopicName>
-          <pointCloudTopicName>depth/points</pointCloudTopicName>
+          <pointCloudTopicName>depth_registered/points</pointCloudTopicName>
           <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
           <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
           <frameName>camera_depth_optical_frame</frameName>

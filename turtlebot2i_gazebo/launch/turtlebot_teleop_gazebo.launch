@@ -1,0 +1,22 @@
+<launch>
+
+  <arg name="rviz"            default="true"/>
+  <arg name="fixed_frame"     default="odom"/>
+  <arg name="teleop"          default="true"/>
+
+  <!-- turtlebot_world launch file -->
+  <include file="$(find turtlebot2i_gazebo)/launch/turtlebot_world.launch" />
+
+  <!-- rviz launch file -->
+  <include if="$(arg rviz)" file="$(find turtlebot2i_bringup)/launch/rviz.launch">
+    <arg name="fixed_frame" value="$(arg fixed_frame)"/>
+  </include>
+
+  <!-- teleop node -->
+  <node if="$(arg teleop)" pkg="turtlebot_teleop" type="turtlebot_teleop_key" name="turtlebot_teleop_keyboard"  output="screen">
+    <param name="scale_linear" value="0.5" type="double"/>
+    <param name="scale_angular" value="1.5" type="double"/>
+    <remap from="turtlebot_teleop_keyboard/cmd_vel" to="mobile_base/commands/velocity"/>
+  </node>
+
+</launch>
