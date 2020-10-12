@@ -21,7 +21,10 @@ if [ ! -d "$TURTLEBOT2I_WS/src" ]; then
 	cd $TURTLEBOT2I_WS/src
 	git clone https://github.com/Interbotix/arbotix_ros.git -b turtlebot2i
 	git clone https://github.com/Interbotix/phantomx_pincher_arm.git
-	cd $TURTLEBOT2I_WS && catkin_make
+	cd $TURTLEBOT2I_WS
+	rosdep update
+	rosdep install --from-paths src --ignore-src -r -y
+	catkin_make
 	cd src
 	git clone https://github.com/Interbotix/turtlebot2i.git
 	echo "source $TURTLEBOT2I_WS/devel/setup.bash" >> ~/.bashrc
@@ -40,8 +43,8 @@ if [ -z ${TURTLEBOT_ARM} ]; then
 	echo "export TURTLEBOT_BASE=kobuki" >> ~/.bashrc
 	echo "export TURTLEBOT_ARM=pincher" >> ~/.bashrc
 	echo "export ROS_MASTER_URI=http://turtlebot.local:11311" >> ~/.bashrc
-	echo 'export ROS_IP=$(echo `hostname -I`)' >> ~/.bashrc
-	echo -e 'if [ -z ${ROS_IP} ]; then\n\texport ROS_IP=127.0.0.1\nfi' >> ~/.bashrc
+	echo 'export ROS_IP=$(echo `hostname -I | cut -d" " -f1`)' >> ~/.bashrc
+	echo -e 'if [ -z "$ROS_IP" ]; then\n\texport ROS_IP=127.0.0.1\nfi' >> ~/.bashrc
 else
 	echo "Environment variables already set!"
 fi

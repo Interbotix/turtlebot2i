@@ -132,8 +132,8 @@ if [ -z ${TURTLEBOT_ARM} ]; then
 	echo "export TURTLEBOT_STACKS=interbotix" >> ~/.bashrc
 	echo "export TURTLEBOT_BASE=kobuki" >> ~/.bashrc
 	echo "export TURTLEBOT_ARM=pincher" >> ~/.bashrc
-	echo 'export ROS_IP=$(echo `hostname -I`)' >> ~/.bashrc
-	echo -e 'if [ -z ${ROS_IP} ]; then\n\texport ROS_IP=127.0.0.1\nfi' >> ~/.bashrc
+	echo 'export ROS_IP=$(echo `hostname -I | cut -d" " -f1`)' >> ~/.bashrc
+	echo -e 'if [ -z "$ROS_IP" ]; then\n\texport ROS_IP=127.0.0.1\nfi' >> ~/.bashrc
 else
 	echo "Environment variables already set!"
 fi
